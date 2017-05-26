@@ -1,0 +1,46 @@
+<HTML>
+    <HEAD>
+        <TITLE>LIP-LOCATION REPORT ACK</TITLE>
+        <SCRIPT SRC="../LIP_Util.js" language="JavaScript" type="text/JavaScript"></SCRIPT>
+        <LINK href="../LIP_PDU_Generator.css" rel="stylesheet" type="text/css">
+    </HEAD>
+    <body marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" style="" class="darkblue">        
+        <form id="Form1">
+            <table id="LIP_xxx_Table">
+                <col width="160"/>
+                <tr><th>Extended user defined data</th>
+                    <td><select id="T5_Extended_user_defined_data">                          
+	                        <option selected value="0">T5 Not Present
+	                    </select>
+	                </td>
+                </tr>                     
+            </table>
+        </form>
+        <script language="JavaScript" type="text/JavaScript">
+
+            function GetPDUValue(pdu_header)
+            {
+                //Get Information Element values
+                T5_Extended_user_defined_data = document.getElementById('T5_Extended_user_defined_data').value;
+                
+                //Build PDU
+
+                pdu_bin_value = pdu_header;
+                
+                //Reserved
+                pdu_bin_value += "00000000";
+
+                T5_data = "";
+                if (T5_Extended_user_defined_data == "1")
+                {
+                    pdu_bin_value += T5_Encode("1",T5_data);
+                }
+
+
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                return pdu_bin_value;
+            }
+        </script>
+    </body>
+</HTML>

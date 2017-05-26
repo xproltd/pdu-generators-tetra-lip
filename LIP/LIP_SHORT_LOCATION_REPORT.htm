@@ -1,0 +1,200 @@
+<HTML>
+    <HEAD>
+        <TITLE>LIP-SHORT LOCATION REPORT</TITLE>
+        <SCRIPT SRC="../LIP_Util.js" language="JavaScript" type="text/JavaScript"></SCRIPT>
+        <LINK href="../LIP_PDU_Generator.css" rel="stylesheet" type="text/css">
+    </HEAD>
+    <body marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" style="" class="darkblue" onload="On_Load()">        
+        <form id="Form1">
+            <table id="LIP_xxx_Table">
+                <col width="160"/>
+
+                <tr><th align="left">Time elapsed</th>
+                    <td><select id="Time_elapsed" >                               
+                        <option value="00">Less than 5 s
+                        <option value="01">Less than 5 min
+                        <option selected value="10">Less than 30 min
+                        <option value="11">Not known or n/a
+                        </select>
+                    </td>
+                </tr> 
+
+                <tr><th>Longitude</th>
+                    <td><input id="Longitude" value="25.57632" size=8 ></td>
+                </tr> 
+                <tr><th>Latitude</th>
+                    <td><input id="Latitude" value="63.286543" size=8 ></td>
+                </tr> 
+  
+                <tr><th align="left">Position error</th>
+                    <td><select id= "Position_error" >                    
+                        <option value="000">Less than 2 m
+                        <option selected value="001">Less than 20 m
+                        <option value="010">Less than 200 m
+                        <option value="011">Less than 2 km
+                        <option value="100">Less than 20 km
+                        <option value="101">Less than or equal to 200 m
+                        <option value="110">More than 200 km
+                        <option value="111">Position error not known
+                        </select>
+                    </td>
+                 </tr> 
+	
+                <tr><th align="left">Horizontal velocity</th>
+                    <td><select id= "Horizontal_velocity">
+	                    <option value="0000000">0 km/h
+                        <option value="0000001">1 km/h
+                        <option value="0001010">10 km/h
+                        <option value="0010100">20 km/h
+                        <option value="0011110">30.2 km/h
+                        <option selected value="0100110">40.6 km/h
+                        <option value="0101100">50.8 km/h
+                        <option value="0111000">79.5 km/h
+                        <option value="0111110">99.5 km/h
+                        <option value="1000011">120 km/h
+                        <option value="1010001">202 km/h
+                        <option value="1011100">305 km/h
+                        <option value="1101001">495 km/h
+                        <option value="1110010">692 km/h
+                        <option value="1111100">1005 km/h
+                        <option value="1111101">1043 km/h
+                        <option value="1111110">More than 1043 km/h
+                        <option value="1111111">Not known
+	                    </select>
+                    </td>
+                </tr> 	
+	
+                <tr><th align="left">Direction of travel</th>
+                    <td><select id= "Direction_of_travel">
+	                    <option value="0000">0° Notrh(N)
+	                    <option value="0001">22.5°  NNE
+	                    <option value="0010">45°    NE
+	                    <option value="0011">67.5°  ENE
+	                    <option value="0100">90°    East(E)
+	                    <option value="0101">112.5° ESE
+	                    <option value="0110">135°   SE
+	                    <option selected value="0111">157.5° SSE
+	                    <option value="1000">180°   South(S)
+	                    <option value="1001">202.5° SSW
+	                    <option value="1010">225°   SW
+	                    <option value="1011">247.5° WSW
+	                    <option value="1100">270°   West(W)
+	                    <option value="1101">292.5° WNW
+	                    <option value="1110">315°   NW
+	                    <option value="1111">337.5° NNW or not known
+	                    </select>
+                   </td>
+                </tr> 	
+	
+                <tr><th align="left">Type of additional data</th>
+                    <td><select id= "Type_of_additional_data" onChange=OnChange_Type_of_additional_data(this.form)>
+                        <option selected value="0">Reason for sending
+                        <option value="1">User defined data
+                        </select>
+                    </td>
+                </tr> 
+	
+                <tr id="Tag_Reason_for_sending"><th align="left">Reason for sending</th>
+                    <td><select id= "Reason_for_sending">
+                        <option value="00000000">SU is powered on
+                        <option value="00000001">SU is powered off
+                        <option value="00000010">Emergency condition is detected
+                        <option value="00000011">Push-to-Talk condition is detected
+                        <option value="00000100">Status entered
+                        <option value="00000101">Transmit Inhibit Mode ON
+                        <option value="00000110">Transmit Inhibit Mode OFF
+                        <option value="00000111">System access (TMO ON)
+                        <option value="00001000">DMO ON
+                        <option value="00001001">Enter service
+                        <option value="00001010">Loss of service
+                        <option value="00001011">Cell reselection or change of serving cell
+                        <option value="00001100">Low battery
+                        <option value="00001101">SU is connected to a car kit
+                        <option value="00001110">SU is disconnected from a car kit
+                        <option value="00001111">SU ask for transfer initialization configuration
+                        <option value="00010000">Arrival at destination
+                        <option value="00010001">Arrival at defined location
+                        <option selected value="00010010">Approaching a defined location
+                        <option value="00010011">SDS type-1 entered
+                        <option value="00010100">User application initiated
+                        <option value="00010101">Lost ability to determine location
+                        <option value="00010110">Regained ability to determine location
+                        <option value="00010111">Leaving point
+                        <option value="00011000">Ambience Listening call is detected   
+                        <option value="10000001">Maximum reporting interval exceeded since the last location report
+                        <option value="10000010">Maximum reporting distance limit travelled since the last location report
+                        </select>
+                    </td>
+                </tr> 	
+	
+                <tr id="Tag_User_defined_data"><th align="left">User defined data</th>
+                    <td><select disabled id= "User_defined_data" >
+	                    <option value="00000000">0
+	                    <option value="00000001">1
+	                    <option value="00000010">2
+	                    <option value="00001111">15
+	                    <option value="00111111">63
+	                    <option value="11111111">255
+	                    </select>
+                    </td>
+                </tr> 	
+
+            </table>
+        </form>
+        <script language="JavaScript" type="text/JavaScript">
+
+            function GetPDUValue(pdu_header)
+            {
+                //Get Information Element values
+                Time_elapsed = document.getElementById('Time_elapsed').value;
+                Longitude = document.getElementById('Longitude').value;
+                Latitude = document.getElementById('Latitude').value;
+                Position_error = document.getElementById('Position_error').value;
+                Horizontal_velocity = document.getElementById('Horizontal_velocity').value;
+                Direction_of_travel = document.getElementById('Direction_of_travel').value;
+                Type_of_additional_data = document.getElementById('Type_of_additional_data').value;
+                Reason_for_sending = document.getElementById('Reason_for_sending').value;
+                User_defined_data = document.getElementById('User_defined_data').value;
+
+                //Build PDU
+
+                pdu_bin_value = pdu_header;
+
+                pdu_bin_value += Time_elapsed;
+                pdu_bin_value += Longitude2Bin(Longitude);
+                pdu_bin_value += Latitude2Bin(Latitude);
+                pdu_bin_value += Position_error;
+
+                pdu_bin_value += Horizontal_velocity;
+                pdu_bin_value += Direction_of_travel;
+                pdu_bin_value += Type_of_additional_data;
+                if (Type_of_additional_data == "0")
+                    pdu_bin_value += Reason_for_sending;
+                else
+                    pdu_bin_value += User_defined_data;
+
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                return pdu_bin_value;
+            }
+
+            function On_Load()
+            {
+                OnChange_Type_of_additional_data(this.form);
+            }
+
+            function OnChange_Type_of_additional_data(form)
+            {
+                Type_of_additional_data = document.getElementById('Type_of_additional_data').value;
+                document.getElementById('Tag_Reason_for_sending').style.display = "none";
+                document.getElementById('Tag_User_defined_data').style.display = "none";
+                if (Type_of_additional_data == "1")
+                    document.getElementById('Tag_User_defined_data').style.display = "";
+                else
+                    document.getElementById('Tag_Reason_for_sending').style.display = "";
+                Update_Height();
+            }
+            
+        </script>
+    </body>
+</HTML>

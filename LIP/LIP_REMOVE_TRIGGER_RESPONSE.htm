@@ -1,0 +1,455 @@
+<HTML>
+    <HEAD>
+        <TITLE>LIP-REMOVE TRIGGER RESPONSE</TITLE>
+        <SCRIPT SRC="../LIP_Util.js" language="JavaScript" type="text/JavaScript"></SCRIPT>
+        <LINK href="../LIP_PDU_Generator.css" rel="stylesheet" type="text/css">
+    </HEAD>
+    <body marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" style="" class="darkblue" onload="On_Load()">        
+        <form id="Form1">
+            <table id="LIP_xxx_Table">
+                <col width="160"/>
+                <tr><th>Result code</th>
+                    <td><select id="Result_code">
+	                    <option value="00000000">Success
+	                    <option value="00000001">System failure
+	                    <option value="00000010">Unspecified error
+	                    <option value="00000011">Unauthorized application
+	                    <option value="00000100">Unknown subscriber
+	                    <option value="00000101">Absent subscriber
+	                    <option value="00000110">Congestion in provider
+	                    <option value="00000111">Congestion in mobile network
+	                    <option value="00001000">Unsupported version
+	                    <option value="00001001">Insufficient resource
+	                    <option value="00001010">Syntax error
+	                    <option value="00001011">Protocol element not supported
+	                    <option value="00001100">Service not supported
+	                    <option selected value="00001101">Protocol element value not supported
+	                    <option value="00001110">Type of information not currently available
+	                    <option value="00001111">Required accuracy not achieved
+	                    <option value="00010000">Reserved
+	                    <option value="00010001">Reporting will stop
+	                    <option value="00010010">Time expired
+	                    <option value="00010011">Disallowed by local regulations
+	                    <option value="00010100">Reserved
+	                    <option value="00010101">No such request
+	                    <option value="00010110">User disabled location information report sending
+	                    <option value="00010111">Parameter values modified
+	                    <option value="00011000">Accepted
+	                    <option value="00011001">Accepted, but some of the triggers or accuracies are modified or not supported
+	                    <option value="00011010">Triggers not supported
+	                    <option value="00011011">Report complete
+	                    <option value="01010001">Position method failure
+	                    <option value="11001000">Insufficient GPS satellites
+	                    <option value="11001001">Bad GPS geometry
+	                    </select>
+	                </td>
+                </tr>                     
+                <table><col width="160"/>                				
+                <tr><th>Terminal or location identification</th>
+                    <td><select id="T5_Terminal_or_location_identification" onChange="OnChange_T5_Terminal_or_location_identification(this.form)">                          
+	                        <option value="0">T5 Not Present
+	                        <option selected value="1">T5 Present
+	                    </select>
+	                </td>
+                </tr>       
+                <tr id="Tag_Address_or_ident_type" >
+                    <th >Address or identification type</th>
+                    <td><select id="Address_or_ident_type" onchange="OnChange_Address_or_ident_type(this.form)">                               
+                        <option value="0"> None
+                        <option value="1"> SSI
+                        <option value="2"> SSI + MNI
+                        <option value="3"> IP address (Version 4)
+                        <option value="4"> IP address (Version 6)
+                        <option value="8"> ESN
+                        <option value="9"> SSI + ESN
+                        <option selected value="10">SSI + MNI + ESN
+                        <option value="11">Name server type name
+                        <option value="12">Name, free format
+                        </select>
+                    </td>
+                </tr>
+				<tr id="Tag_SSI">
+					<th >&nbsp;SSI</th>
+					<td>
+						<input id="SSI" value="62033" size=15>
+					</td>
+				</tr>
+				<tr id="Tag_MNI">
+					<th >&nbsp;MNI</th>
+					<td>
+						&nbsp;MCC: <input id="MNI_MCC" value="234" size=5 >
+						&nbsp;MNC: <input id="MNI_MNC" value="73" size=5 >
+					</td>
+				</tr>       
+				<tr id="Tag_ESN_digits">
+					<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ESN digits:</th>
+					<td>
+						<input id="ESN_digits" value="+#*1234567890" size=20>
+					</td>
+				</tr>				     
+				<tr id="Tag_IPv4">
+					<th >&nbsp;IP Version 4</th>
+					<td>
+						<input disabled id="IPv4" value="192.168.0.100" size=15>
+					</td>
+				</tr>
+				<tr id="Tag_IPv6">
+					<th >&nbsp;IP Version 6</th>
+					<td>
+						<input disabled id="IPv6" value="2001:0db8:85a3:0042:0000:8a2e:0370:7334" size=40>
+					</td>
+				</tr>
+				<tr id="Tag_Name_Server_Type_Name">
+					<th >&nbsp;Name server type name</th>
+					<td>
+						<input disabled id="Name_Server_Type_Name" value="Name Server Name" size=25>
+					</td>
+				</tr>
+				<tr id="Tag_Name_Free_Format">
+					<th >&nbsp;Name, free format</th>
+					<td>
+						<input id="Name_Free_Format" value="Name, free format" size=35>
+					</td>
+				</tr>
+				</table>	
+                <table><col width="160"/>                				
+				<tr><th>Trigger removal</th>
+                    <td><select id="T5_Trigger_removal" onChange="OnChange_T5_Trigger_removal(this.form)">                          
+	                        <option value="0">T5 Not Present
+	                        <option selected value="1">T5 Present
+	                    </select>
+	                </td>
+                </tr>                     
+                <tbody id="Tag_Trigger_removal">
+                <tr><th>Removal type</th>
+                    <td><select id="Trigger_Removal_type" onChange="OnChange_Trigger_Removal_type(this.form)">                    
+                            <option value="0">Remove all triggers                   
+                            <option selected value="1">Remove listed triggers
+                        </select>
+                    </td>
+                </tr>
+                <tr id="Tag_Trigger_type">
+                <th>Trigger type</th>
+                    <td><select id="Trigger_type" onChange="OnChange_Trigger_type(this.form)">                          
+	                        <option value="0" >Subscriber unit is powered ON
+	                        <option value="1" >Subscriber unit is powered OFF
+	                        <option value="2" >Emergency condition is detected
+	                        <option value="3" >Push-to-Talk condition is detected
+	                        <option value="4" >Status entered
+	                        <option value="5" >Transmit Inhibit Mode ON
+	                        <option value="6" >Transmit Inhibit Mode OFF
+	                        <option value="7" >System access (TMO ON)
+	                        <option value="8" >DMO ON
+	                        <option value="9"> Enter service (after being out of service)
+	                        <option value="10">Loss of service
+	                        <option value="11">Change of serving cell
+	                        <option value="12">Low battery
+	                        <option value="13">Subscriber unit is connected to a car kit
+	                        <option value="14">Subscriber unit is disconnected from a car kit
+	                        <option value="16">Arrival at destination
+	                        <option selected value="17">Arrival at point
+	                        <option value="18">Approaching point
+	                        <option value="19">SDS type-1 entered
+	                        <option value="21">Lost ability to determine location
+	                        <option value="22">Regained ability to determine location
+	                        <option value="23">Leaving point
+	                        <option value="24">Ambience Listening call is detected
+	                        <option value="129">Maximum reporting interval
+	                        <option value="130">Maximum reporting distance
+	                    </select>
+	                </td>
+                </tr> 
+                <tr id="Tag_Trigger_Status_value">
+                    <th>Status value</th>
+                    <td>
+                        <input id="Trigger_Status_value" value="31744" size=8>
+                    </td>
+                </tr>
+                <tr id="Tag_Trigger_Location_point">
+                    <th>Location point</th>
+                    <td>
+                        <tr id="Tag_Trigger_Location_point_Longitude">
+                        <th>Longitude</th>
+                            <td><input id="Longitude_Location_point" value="25.57632" size=8 ></td>
+                        </tr> 
+                        <tr id="Tag_Trigger_Location_point_Latitude">
+                        <th>Latitude</th>
+                            <td><input id="Latitude_Location_point" value="63.286543" size=8 ></td>
+                        </tr> 
+                    </td>
+                </tr>
+                <tr id="Tag_Trigger_SDS_type_1_value">
+                    <th>SDS type-1 value</th>
+                    <td>
+                        <input id="Trigger_SDS_type_1_value" value="12756" size=8>
+                    </td>
+                </tr>
+                </tbody>
+				</table>
+            </table>
+        </form>
+        <script language="JavaScript" type="text/JavaScript">
+
+            function GetPDUValue(pdu_header)
+            {
+                //Get Information Element values
+                Result_code = document.getElementById('Result_code').value;                
+
+                T5_Terminal_or_location_identification = document.getElementById('T5_Terminal_or_location_identification').value;
+                Address_or_ident_type = document.getElementById('Address_or_ident_type').value;
+                SSI = document.getElementById('SSI').value;
+                MNI_MCC = document.getElementById('MNI_MCC').value;
+                MNI_MNC = document.getElementById('MNI_MNC').value;
+                ESN_digits = document.getElementById('ESN_digits').value;
+                IPv4 = document.getElementById('IPv4').value;
+                IPv6 = document.getElementById('IPv6').value;
+                Name_Server_Type_Name = document.getElementById('Name_Server_Type_Name').value;
+                Name_Free_Format = document.getElementById('Name_Free_Format').value;
+
+                T5_Trigger_removal = document.getElementById('T5_Trigger_removal').value;
+                Trigger_Removal_type = document.getElementById('Trigger_Removal_type').value;                
+                Trigger_type = document.getElementById('Trigger_type').value;
+                Trigger_Status_value = document.getElementById('Trigger_Status_value').value;
+                Longitude_Location_point = document.getElementById('Longitude_Location_point').value;
+                Latitude_Location_point = document.getElementById('Latitude_Location_point').value;
+                Trigger_SDS_type_1_value = document.getElementById('Trigger_SDS_type_1_value').value;
+                //Build PDU
+
+                pdu_bin_value = pdu_header;
+
+                pdu_bin_value += "1"; //Response
+                
+                pdu_bin_value += Result_code;
+                
+                if (T5_Terminal_or_location_identification == "1")
+                {
+                    T5_data = dec2bin(Address_or_ident_type,4);
+                    if (Address_or_ident_type == "1")//SSI
+                    {
+                        T5_data += dec2bin(SSI,24);
+                    }
+                    else
+                    if (Address_or_ident_type == "2")//SSI + MNI
+                    {
+                        T5_data += dec2bin(SSI,24);
+                        T5_data += dec2bin(MNI_MCC,10);
+                        T5_data += dec2bin(MNI_MNC,14);
+                    }
+                    else
+                    if (Address_or_ident_type == "3")//IPv4
+                    {
+                        T5_data += ipv42bin(IPv4);
+                    }
+                    else
+                    if (Address_or_ident_type == "4")//IPv6
+                    {
+                        T5_data += ipv62bin(IPv6);
+                    }
+                    else
+                    if (Address_or_ident_type == "8")//ESN
+                    {
+                        T5_data += digit2bin(ESN_digits);
+                    }
+                    else
+                    if (Address_or_ident_type == "9")//SSI+ESN
+                    {
+                        T5_data += dec2bin(SSI,24);
+                        T5_data += digit2bin(ESN_digits);
+                    }
+                    else
+                    if (Address_or_ident_type == "10")//SSI+MNI+ESN
+                    {
+                        T5_data += dec2bin(SSI,24);
+                        T5_data += dec2bin(MNI_MCC,10);
+                        T5_data += dec2bin(MNI_MNC,14);
+                        T5_data += digit2bin(ESN_digits);
+                    }
+                    else
+                    if (Address_or_ident_type == "11")//Server Name
+                    {
+                        T5_data += text2bin(Name_Server_Type_Name);
+                    }
+                    else
+                    if (Address_or_ident_type == "12")//Free Name
+                    {
+                        T5_data += text2bin(Name_Free_Format);
+                    }
+                                        
+                    pdu_bin_value += T5_Encode("17",T5_data);
+                }
+
+                if (T5_Trigger_removal == "1")
+                {
+                    T5_data = Trigger_Removal_type;
+                    if (Trigger_Removal_type == "1")
+                    {
+                        T5_data += dec2bin(Trigger_type,8);
+                        if (Trigger_type == "4")//Status_value
+                        {
+                            T5_data += dec2bin(Trigger_Status_value,16);
+                        }
+                        else
+                        if (Trigger_type == "17")//Arrival at point
+                        {
+                            T5_data += Longitude2Bin(Longitude_Location_point);
+                            T5_data += Latitude2Bin(Latitude_Location_point);
+                        }
+                        else
+                        if (Trigger_type == "19")//SDS_type_1_value
+                        {
+                            T5_data += dec2bin(Trigger_SDS_type_1_value,16);
+                        }
+                    }                                        
+                    
+                    pdu_bin_value += T5_Encode("20",T5_data);
+                }
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                return pdu_bin_value;
+            }
+            
+            function On_Load()
+            {
+                OnChange_T5_Terminal_or_location_identification(this.form);
+                OnChange_T5_Trigger_removal(this.form);
+            }
+
+            function OnChange_T5_Terminal_or_location_identification(form)
+            {
+                document.getElementById('Tag_Address_or_ident_type').style.display = "none";
+                
+                T5_Terminal_or_location_identification = document.getElementById('T5_Terminal_or_location_identification').value;
+                if (T5_Terminal_or_location_identification == "1")
+                {
+                    document.getElementById('Tag_Address_or_ident_type').style.display = "";
+                }
+                OnChange_Address_or_ident_type();
+                Update_Height();
+            }
+
+            function OnChange_Address_or_ident_type(form)
+            {
+                document.getElementById('Tag_SSI').style.display = "none";
+                document.getElementById('Tag_MNI').style.display = "none";
+                document.getElementById('Tag_ESN_digits').style.display = "none";
+                document.getElementById('Tag_IPv4').style.display = "none";
+                document.getElementById('Tag_IPv6').style.display = "none";
+                document.getElementById('Tag_Name_Server_Type_Name').style.display = "none";
+                document.getElementById('Tag_Name_Free_Format').style.display = "none";
+
+                T5_Terminal_or_location_identification = document.getElementById('T5_Terminal_or_location_identification').value;
+                if (T5_Terminal_or_location_identification == "0")
+                {
+                    Update_Height();
+                    return;
+                }
+                
+                Address_or_ident_type = document.getElementById('Address_or_ident_type').value;
+                if (Address_or_ident_type == "1")
+                {
+                    document.getElementById('Tag_SSI').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "2")
+                {
+                    document.getElementById('Tag_SSI').style.display = "";
+                    document.getElementById('Tag_MNI').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "3")
+                {
+                    document.getElementById('Tag_IPv4').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "4")
+                {
+                    document.getElementById('Tag_IPv6').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "8")
+                {
+                    document.getElementById('Tag_ESN_digits').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "9")
+                {
+                    document.getElementById('Tag_SSI').style.display = "";
+                    document.getElementById('Tag_ESN_digits').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "10")
+                {
+                    document.getElementById('Tag_SSI').style.display = "";
+                    document.getElementById('Tag_MNI').style.display = "";
+                    document.getElementById('Tag_ESN_digits').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "11")
+                {
+                    document.getElementById('Tag_Name_Server_Type_Name').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "12")
+                {
+                    document.getElementById('Tag_Name_Free_Format').style.display = "";
+                }
+                Update_Height();
+            }
+
+            function OnChange_T5_Trigger_removal(form)
+            {
+                document.getElementById('Tag_Trigger_removal').style.display = "none";
+                T5_Trigger_removal = document.getElementById('T5_Trigger_removal').value;
+                if (T5_Trigger_removal == "1")
+                {
+                    document.getElementById('Tag_Trigger_removal').style.display = "";
+                }
+                OnChange_Trigger_Removal_type(form);
+                Update_Height();
+            }
+            
+            function OnChange_Trigger_Removal_type(form)
+            {
+                document.getElementById('Tag_Trigger_type').style.display = "none";
+                Trigger_Removal_type = document.getElementById('Trigger_Removal_type').value;
+                if (Trigger_Removal_type == "1")
+                {
+                    document.getElementById('Tag_Trigger_type').style.display = "";
+                }
+                OnChange_Trigger_type(form);
+                Update_Height();
+            }
+            
+            function OnChange_Trigger_type(form)
+            {
+                document.getElementById('Tag_Trigger_Status_value').style.display = "none";
+                document.getElementById('Tag_Trigger_Location_point').style.display = "none";
+                document.getElementById('Tag_Trigger_Location_point_Longitude').style.display = "none";
+                document.getElementById('Tag_Trigger_Location_point_Latitude').style.display = "none";
+                document.getElementById('Tag_Trigger_Location_point').style.display = "none";
+                document.getElementById('Tag_Trigger_SDS_type_1_value').style.display = "none";
+                Trigger_Removal_type = document.getElementById('Trigger_Removal_type').value;
+                if (Trigger_Removal_type == "0")
+                {
+                    Update_Height();
+                    return;
+                }
+                Trigger_type = document.getElementById('Trigger_type').value;
+                if (Trigger_type == "4")
+                    document.getElementById('Tag_Trigger_Status_value').style.display = "";
+                else
+                if ((Trigger_type == "17") || (Trigger_type == "18") || (Trigger_type == "23"))
+                {
+                    document.getElementById('Tag_Trigger_Location_point').style.display = "";
+                    document.getElementById('Tag_Trigger_Location_point_Longitude').style.display = "";
+                    document.getElementById('Tag_Trigger_Location_point_Latitude').style.display = "";
+                }
+                else
+                if (Trigger_type == "19")
+                    document.getElementById('Tag_Trigger_SDS_type_1_value').style.display = "";
+                Update_Height();
+            }            
+
+        </script>
+    </body>
+</HTML>

@@ -1,0 +1,42 @@
+<HTML>
+    <HEAD>
+        <TITLE>LIP-LOCATION REPORTING TEMP CONTROL RESPONSE</TITLE>
+        <SCRIPT SRC="../LIP_Util.js" language="JavaScript" type="text/JavaScript"></SCRIPT>
+        <LINK href="../LIP_PDU_Generator.css" rel="stylesheet" type="text/css">
+    </HEAD>
+    <body marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" style="" class="darkblue">        
+        <form id="Form1">
+            <table id="LIP_xxx_Table">
+                <col width="160"/>
+                <tr>
+                    <th >Location reporting temporary control</th>
+                    <td><select id="Location_rep_temp_control">                               
+                        <option value="0">Return to normal reporting
+                        <option value="1">Start of temporary control
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <script language="JavaScript" type="text/JavaScript">
+
+            function GetPDUValue(pdu_header)
+            {
+                //Get Information Element values
+                Location_rep_temp_control = document.getElementById('Location_rep_temp_control').value;
+
+                //Build PDU
+
+                pdu_bin_value = pdu_header;
+
+                pdu_bin_value += "1"; //Response
+                
+                pdu_bin_value += Location_rep_temp_control;
+                
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                return pdu_bin_value;
+            }
+        </script>
+    </body>
+</HTML>

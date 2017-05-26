@@ -1,0 +1,269 @@
+<HTML>
+    <HEAD>
+        <TITLE>LIP-LOCATION REPORTING ENABLE DISABLE RESPONSE</TITLE>
+        <SCRIPT SRC="../LIP_Util.js" language="JavaScript" type="text/JavaScript"></SCRIPT>
+        <LINK href="../LIP_PDU_Generator.css" rel="stylesheet" type="text/css">
+    </HEAD>
+    <body marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" style="" class="darkblue" onload="On_Load()">        
+        <form id="Form1">
+            <table id="LIP_xxx_Table">
+                <col width="160"/>
+                <table><col width="160"/>
+                <tr><th>Location reporting enable flags</th>
+                    <td><input id="Location_enable_flag_1" type="checkbox" value="1"/>Location reporting globally<br/>
+                        <input id="Location_enable_flag_2" type="checkbox" value="1"/>Backlog location report recording
+	                </td>
+                </tr>                    
+                </table> 
+                <table><col width="160"/>                				
+                <tr><th>Terminal or location identification</th>
+                    <td><select id="T5_Terminal_or_location_identification" onChange="OnChange_T5_Terminal_or_location_identification(this.form)">                          
+	                        <option value="0">T5 Not Present
+	                        <option selected value="1">T5 Present
+	                    </select>
+	                </td>
+                </tr>       
+                <tr id="Tag_Address_or_ident_type" >
+                    <th >Address or identification type</th>
+                    <td><select id="Address_or_ident_type" onchange="OnChange_Address_or_ident_type(this.form)">                               
+                        <option value="0"> None
+                        <option value="1"> SSI
+                        <option value="2"> SSI + MNI
+                        <option value="3"> IP address (Version 4)
+                        <option value="4"> IP address (Version 6)
+                        <option value="8"> ESN
+                        <option value="9"> SSI + ESN
+                        <option selected value="10">SSI + MNI + ESN
+                        <option value="11">Name server type name
+                        <option value="12">Name, free format
+                        </select>
+                    </td>
+                </tr>
+				<tr id="Tag_SSI">
+					<th >&nbsp;SSI</th>
+					<td>
+						<input id="SSI" value="62033" size=15>
+					</td>
+				</tr>
+				<tr id="Tag_MNI">
+					<th >&nbsp;MNI</th>
+					<td>
+						&nbsp;MCC: <input id="MNI_MCC" value="234" size=5 >
+						&nbsp;MNC: <input id="MNI_MNC" value="73" size=5 >
+					</td>
+				</tr>       
+				<tr id="Tag_ESN_digits">
+					<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ESN digits:</th>
+					<td>
+						<input id="ESN_digits" value="+#*1234567890" size=20>
+					</td>
+				</tr>				     
+				<tr id="Tag_IPv4">
+					<th >&nbsp;IP Version 4</th>
+					<td>
+						<input disabled id="IPv4" value="192.168.0.100" size=15>
+					</td>
+				</tr>
+				<tr id="Tag_IPv6">
+					<th >&nbsp;IP Version 6</th>
+					<td>
+						<input disabled id="IPv6" value="2001:0db8:85a3:0042:0000:8a2e:0370:7334" size=40>
+					</td>
+				</tr>
+				<tr id="Tag_Name_Server_Type_Name">
+					<th >&nbsp;Name server type name</th>
+					<td>
+						<input disabled id="Name_Server_Type_Name" value="Name Server Name" size=25>
+					</td>
+				</tr>
+				<tr id="Tag_Name_Free_Format">
+					<th >&nbsp;Name, free format</th>
+					<td>
+						<input id="Name_Free_Format" value="Name, free format" size=35>
+					</td>
+				</tr>
+				</table>	
+			</table>
+        </form>
+        <script language="JavaScript" type="text/JavaScript">
+
+            function GetPDUValue(pdu_header)
+            {
+                //Get Information Element values
+                Location_enable_flag_1 = document.getElementById('Location_enable_flag_1').checked;
+                Location_enable_flag_2 = document.getElementById('Location_enable_flag_2').checked;                
+                
+                T5_Terminal_or_location_identification = document.getElementById('T5_Terminal_or_location_identification').value;
+                Address_or_ident_type = document.getElementById('Address_or_ident_type').value;
+                SSI = document.getElementById('SSI').value;
+                MNI_MCC = document.getElementById('MNI_MCC').value;
+                MNI_MNC = document.getElementById('MNI_MNC').value;
+                ESN_digits = document.getElementById('ESN_digits').value;
+                IPv4 = document.getElementById('IPv4').value;
+                IPv6 = document.getElementById('IPv6').value;
+                Name_Server_Type_Name = document.getElementById('Name_Server_Type_Name').value;
+                Name_Free_Format = document.getElementById('Name_Free_Format').value;
+
+                //Build PDU
+
+                pdu_bin_value = pdu_header;
+
+                pdu_bin_value += "1"; //Response
+                
+                //Location reporting enable flags
+                pdu_bin_value += (Location_enable_flag_1 == true)?"1":"0";
+                pdu_bin_value += (Location_enable_flag_2 == true)?"1":"0";
+                pdu_bin_value += "000000";
+
+                if (T5_Terminal_or_location_identification == "1")
+                {
+                    T5_data = dec2bin(Address_or_ident_type,4);
+                    if (Address_or_ident_type == "1")//SSI
+                    {
+                        T5_data += dec2bin(SSI,24);
+                    }
+                    else
+                    if (Address_or_ident_type == "2")//SSI + MNI
+                    {
+                        T5_data += dec2bin(SSI,24);
+                        T5_data += dec2bin(MNI_MCC,10);
+                        T5_data += dec2bin(MNI_MNC,14);
+                    }
+                    else
+                    if (Address_or_ident_type == "3")//IPv4
+                    {
+                        T5_data += ipv42bin(IPv4);
+                    }
+                    else
+                    if (Address_or_ident_type == "4")//IPv6
+                    {
+                        T5_data += ipv62bin(IPv6);
+                    }
+                    else
+                    if (Address_or_ident_type == "8")//ESN
+                    {
+                        T5_data += digit2bin(ESN_digits);
+                    }
+                    else
+                    if (Address_or_ident_type == "9")//SSI+ESN
+                    {
+                        T5_data += dec2bin(SSI,24);
+                        T5_data += digit2bin(ESN_digits);
+                    }
+                    else
+                    if (Address_or_ident_type == "10")//SSI+MNI+ESN
+                    {
+                        T5_data += dec2bin(SSI,24);
+                        T5_data += dec2bin(MNI_MCC,10);
+                        T5_data += dec2bin(MNI_MNC,14);
+                        T5_data += digit2bin(ESN_digits);
+                    }
+                    else
+                    if (Address_or_ident_type == "11")//Server Name
+                    {
+                        T5_data += text2bin(Name_Server_Type_Name);
+                    }
+                    else
+                    if (Address_or_ident_type == "12")//Free Name
+                    {
+                        T5_data += text2bin(Name_Free_Format);
+                    }
+                                        
+                    pdu_bin_value += T5_Encode("17",T5_data);
+                }
+
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                return pdu_bin_value;
+            }
+
+            function On_Load()
+            {
+                OnChange_T5_Terminal_or_location_identification(this.form);
+            }
+            
+            function OnChange_T5_Terminal_or_location_identification(form)
+            {
+                document.getElementById('Tag_Address_or_ident_type').style.display = "none";
+                
+                T5_Terminal_or_location_identification = document.getElementById('T5_Terminal_or_location_identification').value;
+                if (T5_Terminal_or_location_identification == "1")
+                {
+                    document.getElementById('Tag_Address_or_ident_type').style.display = "";
+                }
+                OnChange_Address_or_ident_type();
+                Update_Height();
+            }
+
+            function OnChange_Address_or_ident_type(form)
+            {
+                document.getElementById('Tag_SSI').style.display = "none";
+                document.getElementById('Tag_MNI').style.display = "none";
+                document.getElementById('Tag_ESN_digits').style.display = "none";
+                document.getElementById('Tag_IPv4').style.display = "none";
+                document.getElementById('Tag_IPv6').style.display = "none";
+                document.getElementById('Tag_Name_Server_Type_Name').style.display = "none";
+                document.getElementById('Tag_Name_Free_Format').style.display = "none";
+
+                T5_Terminal_or_location_identification = document.getElementById('T5_Terminal_or_location_identification').value;
+                if (T5_Terminal_or_location_identification == "0")
+                {
+                    Update_Height();
+                    return;
+                }
+                
+                Address_or_ident_type = document.getElementById('Address_or_ident_type').value;
+                if (Address_or_ident_type == "1")
+                {
+                    document.getElementById('Tag_SSI').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "2")
+                {
+                    document.getElementById('Tag_SSI').style.display = "";
+                    document.getElementById('Tag_MNI').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "3")
+                {
+                    document.getElementById('Tag_IPv4').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "4")
+                {
+                    document.getElementById('Tag_IPv6').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "8")
+                {
+                    document.getElementById('Tag_ESN_digits').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "9")
+                {
+                    document.getElementById('Tag_SSI').style.display = "";
+                    document.getElementById('Tag_ESN_digits').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "10")
+                {
+                    document.getElementById('Tag_SSI').style.display = "";
+                    document.getElementById('Tag_MNI').style.display = "";
+                    document.getElementById('Tag_ESN_digits').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "11")
+                {
+                    document.getElementById('Tag_Name_Server_Type_Name').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "12")
+                {
+                    document.getElementById('Tag_Name_Free_Format').style.display = "";
+                }
+                Update_Height();
+            }
+
+        </script>
+    </body>
+</HTML>

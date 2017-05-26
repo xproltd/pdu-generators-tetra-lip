@@ -1,0 +1,157 @@
+<HTML>
+    <HEAD>
+	    <meta name="keywords" content="Tetra, TETRA LIP, Location Information Protocol, PDU Genrator, Tetra stack, Tetra protocol, AVL, Automatic Vehicle Location">
+	    <meta name="description" content="Tetra Location Information Protocol (LIP) PDU generator">
+        <TITLE>Tetra LIP PDU generator</TITLE>
+        <SCRIPT SRC="LIP_Util.js" LANGUAGE="JavaScript"></SCRIPT>
+        <LINK href="LIP_PDU_Generator.css" rel="stylesheet" type="text/css">
+    </HEAD>
+    <body marginwidth="10" marginheight="0" topmargin="10" leftmargin="10" style="" class="darkblue" onload="On_Load()">      
+        <a href="http://www.xpro.co" target="_parent"><img border="0" src="xpro.png" align="right" width="120"></a>
+        <form>
+            <p>
+                <span style="font-size:18; color:Gray; font-weight:bolder">TETRA Location Information Protocol (LIP) - PDU Generator</span>
+                <br>
+                Copyright &#64; <a href="http://www.xpro.co" target="_parent">XPro Ltd</a> 2011
+            </p>
+            <table>
+                <col width="260"/>
+                <tbody>
+                <tr>
+                    <th class="h" align="right">Information element</th>
+                    <th class="h" align="left">Value</th>
+                </tr>
+                <tr><th align="right">PDU type </th>
+                    <td><select id= "LIP_PDU_Type" onChange="OnChange_LIP_PDU_Type(this.form)">                                
+	                    <option          value="LIP/LIP_SHORT_LOCATION_REPORT.htm, 00">Short location report
+	                    <option selected value=",                                 01">Long location message
+	                    </select>
+                    </td>
+                </tr> 
+               <tr id="Tag_LIP_PDU_Short_Type">
+                    <th align="left">PDU ID</th>
+                    <td><select id="LIP_PDU_Short_Type" onchange="OnChange_LIP_PDU_Short_Type(this.form)">
+                                <option value="LIP/LIP_SHORT_LOCATION_REPORT.htm,               00">LIP-SHORT LOCATION REPORT
+                        </select>
+                    </td>                                                                         
+                </tr>
+                <tr id="Tag_LIP_PDU_Ext_Type">
+                    <th align="right">PDU Type Extension</th>
+                    <td><select align="left" id="LIP_PDU_Type_Ext" onchange="this.form.PDU_Hex_Value.value = ''; OnChange_LIP_PDU_Type_Ext(this.form)">
+                                <option value="LIP/LIP_IMMEDIATE_LOCATION_REPORT.htm,                   0001">LIP-IMMEDIATE LOCATION REPORT
+                                <option value="LIP/LIP_LONG_LOCATION_REPORT.htm,                        0011">LIP-LONG LOCATION REPORT
+                                <option value="LIP/LIP_LOCATION_REPORT_ACK.htm,                         0100">LIP-LOCATION REPORT ACK
+                                <option value="LIP/LIP_BASIC_LOCATION_PARAMETERS_REQUEST.htm,           0101">LIP-BASIC LOCATION PARAMETERS REQUEST
+                                <option value="LIP/LIP_BASIC_LOCATION_PARAMETERS_RESPONSE.htm,          0101">LIP-BASIC LOCATION PARAMETERS RESPONSE
+                                <option value="LIP/LIP_ADD_MODIFY_TRIGGER_REQUEST.htm,                  0110">LIP-ADD/MODIFY TRIGGER REQUEST
+                                <option value="LIP/LIP_ADD_MODIFY_TRIGGER_RESPONSE.htm,                 0110">LIP-ADD/MODIFY TRIGGER RESPONSE
+                                <option value="LIP/LIP_REMOVE_TRIGGER_REQUEST.htm,                      0111">LIP-REMOVE TRIGGER REQUEST
+                                <option value="LIP/LIP_REMOVE_TRIGGER_RESPONSE.htm,                     0111">LIP-REMOVE TRIGGER RESPONSE
+                                <option value="LIP/LIP_REPORT_TRIGGER_REQUEST.htm,                      1000">LIP-REPORT TRIGGER REQUEST
+                                <option value="LIP/LIP_REPORT_TRIGGER_RESPONSE.htm,                     1000">LIP-REPORT TRIGGER RESPONSE
+                                <option value="LIP/LIP_REPORT_BASIC_LOCATION_PARAMETERS_REQUEST.htm,    1001">LIP-REPORT BASIC LOCATION PARAMETERS REQUEST
+                                <option value="LIP/LIP_REPORT_BASIC_LOCATION_PARAMETERS_RESPONSE.htm,   1001">LIP-REPORT BASIC LOCATION PARAMETERS RESPONSE
+                                <option value="LIP/LIP_LOCATION_REPORTING_ENABLE_DISABLE_REQUEST.htm,   1010">LIP-LOCATION REPORTING ENABLE DISABLE REQUEST
+                                <option value="LIP/LIP_LOCATION_REPORTING_ENABLE_DISABLE_RESPONSE.htm,  1010">LIP-LOCATION REPORTING ENABLE DISABLE RESPONSE
+                                <option value="LIP/LIP_LOCATION_REPORTING_TEMP_CONTROL_REQUEST.htm,     1011">LIP-LOCATION REPORTING TEMP CONTROL REQUEST
+                                <option value="LIP/LIP_LOCATION_REPORTING_TEMP_CONTROL_RESPONSE.htm,    1011">LIP-LOCATION REPORTING TEMP CONTROL RESPONSE
+                        </select>
+                    </td>                                                                         
+                </tr>
+            </tbody>
+            </table>
+            <iframe name="LIP_Proto_IFrame" id="LIP_Proto_IFrame" onLoad="Autosize_IFrame(this)" frameborder="0" height="700" width="750" src="LIP/LIP_IMMEDIATE_LOCATION_REPORT.htm"></iframe>
+            <table>
+            <tr><th>
+            <p>
+                <input type="button" value="Generate" onClick="WritePDUToCtrl(this.form.PDU_Hex_Value)"/>                
+                <input type="button" value="Write To File" onClick="WritePDUToFile(this.form.FileName.value)"/>
+                <input id="FileName" value="C:\Temp\LIP_PDUs" size=32/>
+                <br>
+                User Header:  <input id="UserHeader" value="" size=51/>
+                Protocol: <select id="Protocol" NAME="Protocol">
+                                <option selected value="0">LIP Raw Text
+                          </select>
+                <br>
+                <textarea id="PDU_Hex_Value" rows="4" cols="60"></textarea>
+            </p>
+            </th></tr>
+            </table>
+            
+        </form>
+        <script language="JavaScript" type="text/JavaScript">
+
+            function GetPDU_Hex()
+            {
+                Protocol = document.getElementById('Protocol').value;
+                LIP_PDU_Type = GetValue(document.getElementById('LIP_PDU_Type').value, 1);
+                LIP_PDU_Type_Ext = GetValue(document.getElementById('LIP_PDU_Type_Ext').value, 1);
+
+                pdu_bin_value = "";
+                lip_pdu_header = "";
+                lip_pdu_value = "";
+
+                lip_pdu_header += LIP_PDU_Type;
+                if (LIP_PDU_Type == "01")
+                    lip_pdu_header += LIP_PDU_Type_Ext;
+
+                pdu_bin_value = document.getElementById("LIP_Proto_IFrame").contentWindow.GetPDUValue(lip_pdu_header);
+
+                return document.getElementById('UserHeader').value + bin2hex(pdu_bin_value);
+            }
+
+            function WritePDUToCtrl(ctrl)
+            {
+                pdu_hex_value = GetPDU_Hex();
+                ctrl.value = pdu_hex_value;
+            }
+
+            function WritePDUToFile(filename)
+            {
+                filename += ".lip";
+
+                pdu_hex_value = GetPDU_Hex();
+                WritePDUToCtrl(document.getElementById('PDU_Hex_Value'));
+                WriteToFile(filename, pdu_hex_value);
+            }
+
+            function On_Load()
+            {
+                OnChange_LIP_PDU_Type(this.form);
+            }
+
+            function OnChange_LIP_PDU_Type(form)
+            {
+                LIP_PDU_File = GetValue(document.getElementById('LIP_PDU_Type').value, 0);
+                LIP_PDU_Type = GetValue(document.getElementById('LIP_PDU_Type').value, 1);
+                if (LIP_PDU_Type == "00")
+                {
+                    document.getElementById('Tag_LIP_PDU_Short_Type').style.display = "";
+                    document.getElementById('Tag_LIP_PDU_Ext_Type').style.display = "none";
+                    document.getElementById('LIP_Proto_IFrame').src = LIP_PDU_File;
+                }
+                else
+                if (LIP_PDU_Type == "01")
+                {
+                    document.getElementById('Tag_LIP_PDU_Short_Type').style.display = "none";
+                    document.getElementById('Tag_LIP_PDU_Ext_Type').style.display = "";
+                    OnChange_LIP_PDU_Type_Ext();    
+                }
+                
+            }
+
+            function OnChange_LIP_PDU_Type_Ext()
+            {
+                LIP_PDU_File = GetValue(document.getElementById('LIP_PDU_Type_Ext').value, 0);
+                document.getElementById('LIP_Proto_IFrame').src = LIP_PDU_File;
+            }
+
+            function OnChange_LIP_PDU_Short_Type()
+            {
+                LIP_PDU_File = GetValue(document.getElementById('LIP_PDU_Type_Ext').value, 0);
+                document.getElementById('LIP_Proto_IFrame').src = LIP_PDU_File;
+            }
+                                
+        </script>
+    </body>
+</HTML>

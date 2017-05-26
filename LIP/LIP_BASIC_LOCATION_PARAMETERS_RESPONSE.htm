@@ -1,0 +1,1779 @@
+<HTML>
+    <HEAD>
+        <TITLE>LIP-BASIC LOCATION PARAMETERS RESPONSE</TITLE>
+        <SCRIPT SRC="../LIP_Util.js" language="JavaScript" type="text/JavaScript"></SCRIPT>
+        <LINK href="../LIP_PDU_Generator.css" rel="stylesheet" type="text/css">
+    </HEAD>
+    <body marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" style="" class="darkblue" onload="On_Load()">        
+        <form id="Form1">
+            <table id="LIP_xxx_Table">
+                <col width="160"/>
+                <tr><th>Result code</th>
+                    <td><select id="Result_code">
+	                    <option value="00000000">Success
+	                    <option value="00000001">System failure
+	                    <option value="00000010">Unspecified error
+	                    <option value="00000011">Unauthorized application
+	                    <option value="00000100">Unknown subscriber
+	                    <option value="00000101">Absent subscriber
+	                    <option value="00000110">Congestion in provider
+	                    <option value="00000111">Congestion in mobile network
+	                    <option value="00001000">Unsupported version
+	                    <option value="00001001">Insufficient resource
+	                    <option value="00001010">Syntax error
+	                    <option value="00001011">Protocol element not supported
+	                    <option value="00001100">Service not supported
+	                    <option selected value="00001101">Protocol element value not supported
+	                    <option value="00001110">Type of information not currently available
+	                    <option value="00001111">Required accuracy not achieved
+	                    <option value="00010000">Reserved
+	                    <option value="00010001">Reporting will stop
+	                    <option value="00010010">Time expired
+	                    <option value="00010011">Disallowed by local regulations
+	                    <option value="00010100">Reserved
+	                    <option value="00010101">No such request
+	                    <option value="00010110">User disabled location information report sending
+	                    <option value="00010111">Parameter values modified
+	                    <option value="00011000">Accepted
+	                    <option value="00011001">Accepted, but some of the triggers or accuracies are modified or not supported
+	                    <option value="00011010">Triggers not supported
+	                    <option value="00011011">Report complete
+	                    <option value="01010001">Position method failure
+	                    <option value="11001000">Insufficient GPS satellites
+	                    <option value="11001001">Bad GPS geometry
+	                    </select>
+	                </td>
+                </tr>                     
+                <tr><th>Location reporting enable flags</th>
+                    <td><input id="Location_enable_flag_1" type="checkbox"/>Location reporting globally<br/>
+                        <input id="Location_enable_flag_2" type="checkbox"/>Backlog location report recording
+	                </td>
+                </tr>                    
+                <tr id="Tag_Minimum_reporting_interval">
+                    <th >Minimum reporting interval</th>
+                    <td><select id="Minimum_reporting_interval">                               
+                        <option value="0">10 s
+                        <option value="1">20 s
+                        <option value="29">5 min
+                        <option value="30">5.5 min
+                        <option value="59">20 min
+                        <option value="60">21 min
+                        <option value="127">88 min
+                        </select>
+                    </td>
+                </tr>
+                <tr id="Tag_Report_type">
+                    <th >Report type</th>
+                    <td><select id="Report_type">                               
+                        <option value="00">Long location report preferred with no time information
+                        <option value="01">Long location report preferred with time type 'Time elapsed'
+                        <option value="10">Long location report preferred with time type 'Time of position'
+                        <option value="11">Short location report preferred, see note
+                        </select>
+                    </td>
+                </tr>
+                <table><col width="160"/>                				
+                <tr><th>Terminal or location identification</th>
+                    <td><select id="T5_Terminal_or_location_identification" onChange="OnChange_T5_Terminal_or_location_identification(this.form)">                          
+	                        <option value="0">T5 Not Present
+	                        <option selected value="1">T5 Present
+	                    </select>
+	                </td>
+                </tr>       
+                <tr id="Tag_Address_or_ident_type" >
+                    <th >Address or identification type</th>
+                    <td><select id="Address_or_ident_type" onchange="OnChange_Address_or_ident_type(this.form)">                               
+                        <option value="0"> None
+                        <option value="1"> SSI
+                        <option value="2"> SSI + MNI
+                        <option value="3"> IP address (Version 4)
+                        <option value="4"> IP address (Version 6)
+                        <option value="8"> ESN
+                        <option value="9"> SSI + ESN
+                        <option selected value="10">SSI + MNI + ESN
+                        <option value="11">Name server type name
+                        <option value="12">Name, free format
+                        </select>
+                    </td>
+                </tr>
+				<tr id="Tag_SSI">
+					<th >&nbsp;SSI</th>
+					<td>
+						<input id="SSI" value="62033" size=15>
+					</td>
+				</tr>
+				<tr id="Tag_MNI">
+					<th >&nbsp;MNI</th>
+					<td>
+						&nbsp;MCC: <input id="MNI_MCC" value="234" size=5 >
+						&nbsp;MNC: <input id="MNI_MNC" value="73" size=5 >
+					</td>
+				</tr>       
+				<tr id="Tag_ESN_digits">
+					<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ESN digits:</th>
+					<td>
+						<input id="ESN_digits" value="+#*1234567890" size=20>
+					</td>
+				</tr>				     
+				<tr id="Tag_IPv4">
+					<th >&nbsp;IP Version 4</th>
+					<td>
+						<input disabled id="IPv4" value="192.168.0.100" size=15>
+					</td>
+				</tr>
+				<tr id="Tag_IPv6">
+					<th >&nbsp;IP Version 6</th>
+					<td>
+						<input disabled id="IPv6" value="2001:0db8:85a3:0042:0000:8a2e:0370:7334" size=40>
+					</td>
+				</tr>
+				<tr id="Tag_Name_Server_Type_Name">
+					<th >&nbsp;Name server type name</th>
+					<td>
+						<input disabled id="Name_Server_Type_Name" value="Name Server Name" size=25>
+					</td>
+				</tr>
+				<tr id="Tag_Name_Free_Format">
+					<th >&nbsp;Name, free format</th>
+					<td>
+						<input id="Name_Free_Format" value="Name, free format" size=35>
+					</td>
+				</tr>
+				</table>	
+                <table><col width="160"/>                				
+				<tr><th>Direction of travel with accuracy</th>
+                    <td><select id="T5_Direction_of_travel_with_accuracy" onChange="OnChange_T5_Direction_of_travel_with_accuracy(this.form)">                          
+	                        <option value="0">T5 Not Present
+	                        <option selected value="1">T5 Present
+	                    </select>
+	                </td>
+                </tr>                     
+                <tbody id="Tag_Direction_of_travel_with_accuracy">
+                <tr><th>&nbsp;Return value</th>
+                    <td><select id="Direction_of_travel_with_accuracy_Return_value">                    
+                        <option value="0">Direction of travel value required                          
+                        <option selected value="1">Direction of travel with uncertainty value required                      
+                        </select>
+                    </td>
+                </tr> 
+                <tr><th>&nbsp;Requested or required</th>
+                    <td><select id="Direction_of_travel_with_accuracy_Requested_or_required" onChange="OnChange_Direction_of_travel_with_accuracy_Requested_or_required(this.form)">                    
+                        <option value="0">Use basic or default value
+                        <option value="1">Requested
+                        <option value="2">Required
+                        <option selected value="3">Requested and required
+                        </select>
+                    </td>
+                </tr> 
+                <tr id="Tag_Direction_of_travel_with_accuracy_accuracy_requested">
+                    <th>&nbsp;Direction of travel accuracy requested</th>
+                    <td><select id="Direction_of_travel_with_accuracy_accuracy_requested">                    
+                        <option value="000">Less than 1.5°                           
+                        <option value="001">Less than 3°                       
+                        <option value="010">Less than 6°                       
+                        <option value="011">Less than 12°                       
+                        <option value="100">Less than 24°                       
+                        <option value="101">Less than 48°                       
+                        <option value="110">Less than 96°                       
+                        <option value="111">Best effort or uncertainty not known                       
+                        </select>
+                    </td>
+                </tr> 
+                <tr id="Tag_Direction_of_travel_with_accuracy_accuracy_required">
+                    <th>&nbsp;Direction of travel accuracy required</th>
+                    <td><select id="Direction_of_travel_with_accuracy_accuracy_required">                    
+                        <option value="000">Less than 1.5°                           
+                        <option value="001">Less than 3°                       
+                        <option value="010">Less than 6°                       
+                        <option value="011">Less than 12°                       
+                        <option value="100">Less than 24°                       
+                        <option value="101">Less than 48°                       
+                        <option value="110">Less than 96°                       
+                        <option value="111">Best effort or uncertainty not known                       
+                        </select>
+                    </td>
+                </tr> 
+				</tbody>
+				</table>	
+				<table><col width="160"/>                				
+				<tr><th>Horizontal position with accuracy</th>
+                    <td><select id="T5_Horizontal_position_with_accuracy" onChange="OnChange_T5_Horizontal_position_with_accuracy(this.form)">                          
+	                        <option value="0">T5 Not Present
+	                        <option selected value="1">T5 Present
+	                    </select>
+	                </td>
+                </tr>                     
+                <tbody id="Tag_Horizontal_position_with_accuracy">
+                <tr><th>&nbsp;Return value</th>
+                    <td><select id= "Horizontal_position_with_accuracy_Return_value">                    
+                        <option value="0">Horizontal position value required                          
+                        <option selected value="1">Horizontal position and accuracy value required
+                        </select>
+                    </td>
+                </tr> 
+                <tr><th>&nbsp;Preferred shape</th>
+                    <td><select id= "Horizontal_position_with_accuracy_Preferred_shape">                    
+                        <option value="0">Circle shape preferred
+                        <option selected value="1">Ellipse or another shape allowed
+                        </select>
+                    </td>
+                </tr> 
+                <tr><th>&nbsp;Requested or required</th>
+                    <td><select id="Horizontal_position_with_accuracy_Requested_or_required" onChange="OnChange_Horizontal_position_with_accuracy_Requested_or_required(this.form)">                    
+                        <option value="0">Use basic or default value
+                        <option value="1">Requested
+                        <option value="2">Required
+                        <option selected value="3">Requested and required
+                        </select>
+                    </td>
+                </tr> 
+                <tr id="Tag_Horizontal_position_accuracy_Requested">
+                    <th>Horizontal position accuracy requested</th>
+                    <td><select id="Horizontal_position_accuracy_Requested">                    
+                        <option value="000000">Less than 1 m                           
+                        <option value="000001">Less than 2 m                           
+                        <option value="000010">Less than 3.2 m                         
+                        <option value="000011">Less than 4.6 m                         
+                        <option selected value="000100">Less than 6.3 m                         
+                        <option value="000101">Less than 8.4 m                         
+                        <option value="000110">Less than 10.9 m                        
+                        <option value="000111">Less than 13.8 m                        
+                        <option value="001000">Less than 17.4 m                        
+                        <option value="001001">Less than 22 m                          
+                        <option value="001010">Less than 27 m                          
+                        <option value="001011">Less than 33 m                          
+                        <option value="001100">Less than 40 m                          
+                        <option value="001101">Less than 49 m
+                        <option value="010100">Less than 187 m
+                        <option value="011110">Less than 1.18 km
+                        <option value="101000">Less than 7.31 km
+                        <option value="110010">Less than 45.3 km
+                        <option value="111100">Less than 280 km
+                        <option value="111101">Less than 337 km
+                        <option value="111110">Less than 404 km
+                        <option value="111111">Best effort
+                        </select>
+                    </td>
+                  </tr>
+                <tr id="Tag_Horizontal_position_accuracy_Required">
+                    <th>Horizontal position accuracy reqired</th>
+                    <td><select id="Horizontal_position_accuracy_Required">                    
+                        <option value="000000">Less than 1 m                           
+                        <option value="000001">Less than 2 m                           
+                        <option value="000010">Less than 3.2 m                         
+                        <option value="000011">Less than 4.6 m                         
+                        <option value="000100">Less than 6.3 m                         
+                        <option value="000101">Less than 8.4 m                         
+                        <option value="000110">Less than 10.9 m                        
+                        <option value="000111">Less than 13.8 m                        
+                        <option value="001000">Less than 17.4 m                        
+                        <option value="001001">Less than 22 m                          
+                        <option value="001010">Less than 27 m                          
+                        <option value="001011">Less than 33 m                          
+                        <option value="001100">Less than 40 m                          
+                        <option value="001101">Less than 49 m
+                        <option value="010100">Less than 187 m
+                        <option selected value="011110">Less than 1.18 km
+                        <option value="101000">Less than 7.31 km
+                        <option value="110010">Less than 45.3 km
+                        <option value="111100">Less than 280 km
+                        <option value="111101">Less than 337 km
+                        <option value="111110">Less than 404 km
+                        <option value="111111">Best effort
+                        </select>
+                    </td>
+                  </tr>
+				</tbody>
+				</table>	
+                <table><col width="160"/>                				
+				<tr><th>Horizontal velocity with accuracy</th>
+                    <td><select id="T5_Horizontal_velocity_with_accuracy" onChange="OnChange_T5_Horizontal_velocity_with_accuracy(this.form)">                          
+	                        <option value="0">T5 Not Present
+	                        <option selected value="1">T5 Present
+	                    </select>
+	                </td>
+                </tr>                     
+                <tbody id="Tag_Horizontal_velocity_with_accuracy">
+                <tr><th>&nbsp;Return value</th>
+                    <td><select id= "Horizontal_velocity_with_accuracy_Return_value">                    
+                        <option value="0">Horizontal velocity value required                          
+                        <option selected value="1">Horizontal velocity and accuracy value required
+                        </select>
+                    </td>
+                </tr> 
+                <tr><th>&nbsp;Requested or required</th>
+                    <td><select id="Horizontal_velocity_with_accuracy_Requested_or_required" onChange="OnChange_Horizontal_velocity_with_accuracy_Requested_or_required(this.form)">                    
+                        <option value="0">Use basic or default value
+                        <option value="1">Requested
+                        <option value="2">Required
+                        <option selected value="3">Requested and required
+                        </select>
+                    </td>
+                </tr> 
+                <tr id="Tag_Horizontal_velocity_accuracy_Requested">
+                    <th>Horizontal velocity accuracy requested</th>
+                    <td><select id="Horizontal_velocity_accuracy_Requested">                    
+                            <option value="000">Less than 1.5 km/h                           
+                            <option value="001">Less than 3 km/h                       
+                            <option selected value="010">Less than 6 km/h                       
+                            <option value="011">Less than 12 km/h                       
+                            <option value="100">Less than 24 km/h                       
+                            <option value="101">Less than 48 km/h                       
+                            <option value="110">Less than 96 km/h                       
+                            <option value="111">Reserved                       
+                        </select>
+                    </td>
+                  </tr>
+                <tr id="Tag_Horizontal_velocity_accuracy_Required">
+                    <th>Horizontal velocity accuracy reqired</th>
+                    <td><select id="Horizontal_velocity_accuracy_Required">                    
+                            <option value="000">Less than 1.5 km/h                           
+                            <option value="001">Less than 3 km/h                       
+                            <option value="010">Less than 6 km/h                       
+                            <option value="011">Less than 12 km/h                       
+                            <option value="100">Less than 24 km/h                       
+                            <option selected value="101">Less than 48 km/h                       
+                            <option value="110">Less than 96 km/h                       
+                            <option value="111">Reserved                       
+                        </select>
+                    </td>
+                  </tr>
+				</tbody>
+				</table>	
+                <table><col width="160"/>                				
+				<tr><th>Location information destination</th>
+                    <td><select id="T5_LI_dest" onChange="OnChange_T5_LI_dest(this.form)">                          
+	                        <option value="0">T5 Not Present
+	                        <option selected value="1">T5 Present
+	                    </select>
+	                </td>
+                </tr>                     
+                <tbody id="Tag_LI_dest">
+	                <tr id="Tag_LI_dest_Address_or_ident_type" >
+	                    <th >Address or identification type</th>
+	                    <td><select id="LI_dest_Address_or_ident_type" onchange="OnChange_LI_dest_Address_or_ident_type(this.form)">                               
+	                        <option value="0"> None
+	                        <option value="1"> SSI
+	                        <option value="2"> SSI + MNI
+	                        <option value="3"> IP address (Version 4)
+	                        <option value="4"> IP address (Version 6)
+	                        <option value="8"> ESN
+	                        <option value="9"> SSI + ESN
+	                        <option selected value="10">SSI + MNI + ESN
+	                        <option value="11">Name server type name
+	                        <option value="12">Name, free format
+	                        </select>
+	                    </td>
+	                </tr>
+					<tr id="Tag_LI_dest_SSI">
+						<th >&nbsp;SSI</th>
+						<td>
+							<input id="LI_dest_SSI" value="62033" size=15>
+						</td>
+					</tr>
+					<tr id="Tag_LI_dest_MNI">
+						<th >&nbsp;MNI</th>
+						<td>
+							&nbsp;MCC: <input id="LI_dest_MNI_MCC" value="234" size=5 >
+							&nbsp;MNC: <input id="LI_dest_MNI_MNC" value="73" size=5 >
+						</td>
+					</tr>       
+					<tr id="Tag_LI_dest_ESN_digits">
+						<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ESN digits:</th>
+						<td>
+							<input id="LI_dest_ESN_digits" value="+#*1234567890" size=20>
+						</td>
+					</tr>				     
+					<tr id="Tag_LI_dest_IPv4">
+						<th >&nbsp;IP Version 4</th>
+						<td>
+							<input disabled id="LI_dest_IPv4" value="192.168.0.100" size=15>
+						</td>
+					</tr>
+					<tr id="Tag_LI_dest_IPv6">
+						<th >&nbsp;IP Version 6</th>
+						<td>
+							<input disabled id="LI_dest_IPv6" value="2001:0db8:85a3:0042:0000:8a2e:0370:7334" size=40>
+						</td>
+					</tr>
+					<tr id="Tag_LI_dest_Name_Server_Type_Name">
+						<th >&nbsp;Name server type name</th>
+						<td>
+							<input disabled id="LI_dest_Name_Server_Type_Name" value="Name Server Name" size=25>
+						</td>
+					</tr>
+					<tr id="Tag_LI_dest_Name_Free_Format">
+						<th >&nbsp;Name, free format</th>
+						<td>
+							<input id="LI_dest_Name_Free_Format" value="Name, free format" size=35>
+						</td>
+					</tr>
+				</tbody>
+				</table>
+                <table><col width="160"/>                				
+				<tr><th>Location altitude with accuracy</th>
+                    <td><select id="T5_Location_altitude_with_accuracy" onChange="OnChange_T5_Location_altitude_with_accuracy(this.form)">                          
+	                        <option value="0">T5 Not Present
+	                        <option selected value="1">T5 Present
+	                    </select>
+	                </td>
+                </tr>                     
+                <tbody id="Tag_Location_altitude_with_accuracy">
+                <tr><th>&nbsp;Return value</th>
+                    <td><select id= "Location_altitude_with_accuracy_Return_value">                    
+                        <option value="0">Location altitude value required                          
+                        <option selected value="1">Location altitude and accuracy value required
+                        </select>
+                    </td>
+                </tr> 
+                <tr><th>&nbsp;Location altitude type</th>
+                    <td><select id= "Location_altitude_type">                    
+                        <option selected value="0">WGS84
+                        <option value="1">User defined
+                        </select>
+                    </td>
+                </tr>                 
+                <tr><th>&nbsp;Requested or required</th>
+                    <td><select id="Location_altitude_with_accuracy_Requested_or_required" onChange="OnChange_Location_altitude_with_accuracy_Requested_or_required(this.form)">                    
+                        <option value="0">Use basic or default value
+                        <option value="1">Requested
+                        <option value="2">Required
+                        <option selected value="3">Requested and required
+                        </select>
+                    </td>
+                </tr> 
+                <tr id="Tag_Location_altitude_accuracy_Requested">
+                    <th>Location altitude accuracy requested</th>
+                    <td><select id="Location_altitude_accuracy_Requested">                    
+                            <option value="000">Less than 1 m                           
+                            <option value="001">Less than 2 m    
+                            <option selected value="010">Less than 5 m                          
+                            <option value="011">Less than 15 m    
+                            <option value="100">Less than 50 m    
+                            <option value="101">Less than 150 m    
+                            <option value="110">Less than 300 m    
+                            <option value="111">Best effort or not supported
+                        </select>
+                    </td>
+                  </tr>
+                <tr id="Tag_Location_altitude_accuracy_Required">
+                    <th>Location altitude accuracy reqired</th>
+                    <td><select id="Location_altitude_accuracy_Required">                    
+                            <option value="000">Less than 1 m                           
+                            <option value="001">Less than 2 m    
+                            <option value="010">Less than 5 m                          
+                            <option value="011">Less than 15 m    
+                            <option value="100">Less than 50 m    
+                            <option value="101">Less than 150 m    
+                            <option selected value="110">Less than 300 m    
+                            <option value="111">Best effort or not supported
+                        </select>
+                    </td>
+                  </tr>
+				</tbody>
+				</table>
+                <table><col width="160"/>                				
+				<tr><th>Maximum information age</th>
+                    <td><select id="T5_Max_information_age" onChange="OnChange_T5_Max_information_age(this.form)">                          
+	                        <option value="0">T5 Not Present
+	                        <option selected value="1">T5 Present
+	                    </select>
+	                </td>
+                </tr>                     
+                <tbody id="Tag_Max_information_age">
+                <tr><th>&nbsp;Maximum information age</th>
+                    <td><select id="Maximum_information_age">                    
+                        <option value="0">1 s
+                        <option value="1">2 s
+                        <option value="29">30 s
+                        <option value="30">35 s
+                        <option value="59">3 min
+                        <option value="60">3,5 min
+                        <option selected value="73">10 min
+                        <option value="74">11 min
+                        <option value="126">1 h 3 min
+                        <option value="127">Best effort
+                        </select>
+                    </td>
+                </tr> 
+				</tbody>
+				</table>
+                <table><col width="160"/>                				
+				<tr><th>Maximum response time</th>
+                    <td><select id="T5_Maximum_resp_time" onChange="OnChange_T5_Maximum_resp_time(this.form)">                          
+	                        <option value="0">T5 Not Present
+	                        <option selected value="1">T5 Present
+	                    </select>
+	                </td>
+                </tr>                     
+                <tbody id="Tag_Maximum_resp_time">
+                <tr><th>&nbsp;Maximum response time</th>
+                    <td><select id="Maximum_response_time">                    
+                        <option value="0">Immediate
+                        <option value="1">2 s
+                        <option selected value="2">4 s
+                        <option value="127">254 s
+                        </select>
+                    </td>
+                </tr> 
+				</tbody>
+				</table>
+                <table><col width="160"/>                				
+				<tr><th>Start time</th>
+                    <td><select id="T5_Start_time" onChange="OnChange_T5_Start_time(this.form)">                          
+	                        <option value="0">T5 Not Present
+	                        <option selected value="1">T5 Present
+	                    </select>
+	                </td>
+                </tr>                     
+                <tbody id="Tag_Start_time">
+                <tr>
+                    <th >Start time</th>
+                    <td><select id= "Start_time_Day">                              
+                        <option value="00001">Day 1
+                        <option value="00010">Day 2
+                        <option value="00011">Day 3
+                        <option value="00100">Day 4
+                        <option value="00101">Day 5
+                        <option value="00110">Day 6
+                        <option value="00111">Day 7
+                        <option value="01000">Day 8
+                        <option value="01001">Day 9
+                        <option value="01010">Day 10
+                        <option value="01011">Day 11
+                        <option value="01100">Day 12
+                        <option value="01101">Day 13
+                        <option value="01110">Day 14
+                        <option selected value="01111">Day 15
+                        <option value="10000">Day 16
+                        <option value="10001">Day 17
+                        <option value="10010">Day 18
+                        <option value="10011">Day 19
+                        <option value="10100">Day 20
+                        <option value="10101">Day 21
+                        <option value="10110">Day 22
+                        <option value="10111">Day 23
+                        <option value="11000">Day 24
+                        <option value="11001">Day 25
+                        <option value="11010">Day 26
+                        <option value="11011">Day 27
+                        <option value="11100">Day 28
+                        <option value="11101">Day 29
+                        <option value="11110">Day 30
+                        <option value="11111">Day 31
+                        </select>
+
+                        <select id="Start_time_hour">
+                        <option value="00000">Hour 0
+                        <option value="00001">Hour 1
+                        <option value="00010">Hour 2
+                        <option value="00011">Hour 3
+                        <option value="00100">Hour 4
+                        <option value="00101">Hour 5
+                        <option value="00110">Hour 6
+                        <option value="00111">Hour 7
+                        <option value="01000">Hour 8
+                        <option value="01001">Hour 9
+                        <option value="01010">Hour 10
+                        <option value="01011">Hour 11
+                        <option value="01100">Hour 12
+                        <option selected value="01101">Hour 13
+                        <option value="01110">Hour 14
+                        <option value="01111">Hour 15
+                        <option value="10000">Hour 16
+                        <option value="10001">Hour 17
+                        <option value="10010">Hour 18
+                        <option value="10011">Hour 19
+                        <option value="10100">Hour 20
+                        <option value="10101">Hour 21
+                        <option value="10110">Hour 22
+                        <option value="10111">Hour 23
+                        </select>
+
+                        <select id="Start_time_minute">
+                        <option value="000000">Minute 0
+                        <option value="000001">Minute 1
+                        <option value="000010">Minute 2
+                        <option value="000011">Minute 3
+                        <option value="000100">Minute 4
+                        <option value="000101">Minute 5
+                        <option value="000110">Minute 6
+                        <option value="000111">Minute 7
+                        <option value="001000">Minute 8
+                        <option value="001001">Minute 9
+                        <option value="001010">Minute 10
+                        <option value="001011">Minute 11
+                        <option value="001100">Minute 12
+                        <option value="001101">Minute 13
+                        <option value="001110">Minute 14
+                        <option value="001111">Minute 15
+                        <option value="010000">Minute 16
+                        <option value="010001">Minute 17
+                        <option value="010010">Minute 18
+                        <option value="010011">Minute 19
+                        <option value="010100">Minute 20
+                        <option value="010101">Minute 21
+                        <option value="010110">Minute 22
+                        <option value="010111">Minute 23
+                        <option value="011000">Minute 24
+                        <option value="011001">Minute 25
+                        <option value="011010">Minute 26
+                        <option value="011011">Minute 27
+                        <option value="011100">Minute 28
+                        <option value="011101">Minute 29
+                        <option value="011110">Minute 30
+                        <option value="011111">Minute 31	
+                        <option value="100000">Minute 32
+                        <option value="100001">Minute 33
+                        <option value="100010">Minute 34
+                        <option value="100011">Minute 35
+                        <option value="100100">Minute 36
+                        <option value="100101">Minute 37
+                        <option value="100110">Minute 38
+                        <option value="100111">Minute 39
+                        <option value="101000">Minute 40
+                        <option value="101001">Minute 41
+                        <option value="101010">Minute 42
+                        <option value="101011">Minute 43
+                        <option value="101100">Minute 44
+                        <option value="101101">Minute 45
+                        <option value="101110">Minute 46
+                        <option value="101111">Minute 47
+                        <option value="110000">Minute 48
+                        <option selected value="110001">Minute 49
+                        <option value="110010">Minute 50
+                        <option value="110011">Minute 51
+                        <option value="110100">Minute 52
+                        <option value="110101">Minute 53
+                        <option value="110110">Minute 54
+                        <option value="110111">Minute 55
+                        <option value="111000">Minute 56
+                        <option value="111001">Minute 57
+                        <option value="111010">Minute 58
+                        <option value="111011">Minute 59
+                        </select>	
+	
+                        <select id="Start_time_second">
+                        <option value="000000">Second 0
+                        <option value="000001">Second 1
+                        <option value="000010">Second 2
+                        <option value="000011">Second 3
+                        <option value="000100">Second 4
+                        <option value="000101">Second 5
+                        <option value="000110">Second 6
+                        <option value="000111">Second 7
+                        <option value="001000">Second 8
+                        <option value="001001">Second 9
+                        <option value="001010">Second 10
+                        <option value="001011">Second 11
+                        <option selected value="001100">Second 12
+                        <option value="001101">Second 13
+                        <option value="001110">Second 14
+                        <option value="001111">Second 15
+                        <option value="010000">Second 16
+                        <option value="010001">Second 17
+                        <option value="010010">Second 18
+                        <option value="010011">Second 19
+                        <option value="010100">Second 20
+                        <option value="010101">Second 21
+                        <option value="010110">Second 22
+                        <option value="010111">Second 23
+                        <option value="011000">Second 24
+                        <option value="011001">Second 25
+                        <option value="011010">Second 26
+                        <option value="011011">Second 27
+                        <option value="011100">Second 28
+                        <option value="011101">Second 29
+                        <option value="011110">Second 30
+                        <option value="011111">Second 31	
+                        <option value="100000">Second 32
+                        <option value="100001">Second 33
+                        <option value="100010">Second 34
+                        <option value="100011">Second 35
+                        <option value="100100">Second 36
+                        <option value="100101">Second 37
+                        <option value="100110">Second 38
+                        <option value="100111">Second 39
+                        <option value="101000">Second 40
+                        <option value="101001">Second 41
+                        <option value="101010">Second 42
+                        <option value="101011">Second 43
+                        <option value="101100">Second 44
+                        <option value="101101">Second 45
+                        <option value="101110">Second 46
+                        <option value="101111">Second 47
+                        <option value="110000">Second 48
+                        <option value="110001">Second 49
+                        <option value="110010">Second 50
+                        <option value="110011">Second 51
+                        <option value="110100">Second 52
+                        <option value="110101">Second 53
+                        <option value="110110">Second 54
+                        <option value="110111">Second 55
+                        <option value="111000">Second 56
+                        <option value="111001">Second 57
+                        <option value="111010">Second 58
+                        <option value="111011">Second 59
+                        </select>
+                     </td>
+                </tr> 
+				</tbody>
+				</table>
+                <table><col width="160"/>                				
+				<tr><th>Stop time</th>
+                    <td><select id="T5_Stop_time" onChange="OnChange_T5_Stop_time(this.form)">                          
+	                        <option value="0">T5 Not Present
+	                        <option selected value="1">T5 Present
+	                    </select>
+	                </td>
+                </tr>                     
+                <tbody id="Tag_Stop_time">
+				<tr>
+                    <th >Stop time</th>
+                    <td><select id= "Stop_time_Day">                              
+                        <option value="00001">Day 1
+                        <option value="00010">Day 2
+                        <option value="00011">Day 3
+                        <option value="00100">Day 4
+                        <option value="00101">Day 5
+                        <option value="00110">Day 6
+                        <option value="00111">Day 7
+                        <option value="01000">Day 8
+                        <option value="01001">Day 9
+                        <option value="01010">Day 10
+                        <option value="01011">Day 11
+                        <option value="01100">Day 12
+                        <option value="01101">Day 13
+                        <option value="01110">Day 14
+                        <option value="01111">Day 15
+                        <option value="10000">Day 16
+                        <option value="10001">Day 17
+                        <option value="10010">Day 18
+                        <option value="10011">Day 19
+                        <option value="10100">Day 20
+                        <option value="10101">Day 21
+                        <option value="10110">Day 22
+                        <option selected value="10111">Day 23
+                        <option value="11000">Day 24
+                        <option value="11001">Day 25
+                        <option value="11010">Day 26
+                        <option value="11011">Day 27
+                        <option value="11100">Day 28
+                        <option value="11101">Day 29
+                        <option value="11110">Day 30
+                        <option value="11111">Day 31
+                        </select>
+
+                        <select id="Stop_time_Hour">
+                        <option value="00000">Hour 0
+                        <option value="00001">Hour 1
+                        <option value="00010">Hour 2
+                        <option value="00011">Hour 3
+                        <option value="00100">Hour 4
+                        <option value="00101">Hour 5
+                        <option value="00110">Hour 6
+                        <option value="00111">Hour 7
+                        <option value="01000">Hour 8
+                        <option value="01001">Hour 9
+                        <option value="01010">Hour 10
+                        <option value="01011">Hour 11
+                        <option value="01100">Hour 12
+                        <option value="01101">Hour 13
+                        <option value="01110">Hour 14
+                        <option value="01111">Hour 15
+                        <option value="10000">Hour 16
+                        <option value="10001">Hour 17
+                        <option value="10010">Hour 18
+                        <option selected value="10011">Hour 19
+                        <option value="10100">Hour 20
+                        <option value="10101">Hour 21
+                        <option value="10110">Hour 22
+                        <option value="10111">Hour 23
+                        </select>
+
+                        <select id="Stop_time_Minute">
+                        <option value="000000">Minute 0
+                        <option value="000001">Minute 1
+                        <option value="000010">Minute 2
+                        <option value="000011">Minute 3
+                        <option value="000100">Minute 4
+                        <option value="000101">Minute 5
+                        <option value="000110">Minute 6
+                        <option value="000111">Minute 7
+                        <option value="001000">Minute 8
+                        <option value="001001">Minute 9
+                        <option value="001010">Minute 10
+                        <option value="001011">Minute 11
+                        <option value="001100">Minute 12
+                        <option value="001101">Minute 13
+                        <option value="001110">Minute 14
+                        <option value="001111">Minute 15
+                        <option value="010000">Minute 16
+                        <option value="010001">Minute 17
+                        <option value="010010">Minute 18
+                        <option value="010011">Minute 19
+                        <option value="010100">Minute 20
+                        <option value="010101">Minute 21
+                        <option value="010110">Minute 22
+                        <option value="010111">Minute 23
+                        <option value="011000">Minute 24
+                        <option value="011001">Minute 25
+                        <option value="011010">Minute 26
+                        <option value="011011">Minute 27
+                        <option value="011100">Minute 28
+                        <option value="011101">Minute 29
+                        <option value="011110">Minute 30
+                        <option value="011111">Minute 31	
+                        <option value="100000">Minute 32
+                        <option value="100001">Minute 33
+                        <option value="100010">Minute 34
+                        <option value="100011">Minute 35
+                        <option value="100100">Minute 36
+                        <option value="100101">Minute 37
+                        <option value="100110">Minute 38
+                        <option value="100111">Minute 39
+                        <option selected value="101000">Minute 40
+                        <option value="101001">Minute 41
+                        <option value="101010">Minute 42
+                        <option value="101011">Minute 43
+                        <option value="101100">Minute 44
+                        <option value="101101">Minute 45
+                        <option value="101110">Minute 46
+                        <option value="101111">Minute 47
+                        <option value="110000">Minute 48
+                        <option value="110001">Minute 49
+                        <option value="110010">Minute 50
+                        <option value="110011">Minute 51
+                        <option value="110100">Minute 52
+                        <option value="110101">Minute 53
+                        <option value="110110">Minute 54
+                        <option value="110111">Minute 55
+                        <option value="111000">Minute 56
+                        <option value="111001">Minute 57
+                        <option value="111010">Minute 58
+                        <option value="111011">Minute 59
+                        </select>	
+	
+                        <select id="Stop_time_Second">
+                        <option value="000000">Second 0
+                        <option value="000001">Second 1
+                        <option value="000010">Second 2
+                        <option value="000011">Second 3
+                        <option value="000100">Second 4
+                        <option value="000101">Second 5
+                        <option value="000110">Second 6
+                        <option value="000111">Second 7
+                        <option value="001000">Second 8
+                        <option value="001001">Second 9
+                        <option value="001010">Second 10
+                        <option value="001011">Second 11
+                        <option value="001100">Second 12
+                        <option value="001101">Second 13
+                        <option value="001110">Second 14
+                        <option value="001111">Second 15
+                        <option value="010000">Second 16
+                        <option value="010001">Second 17
+                        <option value="010010">Second 18
+                        <option value="010011">Second 19
+                        <option selected value="010100">Second 20
+                        <option value="010101">Second 21
+                        <option value="010110">Second 22
+                        <option value="010111">Second 23
+                        <option value="011000">Second 24
+                        <option value="011001">Second 25
+                        <option value="011010">Second 26
+                        <option value="011011">Second 27
+                        <option value="011100">Second 28
+                        <option value="011101">Second 29
+                        <option value="011110">Second 30
+                        <option value="011111">Second 31	
+                        <option value="100000">Second 32
+                        <option value="100001">Second 33
+                        <option value="100010">Second 34
+                        <option value="100011">Second 35
+                        <option value="100100">Second 36
+                        <option value="100101">Second 37
+                        <option value="100110">Second 38
+                        <option value="100111">Second 39
+                        <option value="101000">Second 40
+                        <option value="101001">Second 41
+                        <option value="101010">Second 42
+                        <option value="101011">Second 43
+                        <option value="101100">Second 44
+                        <option value="101101">Second 45
+                        <option value="101110">Second 46
+                        <option value="101111">Second 47
+                        <option value="110000">Second 48
+                        <option value="110001">Second 49
+                        <option value="110010">Second 50
+                        <option value="110011">Second 51
+                        <option value="110100">Second 52
+                        <option value="110101">Second 53
+                        <option value="110110">Second 54
+                        <option value="110111">Second 55
+                        <option value="111000">Second 56
+                        <option value="111001">Second 57
+                        <option value="111010">Second 58
+                        <option value="111011">Second 59
+                        </select>
+                     </td>
+                </tr> 
+				</tbody>
+                </table>	
+                <table><col width="160"/>                				
+				<tr><th>Vertical velocity with accuracy</th>
+                    <td><select id="T5_Vertical_velocity_with_accuracy" onChange="OnChange_T5_Vertical_velocity_with_accuracy(this.form)">                          
+	                        <option value="0">T5 Not Present
+	                        <option selected value="1">T5 Present
+	                    </select>
+	                </td>
+                </tr>                     
+                <tbody id="Tag_Vertical_velocity_with_accuracy">
+                <tr><th>&nbsp;Return value</th>
+                    <td><select id= "Vertical_velocity_with_accuracy_Return_value">                    
+                        <option value="0">Vertical velocity value required                          
+                        <option selected value="1">Vertical velocity and accuracy value required
+                        </select>
+                    </td>
+                </tr> 
+                <tr><th>&nbsp;Requested or required</th>
+                    <td><select id="Vertical_velocity_with_accuracy_Requested_or_required" onChange="OnChange_Vertical_velocity_with_accuracy_Requested_or_required(this.form)">                    
+                        <option value="0">Use basic or default value
+                        <option value="1">Requested
+                        <option value="2">Required
+                        <option selected value="3">Requested and required
+                        </select>
+                    </td>
+                </tr> 
+                <tr id="Tag_Vertical_velocity_accuracy_Requested">
+                    <th>Vertical velocity accuracy requested</th>
+                    <td><select id="Vertical_velocity_accuracy_Requested">                    
+                            <option value="000">Less than 1.5 km/h                           
+                            <option value="001">Less than 3 km/h                       
+                            <option value="010">Less than 6 km/h                       
+                            <option selected value="011">Less than 12 km/h                       
+                            <option value="100">Less than 24 km/h                       
+                            <option value="101">Less than 48 km/h                       
+                            <option value="110">Less than 96 km/h                       
+                            <option value="111">Reserved                       
+                        </select>
+                    </td>
+                  </tr>
+                <tr id="Tag_Vertical_velocity_accuracy_Required">
+                    <th>Vertical velocity accuracy reqired</th>
+                    <td><select id="Vertical_velocity_accuracy_Required">                    
+                            <option value="000">Less than 1.5 km/h                           
+                            <option value="001">Less than 3 km/h                       
+                            <option value="010">Less than 6 km/h                       
+                            <option value="011">Less than 12 km/h                       
+                            <option value="100">Less than 24 km/h                       
+                            <option selected value="101">Less than 48 km/h                       
+                            <option value="110">Less than 96 km/h                       
+                            <option value="111">Reserved                       
+                        </select>
+                    </td>
+                  </tr>
+				</tbody>
+				</table>	
+            </table>
+        </form>
+        <script language="JavaScript" type="text/JavaScript">
+
+            function GetPDUValue(pdu_header)
+            {
+                //Get Information Element values
+                Result_code = document.getElementById('Result_code').value;                
+                Location_enable_flag_1 = document.getElementById('Location_enable_flag_1').checked;
+                Location_enable_flag_2 = document.getElementById('Location_enable_flag_2').checked;                
+                Minimum_reporting_interval = document.getElementById('Minimum_reporting_interval').value;
+                Report_type = document.getElementById('Report_type').value;
+
+                T5_Terminal_or_location_identification = document.getElementById('T5_Terminal_or_location_identification').value;
+                Address_or_ident_type = document.getElementById('Address_or_ident_type').value;
+                SSI = document.getElementById('SSI').value;
+                MNI_MCC = document.getElementById('MNI_MCC').value;
+                MNI_MNC = document.getElementById('MNI_MNC').value;
+                ESN_digits = document.getElementById('ESN_digits').value;
+                IPv4 = document.getElementById('IPv4').value;
+                IPv6 = document.getElementById('IPv6').value;
+                Name_Server_Type_Name = document.getElementById('Name_Server_Type_Name').value;
+                Name_Free_Format = document.getElementById('Name_Free_Format').value;
+                
+                T5_Direction_of_travel_with_accuracy = document.getElementById('T5_Direction_of_travel_with_accuracy').value;
+                Direction_of_travel_with_accuracy_Return_value = document.getElementById('Direction_of_travel_with_accuracy_Return_value').value;
+                Direction_of_travel_with_accuracy_Requested_or_required = document.getElementById('Direction_of_travel_with_accuracy_Requested_or_required').value;
+                Direction_of_travel_with_accuracy_accuracy_requested = document.getElementById('Direction_of_travel_with_accuracy_accuracy_requested').value;
+                Direction_of_travel_with_accuracy_accuracy_required = document.getElementById('Direction_of_travel_with_accuracy_accuracy_required').value;
+                 
+                T5_Horizontal_position_with_accuracy = document.getElementById('T5_Horizontal_position_with_accuracy').value;
+                Horizontal_position_with_accuracy_Return_value = document.getElementById('Horizontal_position_with_accuracy_Return_value').value;
+                Horizontal_position_with_accuracy_Preferred_shape = document.getElementById('Horizontal_position_with_accuracy_Preferred_shape').value;
+                Horizontal_position_with_accuracy_Requested_or_required = document.getElementById('Horizontal_position_with_accuracy_Requested_or_required').value;
+                Horizontal_position_accuracy_Requested = document.getElementById('Horizontal_position_accuracy_Requested').value;
+                Horizontal_position_accuracy_Required = document.getElementById('Horizontal_position_accuracy_Required').value;
+                 
+                T5_Horizontal_velocity_with_accuracy = document.getElementById('T5_Horizontal_velocity_with_accuracy').value;
+                Horizontal_velocity_with_accuracy_Return_value = document.getElementById('Horizontal_velocity_with_accuracy_Return_value').value;
+                Horizontal_velocity_with_accuracy_Requested_or_required = document.getElementById('Horizontal_velocity_with_accuracy_Requested_or_required').value;
+                Horizontal_velocity_accuracy_Requested = document.getElementById('Horizontal_velocity_accuracy_Requested').value;
+                Horizontal_velocity_accuracy_Required = document.getElementById('Horizontal_velocity_accuracy_Required').value;
+                
+                T5_LI_dest = document.getElementById('T5_LI_dest').value;                
+                LI_dest_Address_or_ident_type = document.getElementById('LI_dest_Address_or_ident_type').value;
+                LI_dest_SSI = document.getElementById('LI_dest_SSI').value;
+                LI_dest_MNI_MCC = document.getElementById('LI_dest_MNI_MCC').value;
+                LI_dest_MNI_MNC = document.getElementById('LI_dest_MNI_MNC').value;
+                LI_dest_ESN_digits = document.getElementById('LI_dest_ESN_digits').value;
+                LI_dest_IPv4 = document.getElementById('LI_dest_IPv4').value;
+                LI_dest_IPv6 = document.getElementById('LI_dest_IPv6').value;
+                LI_dest_Name_Server_Type_Name = document.getElementById('LI_dest_Name_Server_Type_Name').value;
+                LI_dest_Name_Free_Format = document.getElementById('LI_dest_Name_Free_Format').value;
+                                
+                T5_Location_altitude_with_accuracy = document.getElementById('T5_Location_altitude_with_accuracy').value;
+                Location_altitude_with_accuracy_Return_value = document.getElementById('Location_altitude_with_accuracy_Return_value').value;
+                Location_altitude_type = document.getElementById('Location_altitude_type').value;
+                Location_altitude_with_accuracy_Requested_or_required = document.getElementById('Location_altitude_with_accuracy_Requested_or_required').value;
+                Location_altitude_accuracy_Requested = document.getElementById('Location_altitude_accuracy_Requested').value;
+                Location_altitude_accuracy_Required = document.getElementById('Location_altitude_accuracy_Required').value;
+                
+                T5_Max_information_age = document.getElementById('T5_Max_information_age').value;
+                Maximum_information_age = document.getElementById('Maximum_information_age').value;
+                
+                T5_Maximum_resp_time = document.getElementById('T5_Maximum_resp_time').value;
+                Maximum_response_time = document.getElementById('Maximum_response_time').value;
+                
+                T5_Start_time = document.getElementById('T5_Start_time').value;
+                Start_time_Day = document.getElementById('Start_time_Day').value;
+                Start_time_hour = document.getElementById('Start_time_hour').value;
+                Start_time_minute = document.getElementById('Start_time_minute').value;
+                Start_time_second = document.getElementById('Start_time_second').value;
+                
+                T5_Stop_time = document.getElementById('T5_Stop_time').value;
+                Stop_time_Day = document.getElementById('Stop_time_Day').value;
+                Stop_time_Hour = document.getElementById('Stop_time_Hour').value;
+                Stop_time_Minute = document.getElementById('Stop_time_Minute').value;
+                Stop_time_Second = document.getElementById('Stop_time_Second').value;
+                
+                T5_Vertical_velocity_with_accuracy = document.getElementById('T5_Vertical_velocity_with_accuracy').value;
+                Vertical_velocity_with_accuracy_Return_value = document.getElementById('Vertical_velocity_with_accuracy_Return_value').value;
+                Vertical_velocity_with_accuracy_Requested_or_required = document.getElementById('Vertical_velocity_with_accuracy_Requested_or_required').value;
+                Vertical_velocity_accuracy_Requested = document.getElementById('Vertical_velocity_accuracy_Requested').value;
+                Vertical_velocity_accuracy_Required = document.getElementById('Vertical_velocity_accuracy_Required').value;
+                
+                T5_data = "";
+
+                //Build PDU
+
+                pdu_bin_value = pdu_header;
+                
+                pdu_bin_value += "1"; //Response
+                
+                pdu_bin_value += Result_code;
+                
+                //Location reporting enable flags
+                pdu_bin_value += (Location_enable_flag_1 == true)?"1":"0";
+                pdu_bin_value += (Location_enable_flag_2 == true)?"1":"0";
+                pdu_bin_value += "000000";
+                
+                pdu_bin_value += dec2bin(Minimum_reporting_interval,7);
+                
+                pdu_bin_value += Report_type;
+                
+                if (T5_Terminal_or_location_identification == "1")
+                {
+                    T5_data = dec2bin(Address_or_ident_type,4);
+                    if (Address_or_ident_type == "1")//SSI
+                    {
+                        T5_data += dec2bin(SSI,24);
+                    }
+                    else
+                    if (Address_or_ident_type == "2")//SSI + MNI
+                    {
+                        T5_data += dec2bin(SSI,24);
+                        T5_data += dec2bin(MNI_MCC,10);
+                        T5_data += dec2bin(MNI_MNC,14);
+                    }
+                    else
+                    if (Address_or_ident_type == "3")//IPv4
+                    {
+                        T5_data += ipv42bin(IPv4);
+                    }
+                    else
+                    if (Address_or_ident_type == "4")//IPv6
+                    {
+                        T5_data += ipv62bin(IPv6);
+                    }
+                    else
+                    if (Address_or_ident_type == "8")//ESN
+                    {
+                        T5_data += digit2bin(ESN_digits);
+                    }
+                    else
+                    if (Address_or_ident_type == "9")//SSI+ESN
+                    {
+                        T5_data += dec2bin(SSI,24);
+                        T5_data += digit2bin(ESN_digits);
+                    }
+                    else
+                    if (Address_or_ident_type == "10")//SSI+MNI+ESN
+                    {
+                        T5_data += dec2bin(SSI,24);
+                        T5_data += dec2bin(MNI_MCC,10);
+                        T5_data += dec2bin(MNI_MNC,14);
+                        T5_data += digit2bin(ESN_digits);
+                    }
+                    else
+                    if (Address_or_ident_type == "11")//Server Name
+                    {
+                        T5_data += text2bin(Name_Server_Type_Name);
+                    }
+                    else
+                    if (Address_or_ident_type == "12")//Free Name
+                    {
+                        T5_data += text2bin(Name_Free_Format);
+                    }
+                                        
+                    pdu_bin_value += T5_Encode("17",T5_data);
+                }                
+                
+                if (T5_Direction_of_travel_with_accuracy == "1")
+                {
+                    T5_data = "";
+                    T5_data += Direction_of_travel_with_accuracy_Return_value;
+                    T5_data += dec2bin(Direction_of_travel_with_accuracy_Requested_or_required,2);
+                    if (Direction_of_travel_with_accuracy_Requested_or_required == "1")
+                    {
+                        T5_data += Direction_of_travel_with_accuracy_accuracy_requested;
+                    }
+                    else
+                    if (Direction_of_travel_with_accuracy_Requested_or_required == "2")
+                    {
+                        T5_data += Direction_of_travel_with_accuracy_accuracy_required;
+                    }
+                    else
+                    if (Direction_of_travel_with_accuracy_Requested_or_required == "3")
+                    {
+                        T5_data += Direction_of_travel_with_accuracy_accuracy_requested;
+                        T5_data += Direction_of_travel_with_accuracy_accuracy_required;
+                    }
+                    
+                    pdu_bin_value += T5_Encode("0",T5_data);
+                }
+
+                if (T5_Horizontal_position_with_accuracy == "1")
+                {
+                    T5_data = "";
+                    T5_data += Horizontal_position_with_accuracy_Return_value;
+                    T5_data += Horizontal_position_with_accuracy_Preferred_shape;
+                    T5_data += dec2bin(Horizontal_position_with_accuracy_Requested_or_required,2);
+                    if (Horizontal_position_with_accuracy_Requested_or_required == "1")
+                    {
+                        T5_data += Horizontal_position_accuracy_Requested;
+                    }
+                    else
+                    if (Horizontal_position_with_accuracy_Requested_or_required == "2")
+                    {
+                        T5_data += Horizontal_position_accuracy_Required;
+                    }
+                    else
+                    if (Horizontal_position_with_accuracy_Requested_or_required == "3")
+                    {
+                        T5_data += Horizontal_position_accuracy_Requested;
+                        T5_data += Horizontal_position_accuracy_Required;
+                    }
+                    
+                    pdu_bin_value += T5_Encode("2",T5_data);
+                }
+
+                if (T5_Horizontal_velocity_with_accuracy == "1")
+                {
+                    T5_data = "";
+                    T5_data += Horizontal_velocity_with_accuracy_Return_value;
+                    T5_data += dec2bin(Horizontal_velocity_with_accuracy_Requested_or_required,2);
+                    if (Horizontal_velocity_with_accuracy_Requested_or_required == "1")
+                    {
+                        T5_data += Horizontal_velocity_accuracy_Requested;
+                    }
+                    else
+                    if (Horizontal_velocity_with_accuracy_Requested_or_required == "2")
+                    {
+                        T5_data += Horizontal_velocity_accuracy_Required;
+                    }
+                    else
+                    if (Horizontal_velocity_with_accuracy_Requested_or_required == "3")
+                    {
+                        T5_data += Horizontal_velocity_accuracy_Requested;
+                        T5_data += Horizontal_velocity_accuracy_Required;
+                    }
+                    
+                    pdu_bin_value += T5_Encode("3",T5_data);
+                }
+
+                if (T5_LI_dest == "1")
+                {
+                    T5_data = dec2bin(LI_dest_Address_or_ident_type,4);
+                    if (LI_dest_Address_or_ident_type == "1")//SSI
+                    {
+                        T5_data += dec2bin(LI_dest_SSI,24);
+                    }
+                    else
+                    if (LI_dest_Address_or_ident_type == "2")//SSI + MNI
+                    {
+                        T5_data += dec2bin(LI_dest_SSI,24);
+                        T5_data += dec2bin(LI_dest_MNI_MCC,10);
+                        T5_data += dec2bin(LI_dest_MNI_MNC,14);
+                    }
+                    else
+                    if (LI_dest_Address_or_ident_type == "3")//IPv4
+                    {
+                        T5_data += ipv42bin(LI_dest_IPv4);
+                    }
+                    else
+                    if (LI_dest_Address_or_ident_type == "4")//IPv6
+                    {
+                        T5_data += ipv62bin(LI_dest_IPv6);
+                    }
+                    else
+                    if (LI_dest_Address_or_ident_type == "8")//ESN
+                    {
+                        T5_data += digit2bin(LI_dest_ESN_digits);
+                    }
+                    else
+                    if (LI_dest_Address_or_ident_type == "9")//SSI+ESN
+                    {
+                        T5_data += dec2bin(LI_dest_SSI,24);
+                        T5_data += digit2bin(LI_dest_ESN_digits);
+                    }
+                    else
+                    if (LI_dest_Address_or_ident_type == "10")//SSI+MNI+ESN
+                    {
+                        T5_data += dec2bin(LI_dest_SSI,24);
+                        T5_data += dec2bin(LI_dest_MNI_MCC,10);
+                        T5_data += dec2bin(LI_dest_MNI_MNC,14);
+                        T5_data += digit2bin(LI_dest_ESN_digits);
+                    }
+                    else
+                    if (LI_dest_Address_or_ident_type == "11")//Server Name
+                    {
+                        T5_data += text2bin(LI_dest_Name_Server_Type_Name);
+                    }
+                    else
+                    if (LI_dest_Address_or_ident_type == "12")//Free Name
+                    {
+                        T5_data += text2bin(LI_dest_Name_Free_Format);
+                    }
+                                        
+                    pdu_bin_value += T5_Encode("4",T5_data);
+                }
+
+                if (T5_Location_altitude_with_accuracy == "1")
+                {
+                    T5_data = "";
+                    T5_data += Location_altitude_with_accuracy_Return_value;
+                    T5_data += Location_altitude_type;
+                    T5_data += dec2bin(Location_altitude_with_accuracy_Requested_or_required,2);
+                    if (Location_altitude_with_accuracy_Requested_or_required == "1")
+                    {
+                        T5_data += Location_altitude_accuracy_Requested;
+                    }
+                    else
+                    if (Location_altitude_with_accuracy_Requested_or_required == "2")
+                    {
+                        T5_data += Location_altitude_accuracy_Required;
+                    }
+                    else
+                    if (Location_altitude_with_accuracy_Requested_or_required == "3")
+                    {
+                        T5_data += Location_altitude_accuracy_Requested;
+                        T5_data += Location_altitude_accuracy_Required;
+                    }
+                    
+                    pdu_bin_value += T5_Encode("5",T5_data);
+                }
+
+                if (T5_Max_information_age == "1")
+                {
+                    T5_data = dec2bin(Maximum_information_age,7);
+                    
+                    pdu_bin_value += T5_Encode("7",T5_data);
+                }
+
+                if (T5_Maximum_resp_time == "1")
+                {
+                    T5_data = dec2bin(Maximum_response_time,7);
+                    
+                    pdu_bin_value += T5_Encode("8",T5_data);
+                }
+
+                if (T5_Start_time == "1")
+                {
+                    T5_data = "";
+                    T5_data += Start_time_Day;
+                    T5_data += Start_time_hour;
+                    T5_data += Start_time_minute;
+                    T5_data += Start_time_second;
+                    
+                    pdu_bin_value += T5_Encode("14",T5_data);
+                }
+
+                if (T5_Stop_time == "1")
+                {
+                    T5_data = "";
+                    T5_data += Stop_time_Day;
+                    T5_data += Stop_time_Hour;
+                    T5_data += Stop_time_Minute;
+                    T5_data += Stop_time_Second;
+                    
+                    pdu_bin_value += T5_Encode("16",T5_data);
+                }
+
+                if (T5_Vertical_velocity_with_accuracy == "1")
+                {
+                    T5_data = "";
+                    T5_data += Vertical_velocity_with_accuracy_Return_value;
+                    T5_data += dec2bin(Vertical_velocity_with_accuracy_Requested_or_required,2);
+                    if (Vertical_velocity_with_accuracy_Requested_or_required == "1")
+                    {
+                        T5_data += Vertical_velocity_accuracy_Requested;
+                    }
+                    else
+                    if (Vertical_velocity_with_accuracy_Requested_or_required == "2")
+                    {
+                        T5_data += Vertical_velocity_accuracy_Required;
+                    }
+                    else
+                    if (Vertical_velocity_with_accuracy_Requested_or_required == "3")
+                    {
+                        T5_data += Vertical_velocity_accuracy_Requested;
+                        T5_data += Vertical_velocity_accuracy_Required;
+                    }
+                                        
+                    pdu_bin_value += T5_Encode("21",T5_data);
+                }
+
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                return pdu_bin_value;
+            }
+
+            function On_Load()
+            {
+                OnChange_T5_Terminal_or_location_identification(this.form);
+                OnChange_T5_Direction_of_travel_with_accuracy(this.form);
+                OnChange_T5_Horizontal_position_with_accuracy(this.form);
+                
+                OnChange_T5_LI_dest(this.form);
+                OnChange_T5_Location_altitude_with_accuracy(this.form);
+                OnChange_T5_Max_information_age(this.form);
+                OnChange_T5_Maximum_resp_time(this.form);
+                OnChange_T5_Start_time(this.form);
+                OnChange_T5_Stop_time(this.form);
+                OnChange_T5_Vertical_velocity_with_accuracy(this.form);
+            }
+            
+            function OnChange_T5_Terminal_or_location_identification(form)
+            {
+                document.getElementById('Tag_Address_or_ident_type').style.display = "none";
+                
+                T5_Terminal_or_location_identification = document.getElementById('T5_Terminal_or_location_identification').value;
+                if (T5_Terminal_or_location_identification == "1")
+                {
+                    document.getElementById('Tag_Address_or_ident_type').style.display = "";
+                }
+                OnChange_Address_or_ident_type();
+                Update_Height();
+            }
+
+            function OnChange_Address_or_ident_type(form)
+            {
+                document.getElementById('Tag_SSI').style.display = "none";
+                document.getElementById('Tag_MNI').style.display = "none";
+                document.getElementById('Tag_ESN_digits').style.display = "none";
+                document.getElementById('Tag_IPv4').style.display = "none";
+                document.getElementById('Tag_IPv6').style.display = "none";
+                document.getElementById('Tag_Name_Server_Type_Name').style.display = "none";
+                document.getElementById('Tag_Name_Free_Format').style.display = "none";
+
+                T5_Terminal_or_location_identification = document.getElementById('T5_Terminal_or_location_identification').value;
+                if (T5_Terminal_or_location_identification == "0")
+                {
+                    Update_Height();
+                    return;
+                }
+                
+                Address_or_ident_type = document.getElementById('Address_or_ident_type').value;
+                if (Address_or_ident_type == "1")
+                {
+                    document.getElementById('Tag_SSI').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "2")
+                {
+                    document.getElementById('Tag_SSI').style.display = "";
+                    document.getElementById('Tag_MNI').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "3")
+                {
+                    document.getElementById('Tag_IPv4').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "4")
+                {
+                    document.getElementById('Tag_IPv6').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "8")
+                {
+                    document.getElementById('Tag_ESN_digits').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "9")
+                {
+                    document.getElementById('Tag_SSI').style.display = "";
+                    document.getElementById('Tag_ESN_digits').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "10")
+                {
+                    document.getElementById('Tag_SSI').style.display = "";
+                    document.getElementById('Tag_MNI').style.display = "";
+                    document.getElementById('Tag_ESN_digits').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "11")
+                {
+                    document.getElementById('Tag_Name_Server_Type_Name').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "12")
+                {
+                    document.getElementById('Tag_Name_Free_Format').style.display = "";
+                }
+                Update_Height();
+            }
+            
+            function OnChange_T5_Direction_of_travel_with_accuracy(form)
+            {
+                document.getElementById('Tag_Direction_of_travel_with_accuracy').style.display = "none";
+                T5_Direction_of_travel_with_accuracy = document.getElementById('T5_Direction_of_travel_with_accuracy').value;
+                if (T5_Direction_of_travel_with_accuracy == "1")
+                {
+                    document.getElementById('Tag_Direction_of_travel_with_accuracy').style.display = "";
+                }
+                OnChange_Direction_of_travel_with_accuracy_Requested_or_required(form);
+                Update_Height();
+            }
+         
+            function OnChange_Direction_of_travel_with_accuracy_Requested_or_required(form)
+            {
+                document.getElementById('Tag_Direction_of_travel_with_accuracy_accuracy_requested').style.display = "none";
+                document.getElementById('Tag_Direction_of_travel_with_accuracy_accuracy_required').style.display = "none";
+                T5_Direction_of_travel_with_accuracy = document.getElementById('T5_Direction_of_travel_with_accuracy').value;
+                if (T5_Direction_of_travel_with_accuracy == "0")
+                {
+                    Update_Height();
+                    return;
+                }
+                    
+                Direction_of_travel_with_accuracy_Requested_or_required = document.getElementById('Direction_of_travel_with_accuracy_Requested_or_required').value;
+                if (Direction_of_travel_with_accuracy_Requested_or_required == "0")
+                {
+                    Update_Height();
+                    return;
+                }
+                if (Direction_of_travel_with_accuracy_Requested_or_required == "1")
+                {
+                    document.getElementById('Tag_Direction_of_travel_with_accuracy_accuracy_requested').style.display = "";
+                }
+                else
+                if (Direction_of_travel_with_accuracy_Requested_or_required == "2")
+                {
+                    document.getElementById('Tag_Direction_of_travel_with_accuracy_accuracy_required').style.display = "";
+                }
+                else
+                if (Direction_of_travel_with_accuracy_Requested_or_required == "3")
+                {
+                    document.getElementById('Tag_Direction_of_travel_with_accuracy_accuracy_requested').style.display = "";
+                    document.getElementById('Tag_Direction_of_travel_with_accuracy_accuracy_required').style.display = "";
+                }
+                Update_Height();
+            }
+
+            function OnChange_T5_Horizontal_position_with_accuracy(form)
+            {
+                document.getElementById('Tag_Horizontal_position_with_accuracy').style.display = "none";
+                T5_Horizontal_position_with_accuracy = document.getElementById('T5_Horizontal_position_with_accuracy').value;
+                if (T5_Horizontal_position_with_accuracy == "1")
+                {
+                    document.getElementById('Tag_Horizontal_position_with_accuracy').style.display = "";
+                }
+                OnChange_Horizontal_position_with_accuracy_Requested_or_required(form);
+                Update_Height();
+            }
+                                        
+            function OnChange_Horizontal_position_with_accuracy_Requested_or_required(form)
+            {
+                document.getElementById('Tag_Horizontal_position_accuracy_Requested').style.display = "none";
+                document.getElementById('Tag_Horizontal_position_accuracy_Required').style.display = "none";
+                Horizontal_position_with_accuracy_Requested_or_required = document.getElementById('Horizontal_position_with_accuracy_Requested_or_required').value;
+                if (Horizontal_position_with_accuracy_Requested_or_required == "0")
+                {
+                    Update_Height();
+                    return;
+                }
+                else
+                if (Horizontal_position_with_accuracy_Requested_or_required == "1")
+                    document.getElementById('Tag_Horizontal_position_accuracy_Requested').style.display = "";
+                else
+                if (Horizontal_position_with_accuracy_Requested_or_required == "2")
+                    document.getElementById('Tag_Horizontal_position_accuracy_Required').style.display = "";
+                else
+                if (Horizontal_position_with_accuracy_Requested_or_required == "3")
+                {
+                    document.getElementById('Tag_Horizontal_position_accuracy_Requested').style.display = "";
+                    document.getElementById('Tag_Horizontal_position_accuracy_Required').style.display = "";
+                }
+                Update_Height();
+            }
+                                        
+            function OnChange_T5_Horizontal_velocity_with_accuracy(form)
+            {
+                document.getElementById('Tag_Horizontal_velocity_with_accuracy').style.display = "none";
+                T5_Horizontal_velocity_with_accuracy = document.getElementById('T5_Horizontal_velocity_with_accuracy').value;
+                if (T5_Horizontal_velocity_with_accuracy == "1")
+                {
+                    document.getElementById('Tag_Horizontal_velocity_with_accuracy').style.display = "";
+                }
+                OnChange_Horizontal_velocity_with_accuracy_Requested_or_required(form);
+                Update_Height();
+            }
+                                        
+            function OnChange_Horizontal_velocity_with_accuracy_Requested_or_required(form)
+            {
+                document.getElementById('Tag_Horizontal_velocity_accuracy_Requested').style.display = "none";
+                document.getElementById('Tag_Horizontal_velocity_accuracy_Required').style.display = "none";
+                Horizontal_velocity_with_accuracy_Requested_or_required = document.getElementById('Horizontal_velocity_with_accuracy_Requested_or_required').value;
+                if (Horizontal_velocity_with_accuracy_Requested_or_required == "0")
+                {
+                    Update_Height();
+                    return;
+                }
+                else
+                if (Horizontal_velocity_with_accuracy_Requested_or_required == "1")
+                    document.getElementById('Tag_Horizontal_velocity_accuracy_Requested').style.display = "";
+                else
+                if (Horizontal_velocity_with_accuracy_Requested_or_required == "2")
+                    document.getElementById('Tag_Horizontal_velocity_accuracy_Required').style.display = "";
+                else
+                if (Horizontal_velocity_with_accuracy_Requested_or_required == "3")
+                {
+                    document.getElementById('Tag_Horizontal_velocity_accuracy_Requested').style.display = "";
+                    document.getElementById('Tag_Horizontal_velocity_accuracy_Required').style.display = "";
+                }
+                Update_Height();
+            }
+            
+            //-------------------------------------------            
+            function OnChange_T5_LI_dest(form)
+            {
+                document.getElementById('Tag_LI_dest').style.display = "none";
+                T5_LI_dest = document.getElementById('T5_LI_dest').value;
+                if (T5_LI_dest == "1")
+                {
+                    document.getElementById('Tag_LI_dest').style.display = "";
+                }
+                OnChange_LI_dest_Address_or_ident_type(form);
+                Update_Height();
+            }
+            
+            function OnChange_LI_dest_Address_or_ident_type(form)
+            {
+                document.getElementById('Tag_LI_dest_SSI').style.display = "none";
+                document.getElementById('Tag_LI_dest_MNI').style.display = "none";
+                document.getElementById('Tag_LI_dest_ESN_digits').style.display = "none";
+                document.getElementById('Tag_LI_dest_IPv4').style.display = "none";
+                document.getElementById('Tag_LI_dest_IPv6').style.display = "none";
+                document.getElementById('Tag_LI_dest_Name_Server_Type_Name').style.display = "none";
+                document.getElementById('Tag_LI_dest_Name_Free_Format').style.display = "none";
+
+                T5_LI_dest = document.getElementById('T5_LI_dest').value;
+                if (T5_LI_dest == "0")
+                {
+                    Update_Height();
+                    return;
+                }
+                
+                Address_or_ident_type = document.getElementById('LI_dest_Address_or_ident_type').value;
+                if (Address_or_ident_type == "1")
+                {
+                    document.getElementById('Tag_LI_dest_SSI').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "2")
+                {
+                    document.getElementById('Tag_LI_dest_SSI').style.display = "";
+                    document.getElementById('Tag_LI_dest_MNI').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "3")
+                {
+                    document.getElementById('Tag_LI_dest_IPv4').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "4")
+                {
+                    document.getElementById('Tag_LI_dest_IPv6').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "8")
+                {
+                    document.getElementById('Tag_LI_dest_ESN_digits').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "9")
+                {
+                    document.getElementById('Tag_LI_dest_SSI').style.display = "";
+                    document.getElementById('Tag_LI_dest_ESN_digits').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "10")
+                {
+                    document.getElementById('Tag_LI_dest_SSI').style.display = "";
+                    document.getElementById('Tag_LI_dest_MNI').style.display = "";
+                    document.getElementById('Tag_LI_dest_ESN_digits').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "11")
+                {
+                    document.getElementById('Tag_LI_dest_Name_Server_Type_Name').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "12")
+                {
+                    document.getElementById('Tag_LI_dest_Name_Free_Format').style.display = "";
+                }
+                Update_Height();
+            }
+                        
+            function OnChange_T5_Location_altitude_with_accuracy(form)
+            {
+                document.getElementById('Tag_Location_altitude_with_accuracy').style.display = "none";
+                T5_Location_altitude_with_accuracy = document.getElementById('T5_Location_altitude_with_accuracy').value;
+                if (T5_Location_altitude_with_accuracy == "1")
+                {
+                    document.getElementById('Tag_Location_altitude_with_accuracy').style.display = "";
+                }
+                OnChange_Location_altitude_with_accuracy_Requested_or_required(form);
+                Update_Height();
+            }
+            
+            function OnChange_Location_altitude_with_accuracy_Requested_or_required(form)
+            {
+                document.getElementById('Tag_Location_altitude_accuracy_Requested').style.display = "none";
+                document.getElementById('Tag_Location_altitude_accuracy_Required').style.display = "none";
+                Location_altitude_with_accuracy_Requested_or_required = document.getElementById('Location_altitude_with_accuracy_Requested_or_required').value;
+                if (Location_altitude_with_accuracy_Requested_or_required == "0")
+                {
+                    Update_Height();
+                    return;
+                }
+                else
+                if (Location_altitude_with_accuracy_Requested_or_required == "1")
+                    document.getElementById('Tag_Location_altitude_accuracy_Requested').style.display = "";
+                else
+                if (Location_altitude_with_accuracy_Requested_or_required == "2")
+                    document.getElementById('Tag_Location_altitude_accuracy_Required').style.display = "";
+                else
+                if (Location_altitude_with_accuracy_Requested_or_required == "3")
+                {
+                    document.getElementById('Tag_Location_altitude_accuracy_Requested').style.display = "";
+                    document.getElementById('Tag_Location_altitude_accuracy_Required').style.display = "";
+                }
+                Update_Height();
+            }
+             
+            function OnChange_T5_Max_information_age(form)
+            {
+                document.getElementById('Tag_Max_information_age').style.display = "none";
+                T5_Max_information_age = document.getElementById('T5_Max_information_age').value;
+                if (T5_Max_information_age == "1")
+                {
+                    document.getElementById('Tag_Max_information_age').style.display = "";
+                }
+                Update_Height();
+            }
+
+            function OnChange_T5_Maximum_resp_time(form)
+            {
+                document.getElementById('Tag_Maximum_resp_time').style.display = "none";
+                T5_Maximum_resp_time = document.getElementById('T5_Maximum_resp_time').value;
+                if (T5_Maximum_resp_time == "1")
+                {
+                    document.getElementById('Tag_Maximum_resp_time').style.display = "";
+                }
+                Update_Height();
+            }
+
+            function OnChange_T5_Start_time(form)
+            {
+                document.getElementById('Tag_Start_time').style.display = "none";
+                T5_Start_time = document.getElementById('T5_Start_time').value;
+                if (T5_Start_time == "1")
+                {
+                    document.getElementById('Tag_Start_time').style.display = "";
+                }
+                Update_Height();
+            }
+
+            function OnChange_T5_Stop_time(form)
+            {
+                document.getElementById('Tag_Stop_time').style.display = "none";
+                T5_Stop_time = document.getElementById('T5_Stop_time').value;
+                if (T5_Stop_time == "1")
+                {
+                    document.getElementById('Tag_Stop_time').style.display = "";
+                }
+                Update_Height();
+            }
+
+            function OnChange_T5_Vertical_velocity_with_accuracy(form)
+            {
+                document.getElementById('Tag_Vertical_velocity_with_accuracy').style.display = "none";
+                T5_Vertical_velocity_with_accuracy = document.getElementById('T5_Vertical_velocity_with_accuracy').value;
+                if (T5_Vertical_velocity_with_accuracy == "1")
+                {
+                    document.getElementById('Tag_Vertical_velocity_with_accuracy').style.display = "";
+                }
+                OnChange_Vertical_velocity_with_accuracy_Requested_or_required(form);
+                Update_Height();
+            }
+            
+            function OnChange_Vertical_velocity_with_accuracy_Requested_or_required(form)
+            {
+                document.getElementById('Tag_Vertical_velocity_accuracy_Requested').style.display = "none";
+                document.getElementById('Tag_Vertical_velocity_accuracy_Required').style.display = "none";
+                Vertical_velocity_with_accuracy_Requested_or_required = document.getElementById('Vertical_velocity_with_accuracy_Requested_or_required').value;
+                if (Vertical_velocity_with_accuracy_Requested_or_required == "0")
+                {
+                    Update_Height();
+                    return;
+                }
+                else
+                if (Vertical_velocity_with_accuracy_Requested_or_required == "1")
+                    document.getElementById('Tag_Vertical_velocity_accuracy_Requested').style.display = "";
+                else
+                if (Vertical_velocity_with_accuracy_Requested_or_required == "2")
+                    document.getElementById('Tag_Vertical_velocity_accuracy_Required').style.display = "";
+                else
+                if (Vertical_velocity_with_accuracy_Requested_or_required == "3")
+                {
+                    document.getElementById('Tag_Vertical_velocity_accuracy_Requested').style.display = "";
+                    document.getElementById('Tag_Vertical_velocity_accuracy_Required').style.display = "";
+                }
+                Update_Height();
+            }
+
+        </script>
+    </body>
+</HTML>

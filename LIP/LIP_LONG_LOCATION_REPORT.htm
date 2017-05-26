@@ -1,0 +1,2511 @@
+<HTML>
+    <HEAD>
+        <TITLE>LIP-LONG LOCATION REPORT</TITLE>
+        <SCRIPT SRC="../LIP_Util.js" language="JavaScript" type="text/JavaScript"></SCRIPT>
+        <LINK href="../LIP_PDU_Generator.css" rel="stylesheet" type="text/css">
+    </HEAD>
+    <body marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" style="" class="darkblue" onload="On_Load()">        
+        <form id="Form1">
+            <table id="LIP_xxx_Table">
+                <col width="160"/>
+
+                <tr><th >Time data</th>
+                    <td><select id= "Time_data" onchange="OnChange_Time_data(this.form)">                               
+                        <option value="00">None
+                        <option value="01">Time elapsed
+                        <option selected value="10">Time of position
+                        </select>
+                    </td>
+                </tr>
+                <tr id="Tag_Time_elapsed">
+                    <th >Time elapsed</th>
+                    <td><select id="Time_elapsed" >                               
+                        <option value="00">Less than 5 s
+                        <option value="01">Less than 5 min
+                        <option selected value="10">Less than 30 min
+                        <option value="11">Not known or n/a
+                        </select>
+                    </td>
+                </tr> 
+
+                <tr id="Tag_Time_of_position">
+                    <th >Time of position</th>
+                    <td><select id= "Day_of_position">                              
+                        <option value="00001">Day 1
+                        <option value="00010">Day 2
+                        <option value="00011">Day 3
+                        <option value="00100">Day 4
+                        <option value="00101">Day 5
+                        <option value="00110">Day 6
+                        <option value="00111">Day 7
+                        <option value="01000">Day 8
+                        <option value="01001">Day 9
+                        <option value="01010">Day 10
+                        <option value="01011">Day 11
+                        <option value="01100">Day 12
+                        <option value="01101">Day 13
+                        <option value="01110">Day 14
+                        <option selected value="01111">Day 15
+                        <option value="10000">Day 16
+                        <option value="10001">Day 17
+                        <option value="10010">Day 18
+                        <option value="10011">Day 19
+                        <option value="10100">Day 20
+                        <option value="10101">Day 21
+                        <option value="10110">Day 22
+                        <option value="10111">Day 23
+                        <option value="11000">Day 24
+                        <option value="11001">Day 25
+                        <option value="11010">Day 26
+                        <option value="11011">Day 27
+                        <option value="11100">Day 28
+                        <option value="11101">Day 29
+                        <option value="11110">Day 30
+                        <option value="11111">Day 31
+                        </select>
+
+                        <select id="Time_hour">
+                        <option value="00000">Hour 0
+                        <option value="00001">Hour 1
+                        <option value="00010">Hour 2
+                        <option value="00011">Hour 3
+                        <option value="00100">Hour 4
+                        <option value="00101">Hour 5
+                        <option value="00110">Hour 6
+                        <option value="00111">Hour 7
+                        <option value="01000">Hour 8
+                        <option value="01001">Hour 9
+                        <option value="01010">Hour 10
+                        <option value="01011">Hour 11
+                        <option value="01100">Hour 12
+                        <option selected value="01101">Hour 13
+                        <option value="01110">Hour 14
+                        <option value="01111">Hour 15
+                        <option value="10000">Hour 16
+                        <option value="10001">Hour 17
+                        <option value="10010">Hour 18
+                        <option value="10011">Hour 19
+                        <option value="10100">Hour 20
+                        <option value="10101">Hour 21
+                        <option value="10110">Hour 22
+                        <option value="10111">Hour 23
+                        </select>
+
+                        <select id="Time_minute">
+                        <option value="000000">Minute 0
+                        <option value="000001">Minute 1
+                        <option value="000010">Minute 2
+                        <option value="000011">Minute 3
+                        <option value="000100">Minute 4
+                        <option value="000101">Minute 5
+                        <option value="000110">Minute 6
+                        <option value="000111">Minute 7
+                        <option value="001000">Minute 8
+                        <option value="001001">Minute 9
+                        <option value="001010">Minute 10
+                        <option value="001011">Minute 11
+                        <option value="001100">Minute 12
+                        <option value="001101">Minute 13
+                        <option value="001110">Minute 14
+                        <option value="001111">Minute 15
+                        <option value="010000">Minute 16
+                        <option value="010001">Minute 17
+                        <option value="010010">Minute 18
+                        <option value="010011">Minute 19
+                        <option value="010100">Minute 20
+                        <option value="010101">Minute 21
+                        <option value="010110">Minute 22
+                        <option value="010111">Minute 23
+                        <option value="011000">Minute 24
+                        <option value="011001">Minute 25
+                        <option value="011010">Minute 26
+                        <option value="011011">Minute 27
+                        <option value="011100">Minute 28
+                        <option value="011101">Minute 29
+                        <option value="011110">Minute 30
+                        <option value="011111">Minute 31	
+                        <option value="100000">Minute 32
+                        <option value="100001">Minute 33
+                        <option value="100010">Minute 34
+                        <option value="100011">Minute 35
+                        <option value="100100">Minute 36
+                        <option value="100101">Minute 37
+                        <option value="100110">Minute 38
+                        <option value="100111">Minute 39
+                        <option value="101000">Minute 40
+                        <option value="101001">Minute 41
+                        <option value="101010">Minute 42
+                        <option value="101011">Minute 43
+                        <option value="101100">Minute 44
+                        <option value="101101">Minute 45
+                        <option value="101110">Minute 46
+                        <option value="101111">Minute 47
+                        <option value="110000">Minute 48
+                        <option selected value="110001">Minute 49
+                        <option value="110010">Minute 50
+                        <option value="110011">Minute 51
+                        <option value="110100">Minute 52
+                        <option value="110101">Minute 53
+                        <option value="110110">Minute 54
+                        <option value="110111">Minute 55
+                        <option value="111000">Minute 56
+                        <option value="111001">Minute 57
+                        <option value="111010">Minute 58
+                        <option value="111011">Minute 59
+                        </select>	
+	
+                        <select id="Time_second">
+                        <option value="000000">Second 0
+                        <option value="000001">Second 1
+                        <option value="000010">Second 2
+                        <option value="000011">Second 3
+                        <option value="000100">Second 4
+                        <option value="000101">Second 5
+                        <option value="000110">Second 6
+                        <option value="000111">Second 7
+                        <option value="001000">Second 8
+                        <option value="001001">Second 9
+                        <option value="001010">Second 10
+                        <option value="001011">Second 11
+                        <option selected value="001100">Second 12
+                        <option value="001101">Second 13
+                        <option value="001110">Second 14
+                        <option value="001111">Second 15
+                        <option value="010000">Second 16
+                        <option value="010001">Second 17
+                        <option value="010010">Second 18
+                        <option value="010011">Second 19
+                        <option value="010100">Second 20
+                        <option value="010101">Second 21
+                        <option value="010110">Second 22
+                        <option value="010111">Second 23
+                        <option value="011000">Second 24
+                        <option value="011001">Second 25
+                        <option value="011010">Second 26
+                        <option value="011011">Second 27
+                        <option value="011100">Second 28
+                        <option value="011101">Second 29
+                        <option value="011110">Second 30
+                        <option value="011111">Second 31	
+                        <option value="100000">Second 32
+                        <option value="100001">Second 33
+                        <option value="100010">Second 34
+                        <option value="100011">Second 35
+                        <option value="100100">Second 36
+                        <option value="100101">Second 37
+                        <option value="100110">Second 38
+                        <option value="100111">Second 39
+                        <option value="101000">Second 40
+                        <option value="101001">Second 41
+                        <option value="101010">Second 42
+                        <option value="101011">Second 43
+                        <option value="101100">Second 44
+                        <option value="101101">Second 45
+                        <option value="101110">Second 46
+                        <option value="101111">Second 47
+                        <option value="110000">Second 48
+                        <option value="110001">Second 49
+                        <option value="110010">Second 50
+                        <option value="110011">Second 51
+                        <option value="110100">Second 52
+                        <option value="110101">Second 53
+                        <option value="110110">Second 54
+                        <option value="110111">Second 55
+                        <option value="111000">Second 56
+                        <option value="111001">Second 57
+                        <option value="111010">Second 58
+                        <option value="111011">Second 59
+                        </select>
+                     </td>
+                </tr> 
+            </table>
+            <table>
+                <col width="160"/>
+                <tr><th >Location data</th>
+                    <td><select id= "Location_shape" onchange="OnChange_Location_shape(this.form)">                               
+                        <option value="0000">No shape
+                        <option value="0001">Location point
+                        <option value="0010">Location circle
+                        <option value="0011">Location ellipse
+                        <option value="0100">Location point with altitude
+                        <option value="0101">Location circle with altitude
+                        <option value="0110">Location ellipse with altitude
+                        <option value="0111">Location circle with altitude and uncertainty
+                        <option selected value="1000">Location ellipse with altitude and uncertainty
+                        <option value="1001">Location arc
+                        <option value="1010">Location point and position error
+                        <option value="1111">Location shape extension
+                        </select>
+                    </td>
+                </tr>
+                
+                <tbody id="Tag_Location_point">
+                 <tr ><th><b>Location point</b></th>
+                    <td>
+                    <tr><th>Longitude</th>
+                        <td><input id="Longitude_Location_point" value="25.57632" size=8 ></td>
+                    </tr> 
+                    <tr><th>Latitude</th>
+                        <td><input id="Latitude_Location_point" value="63.286543" size=8 ></td>
+                    </tr> 
+                    </td>                    
+                </tr>
+                </tbody>
+
+                <tbody id="Tag_Location_circle">
+                 <tr ><th><b>Location circle</b></th>
+                   <td>
+                    <tr><th>Longitude</th>
+                        <td><input id="Longitude_Location_circle" value="25.57632" size=8 ></td>
+                    </tr> 
+                    <tr><th>Latitude</th>
+                        <td><input id="Latitude_Location_circle" value="63.286543" size=8 ></td>
+                    </tr> 
+                    <tr><th>Horizontal position uncertainty</th>
+                        <td><select id="Horizontal_position_uncertainty_Location_circle">                    
+                            <option value="000000">Less than 1 m                           
+                            <option value="000001">Less than 2 m                           
+                            <option value="000010">Less than 3.2 m                         
+                            <option value="000011">Less than 4.6 m                         
+                            <option selected value="000100">Less than 6.3 m                         
+                            <option value="000101">Less than 8.4 m                         
+                            <option value="000110">Less than 10.9 m                        
+                            <option value="000111">Less than 13.8 m                        
+                            <option value="001000">Less than 17.4 m                        
+                            <option value="001001">Less than 22 m                          
+                            <option value="001010">Less than 27 m                          
+                            <option value="001011">Less than 33 m                          
+                            <option value="001100">Less than 40 m                          
+                            <option value="001101">Less than 49 m
+                            <option value="010100">Less than 187 m
+                            <option value="011110">Less than 1.18 km
+                            <option value="101000">Less than 7.31 km
+                            <option value="110010">Less than 45.3 km
+                            <option value="111100">Less than 280 km
+                            <option value="111101">Less than 337 km
+                            <option value="111110">Less than 404 km
+                            <option value="111111">Best effort
+                            </select>
+                        </td>
+                      </tr>
+                    </td>
+                  </tr>
+                </tbody>
+                
+                <tbody id="Tag_Location_ellipse">
+                 <tr ><th><b>Location ellipse</b></th>
+                   <td>
+                    <tr><th>Longitude</th>
+                        <td><input id="Longitude_Location_ellipse" value="25.57632" size=8 ></td>
+                    </tr> 
+                    <tr><th>Latitude</th>
+                        <td><input id="Latitude_Location_ellipse" value="63.286543" size=8 ></td>
+                    </tr> 
+
+                    <tr><th>Half of the major axis</th>
+                        <td><select id="Half_of_the_major_axis_Location_ellipse">                    
+	                        <option value="000000">Less than 1 m
+	                        <option value="000001">Less than 2 m
+	                        <option value="000010">Less than 3.2 m
+	                        <option value="000011">Less than 4.6 m
+	                        <option value="000100">Less than 6.4 m
+	                        <option value="000101">Less than 8.4 m
+	                        <option value="000110">Less than 11 m
+	                        <option value="000111">Less than 13 m
+	                        <option value="001000">Less than 17.5 m
+	                        <option selected value="001001">Less than 21.8 m
+	                        <option value="001010">Less than 27 m
+	                        <option value="001011">Less than 33 m
+	                        <option value="001100">Less than 40.5 m
+	                        <option value="001101">Less than 50 m
+	                        <option value="001110">Less than 60 m
+	                        <option value="001111">Less than 73 m
+	                        <option value="010000">Less than 89 m
+	                        <option value="010001">Less than 107 m
+	                        <option value="010010">Less than 129 m
+	                        <option value="010011">Less than 155 m
+	                        <option value="010100">Less than 187 m
+	                        <option value="010101">Less than 225 m
+	                        <option value="010110">Less than 271 m
+	                        <option value="010111">Less than 326 m
+	                        <option value="011000">Less than 392 m
+	                        <option value="011001">Less than 471 m
+	                        <option value="011010">Less than 566 m
+	                        <option value="011011">Less than 680 m
+	                        <option value="011100">Less than 817 m
+	                        <option value="011101">Less than 981 m
+	                        <option value="011110">Less than 1.18 km
+	                        <option value="011111">Less than 1.42 km
+	                        <option value="100000">Less than 1.70 km
+	                        <option value="100001">Less than 2.04 km
+	                        <option value="100010">Less than 2.45 km
+	                        <option value="100011">Less than 2.94 km
+	                        <option value="100100">Less than 3.53 km
+	                        <option value="100101">Less than 4.23 km
+	                        <option value="100110">Less than 5.08 km
+	                        <option value="100111">Less than 6.10 km
+	                        <option value="101000">Less than 7.31 km
+	                        <option value="101001">Less than 8.78 km
+	                        <option value="101010">Less than 10.6 km
+	                        <option value="101011">Less than 12.7 km
+	                        <option value="101100">Less than 15.2 km
+	                        <option value="101101">Less than 18.2 km
+	                        <option value="101110">Less than 21.9 km
+	                        <option value="101111">Less than 26.3 km
+	                        <option value="110000">Less than 31.5 km
+	                        <option value="110001">Less than 37.8 km
+	                        <option value="110010">Less than 45.3 km
+	                        <option value="110011">Less than 54.4 km
+	                        <option value="110100">Less than 65.3 km
+	                        <option value="110101">Less than 78.3 km
+	                        <option value="110110">Less than 93.9 km
+	                        <option value="110111">Less than 113 km
+	                        <option value="111000">Less than 136 km
+	                        <option value="111001">Less than 163 km
+	                        <option value="111010">Less than 195 km
+	                        <option value="111011">Less than 234 km
+	                        <option value="111100">Less than 280 km
+	                        <option value="111101">Less than 337 km
+	                        <option value="111110">Less than 404 km
+	                        <option value="111111">Best effort
+	                        </select>
+                        </td>
+                    </tr>
+
+                    <tr><th>Half of the minor axis</th>
+                        <td><select id="Half_of_the_minor_axis_Location_ellipse">                    
+	                        <option value="000000">Less than 1 m
+	                        <option value="000001">Less than 2 m
+	                        <option value="000010">Less than 3.2 m
+	                        <option value="000011">Less than 4.6 m
+	                        <option value="000100">Less than 6.4 m
+	                        <option value="000101">Less than 8.4 m
+	                        <option value="000110">Less than 11 m
+	                        <option value="000111">Less than 13 m
+	                        <option value="001000">Less than 17.5 m
+	                        <option value="001001">Less than 21.8 m
+	                        <option value="001010">Less than 27 m
+	                        <option value="001011">Less than 33 m
+	                        <option value="001100">Less than 40.5 m
+	                        <option value="001101">Less than 50 m
+	                        <option selected value="001110">Less than 60 m
+	                        <option value="001111">Less than 73 m
+	                        <option value="010000">Less than 89 m
+	                        <option value="010001">Less than 107 m
+	                        <option value="010010">Less than 129 m
+	                        <option value="010011">Less than 155 m
+	                        <option value="010100">Less than 187 m
+	                        <option value="010101">Less than 225 m
+	                        <option value="010110">Less than 271 m
+	                        <option value="010111">Less than 326 m
+	                        <option value="011000">Less than 392 m
+	                        <option value="011001">Less than 471 m
+	                        <option value="011010">Less than 566 m
+	                        <option value="011011">Less than 680 m
+	                        <option value="011100">Less than 817 m
+	                        <option value="011101">Less than 981 m
+	                        <option value="011110">Less than 1.18 km
+	                        <option value="011111">Less than 1.42 km
+	                        <option value="100000">Less than 1.70 km
+	                        <option value="100001">Less than 2.04 km
+	                        <option value="100010">Less than 2.45 km
+	                        <option value="100011">Less than 2.94 km
+	                        <option value="100100">Less than 3.53 km
+	                        <option value="100101">Less than 4.23 km
+	                        <option value="100110">Less than 5.08 km
+	                        <option value="100111">Less than 6.10 km
+	                        <option value="101000">Less than 7.31 km
+	                        <option value="101001">Less than 8.78 km
+	                        <option value="101010">Less than 10.6 km
+	                        <option value="101011">Less than 12.7 km
+	                        <option value="101100">Less than 15.2 km
+	                        <option value="101101">Less than 18.2 km
+	                        <option value="101110">Less than 21.9 km
+	                        <option value="101111">Less than 26.3 km
+	                        <option value="110000">Less than 31.5 km
+	                        <option value="110001">Less than 37.8 km
+	                        <option value="110010">Less than 45.3 km
+	                        <option value="110011">Less than 54.4 km
+	                        <option value="110100">Less than 65.3 km
+	                        <option value="110101">Less than 78.3 km
+	                        <option value="110110">Less than 93.9 km
+	                        <option value="110111">Less than 113 km
+	                        <option value="111000">Less than 136 km
+	                        <option value="111001">Less than 163 km
+	                        <option value="111010">Less than 195 km
+	                        <option value="111011">Less than 234 km
+	                        <option value="111100">Less than 280 km
+	                        <option value="111101">Less than 337 km
+	                        <option value="111110">Less than 404 km
+	                        <option value="111111">Best effort
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><th>Angle</th>
+                        <td><select id="Angle_Location_ellipse">                    
+                            <option selected value="00000000">0°                           
+                            <option value="00000001">1.4°
+                            <option value="00000010">2.8°                         
+                            <option value="00010000">22.5°                        
+                            <option value="00100000">45°                        
+                            <option value="01000000">90°                         
+                            <option value="10000000">180°
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><th>Confidence level</th>
+                        <td><select id="Confidence_level_Location_ellipse">                    
+                            <option selected value="000">50%                           
+                            <option value="001">68%
+                            <option value="010">80%                         
+                            <option value="011">90%                        
+                            <option value="100">95%                        
+                            <option value="101">99%                         
+                            <option value="110">99.9%
+                            <option value="111">Not known
+                            </select>
+                        </td>
+                    </tr>
+                   </td>
+                 </tr>
+                </tbody>
+                
+                <tbody id="Tag_Location_point_with_altitude">
+                 <tr ><th><b>Location point with altitude</b></th>
+                    <td>
+                    <tr><th>Longitude</th>
+                        <td><input id="Longitude_Location_point_with_altitude" value="25.57632" size=8 ></td>
+                    </tr> 
+                    <tr><th>Latitude</th>
+                        <td><input id="Latitude_Location_point_with_altitude" value="63.286543" size=8 ></td>
+                    </tr> 
+                    <tr><th>Location altitude</th>
+                        <td><select id="Altitude_type_Location_point_with_altitude">                     
+	                        <option selected value="0">WGS-84                   
+	                        <option value="1">User defined
+                            </select>	
+                            <select id="Altitude_Location_point_with_altitude">    
+                            <option value="00000000000">Reserved
+                            <option value="00000000001">-200 m                
+                            <option value="00001100101">-100 m
+                            <option value="00010111111">-10 m
+                            <option value="00011001001">0 m
+                            <option value="00011010011">10 m
+                            <option selected value="00100101101">100 m
+                            <option value="00110010001">200 m
+                            <option value="00111110101">300 m
+                            <option value="01001011001">400 m
+                            <option value="01010111101">500 m
+                            <option value="01100100001">600 m
+                            <option value="01110000101">700 m
+                            <option value="01111101001">800 m
+                            <option value="10001001101">900 m
+                            <option value="10010110001">1000 m
+                            <option value="11010100101">2000 m
+                            <option value="11110011011">4025 m
+                            <option value="11110110110">6050 m
+                            <option value="11111010000">8000 m
+                            <option value="11111101011">10020 m
+                            <option value="11111111111">11 525 m or more
+                            </select>
+                        </td>
+                      </tr>                     
+                    </td>                    
+                 </tr>
+                </tbody>
+
+                <tbody id="Tag_Location_circle_with_altitude">
+                 <tr ><th><b>Location circle with altitude</b></th>
+                   <td>
+                    <tr><th>Longitude</th>
+                        <td><input id="Longitude_Location_circle_with_altitude" value="25.57632" size=8 ></td>
+                    </tr> 
+                    <tr><th>Latitude</th>
+                        <td><input id="Latitude_Location_circle_with_altitude" value="63.286543" size=8 ></td>
+                    </tr> 
+                    <tr><th>Horizontal position uncertainty</th>
+                        <td><select id="Horizontal_position_uncertainty_Location_circle_with_altitude">                    
+                            <option value="000000">Less than 1 m                           
+                            <option value="000001">Less than 2 m                           
+                            <option value="000010">Less than 3.2 m                         
+                            <option value="000011">Less than 4.6 m                         
+                            <option selected value="000100">Less than 6.3 m                         
+                            <option value="000101">Less than 8.4 m                         
+                            <option value="000110">Less than 10.9 m                        
+                            <option value="000111">Less than 13.8 m                        
+                            <option value="001000">Less than 17.4 m                        
+                            <option value="001001">Less than 22 m                          
+                            <option value="001010">Less than 27 m                          
+                            <option value="001011">Less than 33 m                          
+                            <option value="001100">Less than 40 m                          
+                            <option value="001101">Less than 49 m
+                            <option value="010100">Less than 187 m
+                            <option value="011110">Less than 1.18 km
+                            <option value="101000">Less than 7.31 km
+                            <option value="110010">Less than 45.3 km
+                            <option value="111100">Less than 280 km
+                            <option value="111101">Less than 337 km
+                            <option value="111110">Less than 404 km
+                            <option value="111111">Best effort
+                            </select>
+                        </td>
+                      </tr>
+                    <tr><th>Location altitude</th>
+                        <td><select id="Altitude_type_Location_circle_with_altitude">                     
+	                        <option selected value="0">WGS-84                   
+	                        <option value="1">User defined
+                            </select>	
+                            <select id="Altitude_Location_circle_with_altitude">    
+                            <option value="00000000000">Reserved
+                            <option value="00000000001">-200 m                
+                            <option value="00001100101">-100 m
+                            <option value="00010111111">-10 m
+                            <option value="00011001001">0 m
+                            <option value="00011010011">10 m
+                            <option selected value="00100101101">100 m
+                            <option value="00110010001">200 m
+                            <option value="00111110101">300 m
+                            <option value="01001011001">400 m
+                            <option value="01010111101">500 m
+                            <option value="01100100001">600 m
+                            <option value="01110000101">700 m
+                            <option value="01111101001">800 m
+                            <option value="10001001101">900 m
+                            <option value="10010110001">1000 m
+                            <option value="11010100101">2000 m
+                            <option value="11110011011">4025 m
+                            <option value="11110110110">6050 m
+                            <option value="11111010000">8000 m
+                            <option value="11111101011">10020 m
+                            <option value="11111111111">11 525 m or more
+                            </select>
+                        </td>
+                      </tr>                     
+                    </td>
+                 </tr>
+                </tbody>
+
+                <tbody id="Tag_Location_ellipse_with_altitude">
+                 <tr ><th><b>Location ellipse with altitude</b></th>
+                  <td>
+                    <tr><th>Longitude</th>
+                        <td><input id="Longitude_Location_ellipse_with_altitude" value="25.57632" size=8 ></td>
+                    </tr> 
+                    <tr><th>Latitude</th>
+                        <td><input id="Latitude_Location_ellipse_with_altitude" value="63.286543" size=8 ></td>
+                    </tr> 
+
+                    <tr><th>Half of the major axis</th>
+                        <td><select id="Half_of_the_major_axis_Location_ellipse_with_altitude">                    
+	                        <option value="000000">Less than 1 m
+	                        <option value="000001">Less than 2 m
+	                        <option value="000010">Less than 3.2 m
+	                        <option value="000011">Less than 4.6 m
+	                        <option value="000100">Less than 6.4 m
+	                        <option value="000101">Less than 8.4 m
+	                        <option value="000110">Less than 11 m
+	                        <option value="000111">Less than 13 m
+	                        <option value="001000">Less than 17.5 m
+	                        <option selected value="001001">Less than 21.8 m
+	                        <option value="001010">Less than 27 m
+	                        <option value="001011">Less than 33 m
+	                        <option value="001100">Less than 40.5 m
+	                        <option value="001101">Less than 50 m
+	                        <option value="001110">Less than 60 m
+	                        <option value="001111">Less than 73 m
+	                        <option value="010000">Less than 89 m
+	                        <option value="010001">Less than 107 m
+	                        <option value="010010">Less than 129 m
+	                        <option value="010011">Less than 155 m
+	                        <option value="010100">Less than 187 m
+	                        <option value="010101">Less than 225 m
+	                        <option value="010110">Less than 271 m
+	                        <option value="010111">Less than 326 m
+	                        <option value="011000">Less than 392 m
+	                        <option value="011001">Less than 471 m
+	                        <option value="011010">Less than 566 m
+	                        <option value="011011">Less than 680 m
+	                        <option value="011100">Less than 817 m
+	                        <option value="011101">Less than 981 m
+	                        <option value="011110">Less than 1.18 km
+	                        <option value="011111">Less than 1.42 km
+	                        <option value="100000">Less than 1.70 km
+	                        <option value="100001">Less than 2.04 km
+	                        <option value="100010">Less than 2.45 km
+	                        <option value="100011">Less than 2.94 km
+	                        <option value="100100">Less than 3.53 km
+	                        <option value="100101">Less than 4.23 km
+	                        <option value="100110">Less than 5.08 km
+	                        <option value="100111">Less than 6.10 km
+	                        <option value="101000">Less than 7.31 km
+	                        <option value="101001">Less than 8.78 km
+	                        <option value="101010">Less than 10.6 km
+	                        <option value="101011">Less than 12.7 km
+	                        <option value="101100">Less than 15.2 km
+	                        <option value="101101">Less than 18.2 km
+	                        <option value="101110">Less than 21.9 km
+	                        <option value="101111">Less than 26.3 km
+	                        <option value="110000">Less than 31.5 km
+	                        <option value="110001">Less than 37.8 km
+	                        <option value="110010">Less than 45.3 km
+	                        <option value="110011">Less than 54.4 km
+	                        <option value="110100">Less than 65.3 km
+	                        <option value="110101">Less than 78.3 km
+	                        <option value="110110">Less than 93.9 km
+	                        <option value="110111">Less than 113 km
+	                        <option value="111000">Less than 136 km
+	                        <option value="111001">Less than 163 km
+	                        <option value="111010">Less than 195 km
+	                        <option value="111011">Less than 234 km
+	                        <option value="111100">Less than 280 km
+	                        <option value="111101">Less than 337 km
+	                        <option value="111110">Less than 404 km
+	                        <option value="111111">Best effort
+	                        </select>
+                        </td>
+                    </tr>
+
+                    <tr><th>Half of the minor axis</th>
+                        <td><select id="Half_of_the_minor_axis_Location_ellipse_with_altitude">                    
+	                        <option value="000000">Less than 1 m
+	                        <option value="000001">Less than 2 m
+	                        <option value="000010">Less than 3.2 m
+	                        <option value="000011">Less than 4.6 m
+	                        <option value="000100">Less than 6.4 m
+	                        <option value="000101">Less than 8.4 m
+	                        <option value="000110">Less than 11 m
+	                        <option value="000111">Less than 13 m
+	                        <option value="001000">Less than 17.5 m
+	                        <option value="001001">Less than 21.8 m
+	                        <option value="001010">Less than 27 m
+	                        <option value="001011">Less than 33 m
+	                        <option value="001100">Less than 40.5 m
+	                        <option value="001101">Less than 50 m
+	                        <option selected value="001110">Less than 60 m
+	                        <option value="001111">Less than 73 m
+	                        <option value="010000">Less than 89 m
+	                        <option value="010001">Less than 107 m
+	                        <option value="010010">Less than 129 m
+	                        <option value="010011">Less than 155 m
+	                        <option value="010100">Less than 187 m
+	                        <option value="010101">Less than 225 m
+	                        <option value="010110">Less than 271 m
+	                        <option value="010111">Less than 326 m
+	                        <option value="011000">Less than 392 m
+	                        <option value="011001">Less than 471 m
+	                        <option value="011010">Less than 566 m
+	                        <option value="011011">Less than 680 m
+	                        <option value="011100">Less than 817 m
+	                        <option value="011101">Less than 981 m
+	                        <option value="011110">Less than 1.18 km
+	                        <option value="011111">Less than 1.42 km
+	                        <option value="100000">Less than 1.70 km
+	                        <option value="100001">Less than 2.04 km
+	                        <option value="100010">Less than 2.45 km
+	                        <option value="100011">Less than 2.94 km
+	                        <option value="100100">Less than 3.53 km
+	                        <option value="100101">Less than 4.23 km
+	                        <option value="100110">Less than 5.08 km
+	                        <option value="100111">Less than 6.10 km
+	                        <option value="101000">Less than 7.31 km
+	                        <option value="101001">Less than 8.78 km
+	                        <option value="101010">Less than 10.6 km
+	                        <option value="101011">Less than 12.7 km
+	                        <option value="101100">Less than 15.2 km
+	                        <option value="101101">Less than 18.2 km
+	                        <option value="101110">Less than 21.9 km
+	                        <option value="101111">Less than 26.3 km
+	                        <option value="110000">Less than 31.5 km
+	                        <option value="110001">Less than 37.8 km
+	                        <option value="110010">Less than 45.3 km
+	                        <option value="110011">Less than 54.4 km
+	                        <option value="110100">Less than 65.3 km
+	                        <option value="110101">Less than 78.3 km
+	                        <option value="110110">Less than 93.9 km
+	                        <option value="110111">Less than 113 km
+	                        <option value="111000">Less than 136 km
+	                        <option value="111001">Less than 163 km
+	                        <option value="111010">Less than 195 km
+	                        <option value="111011">Less than 234 km
+	                        <option value="111100">Less than 280 km
+	                        <option value="111101">Less than 337 km
+	                        <option value="111110">Less than 404 km
+	                        <option value="111111">Best effort
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><th>Angle</th>
+                        <td><select id="Angle_Location_ellipse_with_altitude">                    
+                            <option selected value="00000000">0°                           
+                            <option value="00000001">1.4°
+                            <option value="00000010">2.8°                         
+                            <option value="00010000">22.5°                        
+                            <option value="00100000">45°                        
+                            <option value="01000000">90°                         
+                            <option value="10000000">180°
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><th>Location altitude</th>
+                        <td><select id="Altitude_type_Location_ellipse_with_altitude">                     
+	                        <option selected value="0">WGS-84                   
+	                        <option value="1">User defined
+                            </select>	
+                            <select id="Altitude_Location_ellipse_with_altitude">    
+                            <option value="00000000000">Reserved
+                            <option value="00000000001">-200 m                
+                            <option value="00001100101">-100 m
+                            <option value="00010111111">-10 m
+                            <option value="00011001001">0 m
+                            <option value="00011010011">10 m
+                            <option selected value="00100101101">100 m
+                            <option value="00110010001">200 m
+                            <option value="00111110101">300 m
+                            <option value="01001011001">400 m
+                            <option value="01010111101">500 m
+                            <option value="01100100001">600 m
+                            <option value="01110000101">700 m
+                            <option value="01111101001">800 m
+                            <option value="10001001101">900 m
+                            <option value="10010110001">1000 m
+                            <option value="11010100101">2000 m
+                            <option value="11110011011">4025 m
+                            <option value="11110110110">6050 m
+                            <option value="11111010000">8000 m
+                            <option value="11111101011">10020 m
+                            <option value="11111111111">11 525 m or more
+                            </select>
+                        </td>
+                      </tr>
+                    <tr><th>Confidence level</th>
+                        <td><select id="Confidence_level_Location_ellipse_with_altitude">                    
+                            <option selected value="000">50%                           
+                            <option value="001">68%
+                            <option value="010">80%                         
+                            <option value="011">90%                        
+                            <option value="100">95%                        
+                            <option value="101">99%                         
+                            <option value="110">99.9%
+                            <option value="111">Not known
+                            </select>
+                        </td>
+                    </tr>
+                    </td>                     
+                 </tr>
+                </tbody>
+
+                <tbody id="Tag_Location_circle_with_altitude_and_uncertainty">
+                 <tr ><th><b>Location circle with altitude and uncertainty</b></th>
+                   <td>
+                    <tr><th>Longitude</th>
+                        <td><input id="Longitude_Location_circle_with_altitude_and_uncertainty" value="25.57632" size=8 ></td>
+                    </tr> 
+                    <tr><th>Latitude</th>
+                        <td><input id="Latitude_Location_circle_with_altitude_and_uncertainty" value="63.286543" size=8 ></td>
+                    </tr> 
+                    <tr><th>Horizontal position uncertainty</th>
+                        <td><select id="Horizontal_position_uncertainty_Location_circle_with_altitude_and_uncertainty">                    
+                            <option value="000000">Less than 1 m                           
+                            <option value="000001">Less than 2 m                           
+                            <option value="000010">Less than 3.2 m                         
+                            <option value="000011">Less than 4.6 m                         
+                            <option selected value="000100">Less than 6.3 m                         
+                            <option value="000101">Less than 8.4 m                         
+                            <option value="000110">Less than 10.9 m                        
+                            <option value="000111">Less than 13.8 m                        
+                            <option value="001000">Less than 17.4 m                        
+                            <option value="001001">Less than 22 m                          
+                            <option value="001010">Less than 27 m                          
+                            <option value="001011">Less than 33 m                          
+                            <option value="001100">Less than 40 m                          
+                            <option value="001101">Less than 49 m
+                            <option value="010100">Less than 187 m
+                            <option value="011110">Less than 1.18 km
+                            <option value="101000">Less than 7.31 km
+                            <option value="110010">Less than 45.3 km
+                            <option value="111100">Less than 280 km
+                            <option value="111101">Less than 337 km
+                            <option value="111110">Less than 404 km
+                            <option value="111111">Best effort
+                            </select>
+                        </td>
+                      </tr>
+                    <tr><th>Location altitude</th>
+                        <td><select id="Altitude_type_Location_circle_with_altitude_and_uncertainty">                     
+	                        <option selected value="0">WGS-84                   
+	                        <option value="1">User defined
+                            </select>	
+                            <select id="Altitude_Location_circle_with_altitude_and_uncertainty">    
+                            <option value="00000000000">Reserved
+                            <option value="00000000001">-200 m                
+                            <option value="00001100101">-100 m
+                            <option value="00010111111">-10 m
+                            <option value="00011001001">0 m
+                            <option value="00011010011">10 m
+                            <option selected value="00100101101">100 m
+                            <option value="00110010001">200 m
+                            <option value="00111110101">300 m
+                            <option value="01001011001">400 m
+                            <option value="01010111101">500 m
+                            <option value="01100100001">600 m
+                            <option value="01110000101">700 m
+                            <option value="01111101001">800 m
+                            <option value="10001001101">900 m
+                            <option value="10010110001">1000 m
+                            <option value="11010100101">2000 m
+                            <option value="11110011011">4025 m
+                            <option value="11110110110">6050 m
+                            <option value="11111010000">8000 m
+                            <option value="11111101011">10020 m
+                            <option value="11111111111">11 525 m or more
+                            </select>
+                        </td>
+                    </tr>                     
+                    <tr><th>Location altitude uncertainty</th>
+                        <td><select id="Location_altitude_uncertainty_Location_circle_with_altitude_and_uncertainty">                    
+                            <option value="000">Less than 1 m                           
+                            <option value="001">Less than 2 m    
+                            <option value="010">Less than 5 m                          
+                            <option selected value="011">Less than 15 m    
+                            <option value="100">Less than 50 m    
+                            <option value="101">Less than 150 m    
+                            <option value="110">Less than 300 m    
+                            <option value="111">Best effort or not supported
+                            </select>
+                        </td>
+                    </tr>
+                    </td>
+                 </tr>
+                </tbody>
+
+                <tbody id="Tag_Location_ellipse_with_altitude_and_uncertainty">
+                 <tr ><th><b>Location ellipse with altitude and uncertainty</b></th>
+                  <td>
+                    <tr><th>Longitude</th>
+                        <td><input id="Longitude_Location_ellipse_with_altitude_and_uncertainty" value="25.57632" size=8 ></td>
+                    </tr> 
+                    <tr><th>Latitude</th>
+                        <td><input id="Latitude_Location_ellipse_with_altitude_and_uncertainty" value="63.286543" size=8 ></td>
+                    </tr> 
+
+                    <tr><th>Half of the major axis</th>
+                        <td><select id="Half_of_the_major_axis_Location_ellipse_with_altitude_and_uncertainty">                    
+	                        <option value="000000">Less than 1 m
+	                        <option value="000001">Less than 2 m
+	                        <option value="000010">Less than 3.2 m
+	                        <option value="000011">Less than 4.6 m
+	                        <option value="000100">Less than 6.4 m
+	                        <option value="000101">Less than 8.4 m
+	                        <option value="000110">Less than 11 m
+	                        <option value="000111">Less than 13 m
+	                        <option value="001000">Less than 17.5 m
+	                        <option selected value="001001">Less than 21.8 m
+	                        <option value="001010">Less than 27 m
+	                        <option value="001011">Less than 33 m
+	                        <option value="001100">Less than 40.5 m
+	                        <option value="001101">Less than 50 m
+	                        <option value="001110">Less than 60 m
+	                        <option value="001111">Less than 73 m
+	                        <option value="010000">Less than 89 m
+	                        <option value="010001">Less than 107 m
+	                        <option value="010010">Less than 129 m
+	                        <option value="010011">Less than 155 m
+	                        <option value="010100">Less than 187 m
+	                        <option value="010101">Less than 225 m
+	                        <option value="010110">Less than 271 m
+	                        <option value="010111">Less than 326 m
+	                        <option value="011000">Less than 392 m
+	                        <option value="011001">Less than 471 m
+	                        <option value="011010">Less than 566 m
+	                        <option value="011011">Less than 680 m
+	                        <option value="011100">Less than 817 m
+	                        <option value="011101">Less than 981 m
+	                        <option value="011110">Less than 1.18 km
+	                        <option value="011111">Less than 1.42 km
+	                        <option value="100000">Less than 1.70 km
+	                        <option value="100001">Less than 2.04 km
+	                        <option value="100010">Less than 2.45 km
+	                        <option value="100011">Less than 2.94 km
+	                        <option value="100100">Less than 3.53 km
+	                        <option value="100101">Less than 4.23 km
+	                        <option value="100110">Less than 5.08 km
+	                        <option value="100111">Less than 6.10 km
+	                        <option value="101000">Less than 7.31 km
+	                        <option value="101001">Less than 8.78 km
+	                        <option value="101010">Less than 10.6 km
+	                        <option value="101011">Less than 12.7 km
+	                        <option value="101100">Less than 15.2 km
+	                        <option value="101101">Less than 18.2 km
+	                        <option value="101110">Less than 21.9 km
+	                        <option value="101111">Less than 26.3 km
+	                        <option value="110000">Less than 31.5 km
+	                        <option value="110001">Less than 37.8 km
+	                        <option value="110010">Less than 45.3 km
+	                        <option value="110011">Less than 54.4 km
+	                        <option value="110100">Less than 65.3 km
+	                        <option value="110101">Less than 78.3 km
+	                        <option value="110110">Less than 93.9 km
+	                        <option value="110111">Less than 113 km
+	                        <option value="111000">Less than 136 km
+	                        <option value="111001">Less than 163 km
+	                        <option value="111010">Less than 195 km
+	                        <option value="111011">Less than 234 km
+	                        <option value="111100">Less than 280 km
+	                        <option value="111101">Less than 337 km
+	                        <option value="111110">Less than 404 km
+	                        <option value="111111">Best effort
+	                        </select>
+                        </td>
+                    </tr>
+
+                    <tr><th>Half of the minor axis</th>
+                        <td><select id="Half_of_the_minor_axis_Location_ellipse_with_altitude_and_uncertainty">                    
+	                        <option value="000000">Less than 1 m
+	                        <option value="000001">Less than 2 m
+	                        <option value="000010">Less than 3.2 m
+	                        <option value="000011">Less than 4.6 m
+	                        <option value="000100">Less than 6.4 m
+	                        <option value="000101">Less than 8.4 m
+	                        <option value="000110">Less than 11 m
+	                        <option value="000111">Less than 13 m
+	                        <option value="001000">Less than 17.5 m
+	                        <option value="001001">Less than 21.8 m
+	                        <option value="001010">Less than 27 m
+	                        <option value="001011">Less than 33 m
+	                        <option value="001100">Less than 40.5 m
+	                        <option value="001101">Less than 50 m
+	                        <option selected value="001110">Less than 60 m
+	                        <option value="001111">Less than 73 m
+	                        <option value="010000">Less than 89 m
+	                        <option value="010001">Less than 107 m
+	                        <option value="010010">Less than 129 m
+	                        <option value="010011">Less than 155 m
+	                        <option value="010100">Less than 187 m
+	                        <option value="010101">Less than 225 m
+	                        <option value="010110">Less than 271 m
+	                        <option value="010111">Less than 326 m
+	                        <option value="011000">Less than 392 m
+	                        <option value="011001">Less than 471 m
+	                        <option value="011010">Less than 566 m
+	                        <option value="011011">Less than 680 m
+	                        <option value="011100">Less than 817 m
+	                        <option value="011101">Less than 981 m
+	                        <option value="011110">Less than 1.18 km
+	                        <option value="011111">Less than 1.42 km
+	                        <option value="100000">Less than 1.70 km
+	                        <option value="100001">Less than 2.04 km
+	                        <option value="100010">Less than 2.45 km
+	                        <option value="100011">Less than 2.94 km
+	                        <option value="100100">Less than 3.53 km
+	                        <option value="100101">Less than 4.23 km
+	                        <option value="100110">Less than 5.08 km
+	                        <option value="100111">Less than 6.10 km
+	                        <option value="101000">Less than 7.31 km
+	                        <option value="101001">Less than 8.78 km
+	                        <option value="101010">Less than 10.6 km
+	                        <option value="101011">Less than 12.7 km
+	                        <option value="101100">Less than 15.2 km
+	                        <option value="101101">Less than 18.2 km
+	                        <option value="101110">Less than 21.9 km
+	                        <option value="101111">Less than 26.3 km
+	                        <option value="110000">Less than 31.5 km
+	                        <option value="110001">Less than 37.8 km
+	                        <option value="110010">Less than 45.3 km
+	                        <option value="110011">Less than 54.4 km
+	                        <option value="110100">Less than 65.3 km
+	                        <option value="110101">Less than 78.3 km
+	                        <option value="110110">Less than 93.9 km
+	                        <option value="110111">Less than 113 km
+	                        <option value="111000">Less than 136 km
+	                        <option value="111001">Less than 163 km
+	                        <option value="111010">Less than 195 km
+	                        <option value="111011">Less than 234 km
+	                        <option value="111100">Less than 280 km
+	                        <option value="111101">Less than 337 km
+	                        <option value="111110">Less than 404 km
+	                        <option value="111111">Best effort
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><th>Angle</th>
+                        <td><select id="Angle_Location_ellipse_with_altitude_and_uncertainty">                    
+                            <option selected value="00000000">0°                           
+                            <option value="00000001">1.4°
+                            <option value="00000010">2.8°                         
+                            <option value="00010000">22.5°                        
+                            <option value="00100000">45°                        
+                            <option value="01000000">90°                         
+                            <option value="10000000">180°
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><th>Location altitude</th>
+                        <td><select id="Altitude_type_Location_ellipse_with_altitude_and_uncertainty">                     
+	                        <option selected value="0">WGS-84                   
+	                        <option value="1">User defined
+                            </select>	
+                            <select id="Altitude_Location_ellipse_with_altitude_and_uncertainty">    
+                            <option value="00000000000">Reserved
+                            <option value="00000000001">-200 m                
+                            <option value="00001100101">-100 m
+                            <option value="00010111111">-10 m
+                            <option value="00011001001">0 m
+                            <option value="00011010011">10 m
+                            <option selected value="00100101101">100 m
+                            <option value="00110010001">200 m
+                            <option value="00111110101">300 m
+                            <option value="01001011001">400 m
+                            <option value="01010111101">500 m
+                            <option value="01100100001">600 m
+                            <option value="01110000101">700 m
+                            <option value="01111101001">800 m
+                            <option value="10001001101">900 m
+                            <option value="10010110001">1000 m
+                            <option value="11010100101">2000 m
+                            <option value="11110011011">4025 m
+                            <option value="11110110110">6050 m
+                            <option value="11111010000">8000 m
+                            <option value="11111101011">10020 m
+                            <option value="11111111111">11 525 m or more
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><th>Location altitude uncertainty</th>
+                        <td><select id="Location_altitude_uncertainty_Location_ellipse_with_altitude_and_uncertainty">                    
+                            <option value="000">Less than 1 m                           
+                            <option value="001">Less than 2 m    
+                            <option value="010">Less than 5 m                          
+                            <option selected value="011">Less than 15 m    
+                            <option value="100">Less than 50 m    
+                            <option value="101">Less than 150 m    
+                            <option value="110">Less than 300 m    
+                            <option value="111">Best effort or not supported
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><th>Confidence level</th>
+                        <td><select id="Confidence_level_Location_ellipse_with_altitude_and_uncertainty">                    
+                            <option selected value="000">50%                           
+                            <option value="001">68%
+                            <option value="010">80%                         
+                            <option value="011">90%                        
+                            <option value="100">95%                        
+                            <option value="101">99%                         
+                            <option value="110">99.9%
+                            <option value="111">Not known
+                            </select>
+                        </td>
+                    </tr>
+                    </td>                     
+                 </tr>
+                </tbody>
+
+                <tbody id="Tag_Location_arc">
+                 <tr ><th><b>Location arc</b></th>
+                  <td>
+                    <tr><th>Longitude</th>
+                        <td><input id="Longitude_Location_arc" value="25.57632" size=8 ></td>
+                    </tr> 
+                    <tr><th>Latitude</th>
+                        <td><input id="Latitude_Location_arc" value="63.286543" size=8 ></td>
+                    </tr> 
+
+                    <tr><th>Inner radius</th>
+                        <td><select id="Inner_radius_Location_arc">                    
+                            <option value="0000000000000000">0 m
+                            <option value="0000000000000001">2 m
+                            <option selected value="0000000000000010">4 m                         
+                            <option value="1111111111111111">13 1072 m
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><th>Outer radius</th>
+                        <td><select id="Outer_radius_Location_arc">                    
+                            <option value="0000000000000000">0 m
+                            <option selected value="0000000000000001">2 m
+                            <option value="0000000000000010">4 m                         
+                            <option value="1111111111111111">13 1072 m
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><th>Start angle</th>
+                        <td><select id="Start_angle_Location_arc">                    
+                            <option value="00000000">0°                           
+                            <option value="00000001">1.4°
+                            <option value="00000010">2.8°                         
+                            <option value="00010000">22.5°                        
+                            <option selected value="00100000">45°                        
+                            <option value="01000000">90°                         
+                            <option value="10000000">180°
+                            <option value="11000000">270°
+                            <option value="11111111">358.6°
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><th>Stop angle</th>
+                        <td><select id="Stop_angle_Location_arc">                    
+                            <option selected value="00000000">0°                           
+                            <option value="00000001">1.4°
+                            <option value="00000010">2.8°                         
+                            <option value="00010000">22.5°                        
+                            <option value="00100000">45°                        
+                            <option value="01000000">90°    
+                            <option value="10000000">180°                     
+                            <option value="11000000">270°
+                            <option value="11111111">358.6°
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><th>Confidence level</th>
+                        <td><select id="Confidence_level_Location_arc">                    
+                            <option selected value="000">50%                           
+                            <option value="001">68%
+                            <option value="010">80%                         
+                            <option value="011">90%                        
+                            <option value="100">95%                        
+                            <option value="101">99%                         
+                            <option value="110">99.9%
+                            <option value="111">Not known
+                            </select>
+                        </td>
+                    </tr>
+                  </td>                     
+                 </tr>
+                </tbody>
+
+                <tbody id="Tag_Location_point_and_position_error">
+                 <tr ><th><b>Location point and position error</b></th>
+                  <td>
+                    <tr><th>Longitude</th>
+                        <td><input id="Longitude_Location_point_and_position_error" value="25.57632" size=8 ></td>
+                    </tr> 
+                    <tr><th>Latitude</th>
+                        <td><input id="Latitude_Location_point_and_position_error" value="63.286543" size=8 ></td>
+                    </tr> 
+                    <tr><th>Position error</th>
+                        <td><select id="Position_error_Location_point_and_position_error">                    
+                            <option value="000">Less than 2 m
+                            <option selected value="001">Less than 20 m
+                            <option value="010">Less than 200 m
+                            <option value="011">Less than 2 km
+                            <option value="100">Less than 20 km
+                            <option value="101">Less than or equal to 200 m
+                            <option value="110">More than 200 km
+                            <option value="111">Position error not known
+                            </select>
+                        </td>
+                   </tr>
+                  </td>                     
+                 </tr>
+                </tbody>
+
+                <tbody id="Tag_Location_shape_extension">
+                 <tr ><th><b>Location shape extension</b></th>
+                 </tr>
+                </tbody>
+            </table>
+            <table>
+                <col width="160"/>
+                <tr><th>Velocity data</th>
+                    <td><select id="Velocity_type" onchange="OnChange_Velocity_type(this.form)">                               
+                        <option value="000">No velocity information
+                        <option value="001">Horizontal velocity
+                        <option value="010">Horizontal velocity with uncertainty
+                        <option value="011">Horizontal velocity and vertical velocity
+                        <option value="100">Horizontal velocity and vertical velocity with uncertainty
+                        <option value="101">Horizontal velocity with direction of travel extended
+                        <option value="110">Horizontal velocity with direction of travel extended and uncertainty
+                        <option selected value="111">Horizontal velocity and vertical velocity with direction of travel extended and uncertainty
+                        </select>
+                    </td>                    
+                </tr> 
+
+                <tbody id="Tag_Horizontal_velocity">
+                 <tr ><th><b>Horizontal velocity</b></th>
+                    <td>
+                    <tr><th>Horizontal velocity</th>
+                        <td><select id="Horizontal_velocity_Horizontal_velocity">
+	                        <option value="0000000">0 km/h
+	                        <option value="0000001">1 km/h
+	                        <option value="0001010">10 km/h
+	                        <option value="0010100">20 km/h
+	                        <option value="0011110">30.2 km/h
+	                        <option value="0100110">40.6 km/h
+	                        <option value="0101100">50.8 km/h
+	                        <option value="0111000">79.5 km/h
+	                        <option value="0111110">99.5 km/h
+	                        <option value="1000011">120 km/h
+	                        <option value="1010001">202 km/h
+	                        <option value="1011100">305 km/h
+	                        <option selected value="1101001">495 km/h
+	                        <option value="1110010">692 km/h
+	                        <option value="1111100">1005 km/h
+	                        <option value="1111101">1043 km/h
+	                        <option value="1111110">More than 1043 km/h
+	                        <option value="1111111">Not known
+	                        </select>
+                        </td>
+                    </tr> 	
+                    </td>
+                 </tr>
+                </tbody>
+
+                <tbody id="Tag_Horizontal_velocity_with_uncertainty">
+                 <tr ><th><b>Horizontal velocity with uncertainty</b></th>
+                    <td>
+                    <tr><th>Horizontal velocity</th>
+                        <td><select id="Horizontal_velocity_Horizontal_velocity_with_uncertainty">
+	                        <option value="0000000">0 km/h
+	                        <option value="0000001">1 km/h
+	                        <option value="0001010">10 km/h
+	                        <option value="0010100">20 km/h
+	                        <option value="0011110">30.2 km/h
+	                        <option value="0100110">40.6 km/h
+	                        <option value="0101100">50.8 km/h
+	                        <option value="0111000">79.5 km/h
+	                        <option value="0111110">99.5 km/h
+	                        <option value="1000011">120 km/h
+	                        <option value="1010001">202 km/h
+	                        <option value="1011100">305 km/h
+	                        <option selected value="1101001">495 km/h
+	                        <option value="1110010">692 km/h
+	                        <option value="1111100">1005 km/h
+	                        <option value="1111101">1043 km/h
+	                        <option value="1111110">More than 1043 km/h
+	                        <option value="1111111">Not known
+	                        </select>
+                        </td>
+                    </tr>                    
+                    <tr><th>Horizontal velocity uncertainty</th>
+                        <td><select id="Horizontal_velocity_uncertainty_Horizontal_velocity_with_uncertainty">                    
+                            <option value="000">Less than 1.5 km/h                           
+                            <option value="001">Less than 3 km/h                       
+                            <option value="010">Less than 6 km/h                       
+                            <option value="011">Less than 12 km/h                       
+                            <option value="100">Less than 24 km/h                       
+                            <option selected value="101">Less than 48 km/h                       
+                            <option value="110">Less than 96 km/h                       
+                            <option value="111">Reserved                       
+                            </select>
+                        </td>
+                    </tr>              
+                     	
+                    </td>
+                 </tr>
+                </tbody>
+
+                <tbody id="Tag_Horizontal_velocity_and_vertical_velocity">
+                 <tr ><th><b>Horizontal velocity and vertical velocity</b></th>
+                    <td>
+                    <tr><th>Horizontal velocity</th>
+                        <td><select id="Horizontal_velocity_Horizontal_velocity_and_vertical_velocity">
+	                        <option value="0000000">0 km/h
+	                        <option value="0000001">1 km/h
+	                        <option value="0001010">10 km/h
+	                        <option value="0010100">20 km/h
+	                        <option value="0011110">30.2 km/h
+	                        <option value="0100110">40.6 km/h
+	                        <option value="0101100">50.8 km/h
+	                        <option value="0111000">79.5 km/h
+	                        <option value="0111110">99.5 km/h
+	                        <option value="1000011">120 km/h
+	                        <option value="1010001">202 km/h
+	                        <option value="1011100">305 km/h
+	                        <option selected value="1101001">495 km/h
+	                        <option value="1110010">692 km/h
+	                        <option value="1111100">1005 km/h
+	                        <option value="1111101">1043 km/h
+	                        <option value="1111110">More than 1043 km/h
+	                        <option value="1111111">Not known
+	                        </select>
+                        </td>
+                    </tr> 	
+                    <tr><th>Vertical velocity</th>
+                        <td><select id="Vertical_velocity_Dir_Horizontal_velocity_and_vertical_velocity">                     
+	                        <option value="0">Velocity upwards                   
+	                        <option selected value="1">Velocity downwards
+                            </select>
+                            <select id="Vertical_velocity_Horizontal_velocity_and_vertical_velocity">
+	                        <option value="0000000">0 km/h
+	                        <option value="0000001">1 km/h
+	                        <option value="0001010">10 km/h
+	                        <option selected value="0010100">20 km/h
+	                        <option value="0011110">30.2 km/h
+	                        <option value="0100110">40.6 km/h
+	                        <option value="0101100">50.8 km/h
+	                        <option value="0111000">79.5 km/h
+	                        <option value="0111110">99.5 km/h
+	                        <option value="1000011">120 km/h
+	                        <option value="1010001">202 km/h
+	                        <option value="1011100">305 km/h
+	                        <option value="1101001">495 km/h
+	                        <option value="1110010">692 km/h
+	                        <option value="1111100">1005 km/h
+	                        <option value="1111101">1043 km/h
+	                        <option value="1111110">More than 1043 km/h
+	                        <option value="1111111">Not known
+	                        </select>
+                        </td>
+                    </tr>
+
+                    </td>
+                 </tr>
+                </tbody>
+
+                <tbody id="Tag_Horizontal_velocity_and_vertical_velocity_with_uncertainty">
+                 <tr ><th><b>Horizontal velocity and vertical velocity with uncertainty</b></th>
+                    <td>
+                    <tr><th>Horizontal velocity</th>
+                        <td><select id="Horizontal_velocity_Horizontal_velocity_and_vertical_velocity_with_uncertainty">
+	                        <option value="0000000">0 km/h
+	                        <option value="0000001">1 km/h
+	                        <option value="0001010">10 km/h
+	                        <option value="0010100">20 km/h
+	                        <option value="0011110">30.2 km/h
+	                        <option value="0100110">40.6 km/h
+	                        <option value="0101100">50.8 km/h
+	                        <option value="0111000">79.5 km/h
+	                        <option value="0111110">99.5 km/h
+	                        <option value="1000011">120 km/h
+	                        <option value="1010001">202 km/h
+	                        <option value="1011100">305 km/h
+	                        <option selected value="1101001">495 km/h
+	                        <option value="1110010">692 km/h
+	                        <option value="1111100">1005 km/h
+	                        <option value="1111101">1043 km/h
+	                        <option value="1111110">More than 1043 km/h
+	                        <option value="1111111">Not known
+	                        </select>
+                        </td>
+                    </tr> 	
+                    <tr><th>Horizontal velocity uncertainty</th>
+                        <td><select id="Horizontal_velocity_uncertainty_Horizontal_velocity_and_vertical_velocity_with_uncertainty">                    
+                            <option value="000">Less than 1.5 km/h                           
+                            <option value="001">Less than 3 km/h                       
+                            <option selected value="010">Less than 6 km/h                       
+                            <option value="011">Less than 12 km/h                       
+                            <option value="100">Less than 24 km/h                       
+                            <option value="101">Less than 48 km/h                       
+                            <option value="110">Less than 96 km/h                       
+                            <option value="111">Reserved                       
+                            </select>
+                        </td>
+                    </tr>              
+                    <tr><th>Vertical velocity</th>
+                        <td><select id="Vertical_velocity_Dir_Horizontal_velocity_and_vertical_velocity_with_uncertainty">                     
+	                        <option value="0">Velocity upwards                   
+	                        <option selected value="1">Velocity downwards
+                            </select>
+                            <select id="Vertical_velocity_Horizontal_velocity_and_vertical_velocity_with_uncertainty">
+	                        <option value="0000000">0 km/h
+	                        <option value="0000001">1 km/h
+	                        <option value="0001010">10 km/h
+	                        <option selected value="0010100">20 km/h
+	                        <option value="0011110">30.2 km/h
+	                        <option value="0100110">40.6 km/h
+	                        <option value="0101100">50.8 km/h
+	                        <option value="0111000">79.5 km/h
+	                        <option value="0111110">99.5 km/h
+	                        <option value="1000011">120 km/h
+	                        <option value="1010001">202 km/h
+	                        <option value="1011100">305 km/h
+	                        <option value="1101001">495 km/h
+	                        <option value="1110010">692 km/h
+	                        <option value="1111100">1005 km/h
+	                        <option value="1111101">1043 km/h
+	                        <option value="1111110">More than 1043 km/h
+	                        <option value="1111111">Not known
+	                        </select>
+                        </td>
+                    </tr>
+                    <tr><th>Vertical velocity uncertainty</th>
+                        <td><select id="Vertical_velocity_uncertainty_Horizontal_velocity_and_vertical_velocity_with_uncertainty">                    
+                            <option value="000">Less than 1.5 km/h                           
+                            <option value="001">Less than 3 km/h                       
+                            <option value="010">Less than 6 km/h                       
+                            <option selected value="011">Less than 12 km/h                       
+                            <option value="100">Less than 24 km/h                       
+                            <option value="101">Less than 48 km/h                       
+                            <option value="110">Less than 96 km/h                       
+                            <option value="111">Reserved                       
+                            </select>
+                        </td>
+                    </tr>              
+                    </td>
+                 </tr>
+                </tbody>
+
+                <tbody id="Tag_Horizontal_velocity_with_direction_of_travel_extended">
+                 <tr ><th><b>Horizontal velocity with direction of travel extended</b></th>
+                    <td>
+                    <tr><th>Horizontal velocity</th>
+                        <td><select id="Horizontal_velocity_Horizontal_velocity_with_direction_of_travel_extended">
+	                        <option value="0000000">0 km/h
+	                        <option value="0000001">1 km/h
+	                        <option value="0001010">10 km/h
+	                        <option value="0010100">20 km/h
+	                        <option value="0011110">30.2 km/h
+	                        <option value="0100110">40.6 km/h
+	                        <option value="0101100">50.8 km/h
+	                        <option value="0111000">79.5 km/h
+	                        <option value="0111110">99.5 km/h
+	                        <option value="1000011">120 km/h
+	                        <option value="1010001">202 km/h
+	                        <option value="1011100">305 km/h
+	                        <option selected value="1101001">495 km/h
+	                        <option value="1110010">692 km/h
+	                        <option value="1111100">1005 km/h
+	                        <option value="1111101">1043 km/h
+	                        <option value="1111110">More than 1043 km/h
+	                        <option value="1111111">Not known
+	                        </select>
+                        </td>
+                    </tr> 	
+                    <tr><th>Direction of travel extended</th>
+                        <td><select id="Direction_of_travel_extended_Horizontal_velocity_with_direction_of_travel_extended">
+                            <option value="00000000">0°                           
+                            <option value="00000001">1.4°
+                            <option value="00000010">2.8°                         
+                            <option selected value="00010000">22.5°                        
+                            <option value="00100000">45°                        
+                            <option value="01000000">90°    
+                            <option value="10000000">180°                     
+                            <option value="11000000">270°
+                            <option value="11111111">358.6°
+	                        </select>
+                        </td>
+                    </tr> 	
+                    </td>
+                 </tr>
+                </tbody>
+
+                <tbody id="Tag_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty">
+                 <tr ><th><b>Horizontal velocity with direction of travel extended and uncertainty</b></th>
+                    <td>
+                    <tr><th>Horizontal velocity</th>
+                        <td><select id="Horizontal_velocity_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty">
+	                        <option value="0000000">0 km/h
+	                        <option value="0000001">1 km/h
+	                        <option value="0001010">10 km/h
+	                        <option value="0010100">20 km/h
+	                        <option value="0011110">30.2 km/h
+	                        <option value="0100110">40.6 km/h
+	                        <option value="0101100">50.8 km/h
+	                        <option value="0111000">79.5 km/h
+	                        <option value="0111110">99.5 km/h
+	                        <option value="1000011">120 km/h
+	                        <option value="1010001">202 km/h
+	                        <option value="1011100">305 km/h
+	                        <option selected value="1101001">495 km/h
+	                        <option value="1110010">692 km/h
+	                        <option value="1111100">1005 km/h
+	                        <option value="1111101">1043 km/h
+	                        <option value="1111110">More than 1043 km/h
+	                        <option value="1111111">Not known
+	                        </select>
+                        </td>
+                    </tr> 	
+                    <tr><th>Horizontal velocity uncertainty</th>
+                        <td><select id="Horizontal_velocity_uncertainty_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty">                    
+                            <option value="000">Less than 1.5 km/h                           
+                            <option value="001">Less than 3 km/h                       
+                            <option selected value="010">Less than 6 km/h                       
+                            <option value="011">Less than 12 km/h                       
+                            <option value="100">Less than 24 km/h                       
+                            <option value="101">Less than 48 km/h                       
+                            <option value="110">Less than 96 km/h                       
+                            <option value="111">Reserved                       
+                            </select>
+                        </td>
+                    </tr>              
+                    <tr><th>Direction of travel extended</th>
+                        <td><select id="Direction_of_travel_extended_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty">
+                            <option selected value="00000000">0°                           
+                            <option value="00000001">1.4°
+                            <option value="00000010">2.8°                         
+                            <option value="00010000">22.5°                        
+                            <option value="00100000">45°                        
+                            <option value="01000000">90°    
+                            <option value="10000000">180°                     
+                            <option value="11000000">270°
+                            <option value="11111111">358.6°
+	                        </select>
+                        </td>
+                    </tr> 	
+
+                    <tr><th>Direction of travel uncertainty</th>
+                        <td><select id="Direction_of_travel_uncertainty_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty">                    
+                            <option value="000">Less than 1.5°                           
+                            <option value="001">Less than 3°                       
+                            <option value="010">Less than 6°                       
+                            <option value="011">Less than 12°                       
+                            <option value="100">Less than 24°                       
+                            <option value="101">Less than 48°                       
+                            <option value="110">Less than 96°                       
+                            <option value="111">Best effort or uncertainty not known                       
+                            </select>
+                        </td>
+                    </tr> 
+                    </td>
+                 </tr>
+                </tbody>
+
+                <tbody id="Tag_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty">
+                 <tr ><th><b>Horizontal velocity and vertical velocity with direction of travel extended and uncertainty</b></th>
+                    <td>
+                    <tr><th>Horizontal velocity</th>
+                        <td><select id="Horizontal_velocity_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty">
+	                        <option value="0000000">0 km/h
+	                        <option value="0000001">1 km/h
+	                        <option value="0001010">10 km/h
+	                        <option value="0010100">20 km/h
+	                        <option value="0011110">30.2 km/h
+	                        <option value="0100110">40.6 km/h
+	                        <option value="0101100">50.8 km/h
+	                        <option value="0111000">79.5 km/h
+	                        <option value="0111110">99.5 km/h
+	                        <option value="1000011">120 km/h
+	                        <option value="1010001">202 km/h
+	                        <option value="1011100">305 km/h
+	                        <option selected value="1101001">495 km/h
+	                        <option value="1110010">692 km/h
+	                        <option value="1111100">1005 km/h
+	                        <option value="1111101">1043 km/h
+	                        <option value="1111110">More than 1043 km/h
+	                        <option value="1111111">Not known
+	                        </select>
+                        </td>
+                    </tr> 	
+                    <tr><th>Horizontal velocity uncertainty</th>
+                        <td><select id="Horizontal_velocity_uncertainty_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty">                    
+                            <option value="000">Less than 1.5 km/h                           
+                            <option value="001">Less than 3 km/h                       
+                            <option selected value="010">Less than 6 km/h                       
+                            <option value="011">Less than 12 km/h                       
+                            <option value="100">Less than 24 km/h                       
+                            <option value="101">Less than 48 km/h                       
+                            <option value="110">Less than 96 km/h                       
+                            <option value="111">Reserved                       
+                            </select>
+                        </td>
+                    </tr>              
+                    <tr><th>Vertical velocity</th>
+                        <td><select id="Vertical_velocity_Dir_Horizontal_velocity_and_vertical_velocity_with_uncertainty">                     
+	                        <option value="0">Velocity upwards                   
+	                        <option selected value="1">Velocity downwards
+                            </select>
+                            <select id="Vertical_velocity_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty">
+	                        <option value="0000000">0 km/h
+	                        <option value="0000001">1 km/h
+	                        <option value="0001010">10 km/h
+	                        <option selected value="0010100">20 km/h
+	                        <option value="0011110">30.2 km/h
+	                        <option value="0100110">40.6 km/h
+	                        <option value="0101100">50.8 km/h
+	                        <option value="0111000">79.5 km/h
+	                        <option value="0111110">99.5 km/h
+	                        <option value="1000011">120 km/h
+	                        <option value="1010001">202 km/h
+	                        <option value="1011100">305 km/h
+	                        <option value="1101001">495 km/h
+	                        <option value="1110010">692 km/h
+	                        <option value="1111100">1005 km/h
+	                        <option value="1111101">1043 km/h
+	                        <option value="1111110">More than 1043 km/h
+	                        <option value="1111111">Not known
+	                        </select>
+                        </td>
+                    </tr>
+                    <tr><th>Vertical velocity uncertainty</th>
+                        <td><select id="Vertical_velocity_uncertainty_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty">                    
+                            <option value="000">Less than 1.5 km/h                           
+                            <option value="001">Less than 3 km/h                       
+                            <option value="010">Less than 6 km/h                       
+                            <option selected value="011">Less than 12 km/h                       
+                            <option value="100">Less than 24 km/h                       
+                            <option value="101">Less than 48 km/h                       
+                            <option value="110">Less than 96 km/h                       
+                            <option value="111">Reserved                       
+                            </select>
+                        </td>
+                    </tr>              
+                    <tr><th>Direction of travel extended</th>
+                        <td><select id="Direction_of_travel_extended_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty">
+                            <option selected value="00000000">0°                           
+                            <option value="00000001">1.4°
+                            <option value="00000010">2.8°                         
+                            <option value="00010000">22.5°                        
+                            <option value="00100000">45°                        
+                            <option value="01000000">90°    
+                            <option value="10000000">180°                     
+                            <option value="11000000">270°
+                            <option value="11111111">358.6°
+	                        </select>
+                        </td>
+                    </tr> 	
+
+                    <tr><th>Direction of travel uncertainty</th>
+                        <td><select id="Direction_of_travel_uncertainty_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty">                    
+                            <option value="000">Less than 1.5°                           
+                            <option value="001">Less than 3°                       
+                            <option value="010">Less than 6°                       
+                            <option value="011">Less than 12°                       
+                            <option value="100">Less than 24°                       
+                            <option value="101">Less than 48°                       
+                            <option value="110">Less than 96°                       
+                            <option value="111">Best effort or uncertainty not known                       
+                            </select>
+                        </td>
+                    </tr> 
+                    </td>
+                 </tr>
+                </tbody>
+            </table>
+            <table>
+                <col width="160"/>	
+                <tr><th>Acknowledgement request</th>
+                    <td><select id="Acknowledgement_request">
+	                    <option value="0">No acknowledgement requested
+	                    <option selected value="1">Acknowledgement requested
+	                    </select>
+                    </td>
+                </tr> 
+            </table>
+            <table>	
+                <col width="160"/>
+                <tr><th>Type of additional data</th>
+                    <td><select id="Type_of_additional_data" onChange=OnChange_Type_of_additional_data(this.form)>
+	                    <option selected value="0">Reason for sending
+	                    <option value="1">User defined data
+	                    </select>
+                    </td>
+                </tr> 
+
+                <tr id="Tag_User_defined_data"><th>User defined data</th>
+                    <td><select id="User_defined_data">
+	                    <option selected value="00000000">0
+	                    <option value="00000001">1
+	                    <option value="00000010">2
+	                    <option value="00000011">3
+	                    <option value="11111111">255
+	                    </select>
+                    </td>
+                </tr> 	
+
+                <tr id="Tag_Reason_for_sending"><th>Reason for sending</th>
+                    <td><select id="Reason_for_sending" onchange="OnChange_Reason_for_sending(this.form)">
+                        <option value="00000000">SU is powered on
+                        <option value="00000001">SU is powered off
+                        <option value="00000010">Emergency condition is detected
+                        <option value="00000011">Push-to-Talk condition is detected
+                        <option value="00000100">Status entered
+                        <option value="00000101">Transmit Inhibit Mode ON
+                        <option value="00000110">Transmit Inhibit Mode OFF
+                        <option value="00000111">System access (TMO ON)
+                        <option value="00001000">DMO ON
+                        <option value="00001001">Enter service
+                        <option value="00001010">Loss of service
+                        <option value="00001011">Cell reselection or change of serving cell
+                        <option value="00001100">Low battery
+                        <option value="00001101">SU is connected to a car kit
+                        <option value="00001110">SU is disconnected from a car kit
+                        <option value="00001111">SU ask for transfer initialization configuration
+                        <option value="00010000">Arrival at destination
+                        <option value="00010001">Arrival at defined location
+                        <option value="00010010">Approaching a defined location
+                        <option value="00010011">SDS type-1 entered
+                        <option value="00010100">User application initiated
+                        <option value="00010101">Lost ability to determine location
+                        <option value="00010110">Regained ability to determine location
+                        <option value="00010111">Leaving point
+                        <option value="00011000">Ambience Listening call is detected   
+                        <option value="10000001">Maximum reporting interval exceeded since the last location report
+                        <option value="10000010">Maximum reporting distance limit travelled since the last location report
+                        </select>
+                    </td>
+                </tr> 	
+            </table>
+            <table>
+                <col width="160"/>
+                <tr><th>Extended user defined data</th>
+                    <td><select id="T5_Extended_user_defined_data">                          
+	                        <option selected value="0">T5 Not Present
+	                    </select>
+	                </td>
+                </tr>                     
+
+                <tr><th>Location message reference</th>
+                    <td><select id="T5_Location_message_reference" onChange="OnEnableDisable_Ctrl(this.form.T5_Location_message_reference,this.form.Location_message_reference)">                          
+	                        <option selected value="0">T5 Not Present
+	                        <option value="1">T5 Present
+	                    </select>
+                        <input id="Location_message_reference" value="40" size=1 disabled >
+	                </td>
+                </tr>                     
+
+                <tr><th>Result code</th>
+                    <td><select onChange="OnEnableDisable_Ctrl(this.form.T5_Result_code,this.form.Result_code)" id="T5_Result_code">                          
+	                        <option selected value="0">T5 Not Present
+	                        <option value="1">T5 Present
+	                    </select>                        
+                        <select id="Result_code" disabled>
+	                    <option value="00000000">Success
+	                    <option value="00000001">System failure
+	                    <option value="00000010">Unspecified error
+	                    <option value="00000011">Unauthorized application
+	                    <option value="00000100">Unknown subscriber
+	                    <option value="00000101">Absent subscriber
+	                    <option value="00000110">Congestion in provider
+	                    <option value="00000111">Congestion in mobile network
+	                    <option value="00001000">Unsupported version
+	                    <option value="00001001">Insufficient resource
+	                    <option value="00001010">Syntax error
+	                    <option value="00001011">Protocol element not supported
+	                    <option value="00001100">Service not supported
+	                    <option selected value="00001101">Protocol element value not supported
+	                    <option value="00001110">Type of information not currently available
+	                    <option value="00001111">Required accuracy not achieved
+	                    <option value="00010000">Reserved
+	                    <option value="00010001">Reporting will stop
+	                    <option value="00010010">Time expired
+	                    <option value="00010011">Disallowed by local regulations
+	                    <option value="00010100">Reserved
+	                    <option value="00010101">No such request
+	                    <option value="00010110">User disabled location information report sending
+	                    <option value="00010111">Parameter values modified
+	                    <option value="00011000">Accepted
+	                    <option value="00011001">Accepted, but some of the triggers or accuracies are modified or not supported
+	                    <option value="00011010">Triggers not supported
+	                    <option value="00011011">Report complete
+	                    <option value="01010001">Position method failure
+	                    <option value="11001000">Insufficient GPS satellites
+	                    <option value="11001001">Bad GPS geometry
+	                    </select>
+	                </td>
+                </tr>                     
+
+                <tr><th>Status or SDS-1 value</th>
+                    <td><select onChange="OnEnableDisable_Ctrl(this.form.T5_Status_or_SDS1_value,this.form.Status_or_SDS1_value)" id="T5_Status_or_SDS1_value">                          
+	                        <option selected value="0">T5 Not Present
+	                        <option value="1">T5 Present
+	                    </select>
+                        <input id="Status_or_SDS1_value" value="4321" size=1 disabled >
+	                </td>
+                </tr>                     
+
+                <tr><th>Terminal or location identification</th>
+                    <td><select id="T5_Terminal_or_location_identification" onChange="OnChange_T5_Terminal_or_location_identification(this.form)">                          
+	                        <option value="0">T5 Not Present
+	                        <option selected value="1">T5 Present
+	                    </select>
+	                </td>
+                </tr>                     
+                <tr id="Tag_Address_or_ident_type" >
+                    <th >Address or identification type</th>
+                    <td><select id="Address_or_ident_type" onchange="OnChange_Address_or_ident_type(this.form)">                               
+                        <option value="0"> None
+                        <option value="1"> SSI
+                        <option value="2"> SSI + MNI
+                        <option value="3"> IP address (Version 4)
+                        <option value="4"> IP address (Version 6)
+                        <option value="8"> ESN
+                        <option value="9"> SSI + ESN
+                        <option selected value="10">SSI + MNI + ESN
+                        <option value="11">Name server type name
+                        <option value="12">Name, free format
+                        </select>
+                    </td>
+                </tr>
+				<tr id="Tag_SSI">
+					<th >SSI</th>
+					<td>
+						<input id="SSI" value="62033" size=15>
+					</td>
+				</tr>
+				<tr id="Tag_MNI">
+					<th >MNI</th>
+					<td>
+						MCC: <input id="MNI_MCC" value="234" size=5 >
+						MNC: <input id="MNI_MNC" value="73" size=5 >
+					</td>
+				</tr>       
+				<tr id="Tag_ESN_digits">
+					<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ESN digits:</th>
+					<td>
+						<input id="ESN_digits" value="+#*1234567890" size=20>
+					</td>
+				</tr>				     
+				<tr id="Tag_IPv4">
+					<th >IP Version 4</th>
+					<td>
+						<input disabled id="IPv4" value="192.168.0.100" size=15>
+					</td>
+				</tr>
+				<tr id="Tag_IPv6">
+					<th >IP Version 6</th>
+					<td>
+						<input disabled id="IPv6" value="2001:0db8:85a3:0042:0000:8a2e:0370:7334" size=40>
+					</td>
+				</tr>
+				<tr id="Tag_Name_Server_Type_Name">
+					<th >Name server type name</th>
+					<td>
+						<input disabled id="Name_Server_Type_Name" value="Name Server Name" size=25>
+					</td>
+				</tr>
+				<tr id="Tag_Name_Free_Format">
+					<th >Name, free format</th>
+					<td>
+						<input id="Name_Free_Format" value="Name, free format" size=35>
+					</td>
+				</tr>
+                <tr><th>Backlog information available</th>
+                    <td><select onChange="OnEnableDisable_Ctrl(this.form.T5_Backlog_information_available,this.form.Backlog_information_available)" id="T5_Backlog_information_available">                          
+	                        <option selected value="0">T5 Not Present
+	                        <option value="1">T5 Present
+	                    </select>
+                        <select id="Backlog_information_available" disabled>
+	                    <option value="0000000000">No records
+	                    <option value="0000000001">1 record
+	                    <option value="0000000010">2 records
+	                    <option value="0000000011">3 records
+	                    <option selected value="0000000100">4 records
+	                    <option value="0000000101">5 records
+	                    <option value="0000000110">6 records
+	                    <option value="1111111110">1022 records
+	                    <option value="1111111111">More than 1022 records
+	                    </select>
+	                </td>
+                </tr>                     
+
+                <tr id="Tag_Time_data_empty_line"><th></th><td><br/></td></tr> 	
+            </table>
+        </form>
+        <script language="JavaScript" type="text/JavaScript">
+
+            function GetPDUValue(pdu_header)
+            {
+                //Get Information Element values
+                
+                Time_data = document.getElementById('Time_data').value;
+                Time_elapsed = document.getElementById('Time_elapsed').value;
+                Day_of_position = document.getElementById('Day_of_position').value;
+                Time_hour = document.getElementById('Time_hour').value;
+                Time_minute = document.getElementById('Time_minute').value;
+                Time_second = document.getElementById('Time_second').value;
+                Location_shape = document.getElementById('Location_shape').value;
+                
+                Longitude_Location_point = document.getElementById('Longitude_Location_point').value;
+                Latitude_Location_point = document.getElementById('Latitude_Location_point').value;
+                
+                Longitude_Location_circle = document.getElementById('Longitude_Location_circle').value;
+                Latitude_Location_circle = document.getElementById('Latitude_Location_circle').value;
+                Horizontal_position_uncertainty_Location_circle = document.getElementById('Horizontal_position_uncertainty_Location_circle').value;
+                
+                Longitude_Location_ellipse = document.getElementById('Longitude_Location_ellipse').value;
+                Latitude_Location_ellipse = document.getElementById('Latitude_Location_ellipse').value;
+                Half_of_the_major_axis_Location_ellipse = document.getElementById('Half_of_the_major_axis_Location_ellipse').value;
+                Half_of_the_minor_axis_Location_ellipse = document.getElementById('Half_of_the_minor_axis_Location_ellipse').value;
+                
+                Angle_Location_ellipse = document.getElementById('Angle_Location_ellipse').value;
+                Confidence_level_Location_ellipse = document.getElementById('Confidence_level_Location_ellipse').value;
+                
+                Longitude_Location_point_with_altitude = document.getElementById('Longitude_Location_point_with_altitude').value;
+                Latitude_Location_point_with_altitude = document.getElementById('Latitude_Location_point_with_altitude').value;
+                Altitude_type_Location_point_with_altitude = document.getElementById('Altitude_type_Location_point_with_altitude').value;
+                Altitude_Location_point_with_altitude = document.getElementById('Altitude_Location_point_with_altitude').value;
+                
+                Longitude_Location_circle_with_altitude = document.getElementById('Longitude_Location_circle_with_altitude').value;
+                Latitude_Location_circle_with_altitude = document.getElementById('Latitude_Location_circle_with_altitude').value;
+                Horizontal_position_uncertainty_Location_circle_with_altitude = document.getElementById('Horizontal_position_uncertainty_Location_circle_with_altitude').value;
+                
+                Altitude_type_Location_circle_with_altitude = document.getElementById('Altitude_type_Location_circle_with_altitude').value;
+                Altitude_Location_circle_with_altitude = document.getElementById('Altitude_Location_circle_with_altitude').value;
+
+                Longitude_Location_ellipse_with_altitude = document.getElementById('Longitude_Location_ellipse_with_altitude').value;
+                Latitude_Location_ellipse_with_altitude = document.getElementById('Latitude_Location_ellipse_with_altitude').value;
+                Half_of_the_major_axis_Location_ellipse_with_altitude = document.getElementById('Half_of_the_major_axis_Location_ellipse_with_altitude').value;
+                Half_of_the_minor_axis_Location_ellipse_with_altitude = document.getElementById('Half_of_the_minor_axis_Location_ellipse_with_altitude').value;
+                
+                Angle_Location_ellipse_with_altitude = document.getElementById('Angle_Location_ellipse_with_altitude').value;
+                Confidence_level_Location_ellipse_with_altitude = document.getElementById('Confidence_level_Location_ellipse_with_altitude').value;
+                Altitude_type_Location_ellipse_with_altitude = document.getElementById('Altitude_type_Location_ellipse_with_altitude').value;
+                Altitude_Location_ellipse_with_altitude = document.getElementById('Altitude_Location_ellipse_with_altitude').value;
+                
+                Longitude_Location_circle_with_altitude_and_uncertainty = document.getElementById('Longitude_Location_circle_with_altitude_and_uncertainty').value;
+                Latitude_Location_circle_with_altitude_and_uncertainty = document.getElementById('Latitude_Location_circle_with_altitude_and_uncertainty').value;
+                Horizontal_position_uncertainty_Location_circle_with_altitude_and_uncertainty = document.getElementById('Horizontal_position_uncertainty_Location_circle_with_altitude_and_uncertainty').value;
+                
+                Altitude_type_Location_circle_with_altitude_and_uncertainty = document.getElementById('Altitude_type_Location_circle_with_altitude_and_uncertainty').value;
+                Altitude_Location_circle_with_altitude_and_uncertainty = document.getElementById('Altitude_Location_circle_with_altitude_and_uncertainty').value;
+                
+                Location_altitude_uncertainty_Location_circle_with_altitude_and_uncertainty = document.getElementById('Location_altitude_uncertainty_Location_circle_with_altitude_and_uncertainty').value;
+                
+                Longitude_Location_ellipse_with_altitude_and_uncertainty = document.getElementById('Longitude_Location_ellipse_with_altitude_and_uncertainty').value;
+                Latitude_Location_ellipse_with_altitude_and_uncertainty = document.getElementById('Latitude_Location_ellipse_with_altitude_and_uncertainty').value;
+                Half_of_the_major_axis_Location_ellipse_with_altitude_and_uncertainty = document.getElementById('Half_of_the_major_axis_Location_ellipse_with_altitude_and_uncertainty').value;
+                Half_of_the_minor_axis_Location_ellipse_with_altitude_and_uncertainty = document.getElementById('Half_of_the_minor_axis_Location_ellipse_with_altitude_and_uncertainty').value;
+                Angle_Location_ellipse_with_altitude_and_uncertainty = document.getElementById('Angle_Location_ellipse_with_altitude_and_uncertainty').value;
+                Confidence_level_Location_ellipse_with_altitude_and_uncertainty = document.getElementById('Confidence_level_Location_ellipse_with_altitude_and_uncertainty').value;
+                Altitude_type_Location_ellipse_with_altitude_and_uncertainty = document.getElementById('Altitude_type_Location_ellipse_with_altitude_and_uncertainty').value;
+                Altitude_Location_ellipse_with_altitude_and_uncertainty = document.getElementById('Altitude_Location_ellipse_with_altitude_and_uncertainty').value;
+                Location_altitude_uncertainty_Location_ellipse_with_altitude_and_uncertainty = document.getElementById('Location_altitude_uncertainty_Location_ellipse_with_altitude_and_uncertainty').value;
+                
+                Longitude_Location_arc = document.getElementById('Longitude_Location_arc').value;
+                Latitude_Location_arc = document.getElementById('Latitude_Location_arc').value;
+                Inner_radius_Location_arc = document.getElementById('Inner_radius_Location_arc').value;
+                Outer_radius_Location_arc = document.getElementById('Outer_radius_Location_arc').value;
+                Start_angle_Location_arc = document.getElementById('Start_angle_Location_arc').value;
+                Stop_angle_Location_arc = document.getElementById('Stop_angle_Location_arc').value;
+                Confidence_level_Location_arc = document.getElementById('Confidence_level_Location_arc').value;
+                
+                Longitude_Location_point_and_position_error = document.getElementById('Longitude_Location_point_and_position_error').value;
+                Latitude_Location_point_and_position_error = document.getElementById('Latitude_Location_point_and_position_error').value;
+                Position_error_Location_point_and_position_error = document.getElementById('Position_error_Location_point_and_position_error').value;
+
+                Velocity_type = document.getElementById('Velocity_type').value;
+                Horizontal_velocity_Horizontal_velocity = document.getElementById('Horizontal_velocity_Horizontal_velocity').value;
+                Horizontal_velocity_Horizontal_velocity_with_uncertainty = document.getElementById('Horizontal_velocity_Horizontal_velocity_with_uncertainty').value;
+                Horizontal_velocity_uncertainty_Horizontal_velocity_with_uncertainty = document.getElementById('Horizontal_velocity_uncertainty_Horizontal_velocity_with_uncertainty').value;
+                
+                Horizontal_velocity_Horizontal_velocity_and_vertical_velocity = document.getElementById('Horizontal_velocity_Horizontal_velocity_and_vertical_velocity').value;
+                Vertical_velocity_Dir_Horizontal_velocity_and_vertical_velocity = document.getElementById('Vertical_velocity_Dir_Horizontal_velocity_and_vertical_velocity').value;
+                Vertical_velocity_Horizontal_velocity_and_vertical_velocity = document.getElementById('Vertical_velocity_Horizontal_velocity_and_vertical_velocity').value;
+                
+                Horizontal_velocity_Horizontal_velocity_and_vertical_velocity_with_uncertainty = document.getElementById('Horizontal_velocity_Horizontal_velocity_and_vertical_velocity_with_uncertainty').value;
+                Horizontal_velocity_uncertainty_Horizontal_velocity_and_vertical_velocity_with_uncertainty = document.getElementById('Horizontal_velocity_uncertainty_Horizontal_velocity_and_vertical_velocity_with_uncertainty').value;
+                Vertical_velocity_Dir_Horizontal_velocity_and_vertical_velocity_with_uncertainty = document.getElementById('Vertical_velocity_Dir_Horizontal_velocity_and_vertical_velocity_with_uncertainty').value;
+                Vertical_velocity_Horizontal_velocity_and_vertical_velocity_with_uncertainty = document.getElementById('Vertical_velocity_Horizontal_velocity_and_vertical_velocity_with_uncertainty').value;
+                Vertical_velocity_uncertainty_Horizontal_velocity_and_vertical_velocity_with_uncertainty = document.getElementById('Vertical_velocity_uncertainty_Horizontal_velocity_and_vertical_velocity_with_uncertainty').value;
+                
+                Horizontal_velocity_Horizontal_velocity_with_direction_of_travel_extended = document.getElementById('Horizontal_velocity_Horizontal_velocity_with_direction_of_travel_extended').value;
+                Direction_of_travel_extended_Horizontal_velocity_with_direction_of_travel_extended = document.getElementById('Direction_of_travel_extended_Horizontal_velocity_with_direction_of_travel_extended').value;
+                
+                Horizontal_velocity_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty = document.getElementById('Horizontal_velocity_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty').value;
+                Horizontal_velocity_uncertainty_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty = document.getElementById('Horizontal_velocity_uncertainty_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty').value;
+                Direction_of_travel_extended_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty = document.getElementById('Direction_of_travel_extended_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty').value;
+                Direction_of_travel_uncertainty_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty = document.getElementById('Direction_of_travel_uncertainty_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty').value;
+                
+                Horizontal_velocity_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty = document.getElementById('Horizontal_velocity_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty').value;
+                Horizontal_velocity_uncertainty_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty = document.getElementById('Horizontal_velocity_uncertainty_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty').value;
+                
+                Vertical_velocity_Dir_Horizontal_velocity_and_vertical_velocity_with_uncertainty = document.getElementById('Vertical_velocity_Dir_Horizontal_velocity_and_vertical_velocity_with_uncertainty').value;
+                Vertical_velocity_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty = document.getElementById('Vertical_velocity_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty').value;
+                Vertical_velocity_uncertainty_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty = document.getElementById('Vertical_velocity_uncertainty_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty').value;
+                Direction_of_travel_extended_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty = document.getElementById('Direction_of_travel_extended_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty').value;
+                Direction_of_travel_uncertainty_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty = document.getElementById('Direction_of_travel_uncertainty_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty').value;
+                
+                Acknowledgement_request = document.getElementById('Acknowledgement_request').value;
+                
+                Type_of_additional_data = document.getElementById('Type_of_additional_data').value;
+                User_defined_data = document.getElementById('User_defined_data').value;                 
+                Reason_for_sending = document.getElementById('Reason_for_sending').value;
+                
+                T5_Extended_user_defined_data = document.getElementById('T5_Extended_user_defined_data').value;
+                
+                T5_Location_message_reference = document.getElementById('T5_Location_message_reference').value;
+                Location_message_reference = document.getElementById('Location_message_reference').value;
+                
+                T5_Result_code = document.getElementById('T5_Result_code').value;
+                Result_code = document.getElementById('Result_code').value;
+                
+                T5_Status_or_SDS1_value = document.getElementById('T5_Status_or_SDS1_value').value;
+                Status_or_SDS1_value = document.getElementById('Status_or_SDS1_value').value;
+                
+                T5_Terminal_or_location_identification = document.getElementById('T5_Terminal_or_location_identification').value;
+                Address_or_ident_type = document.getElementById('Address_or_ident_type').value;
+                SSI = document.getElementById('SSI').value;
+                MNI_MCC = document.getElementById('MNI_MCC').value;
+                MNI_MNC = document.getElementById('MNI_MNC').value;
+                ESN_digits = document.getElementById('ESN_digits').value;
+                IPv4 = document.getElementById('IPv4').value;
+                IPv6 = document.getElementById('IPv6').value;
+                Name_Server_Type_Name = document.getElementById('Name_Server_Type_Name').value;
+                Name_Free_Format = document.getElementById('Name_Free_Format').value;
+                
+                T5_Backlog_information_available = document.getElementById('T5_Backlog_information_available').value;
+                Backlog_information_available = document.getElementById('Backlog_information_available').value;
+                 
+                T5_data = "";
+                                
+                //Build PDU
+                pdu_bin_value = pdu_header;
+                
+                //Time Data
+                pdu_bin_value += Time_data;
+                if (Time_data == "01")
+                    pdu_bin_value += Time_elapsed;
+                else
+                if (Time_data == "10")
+                    pdu_bin_value += (Day_of_position + Time_hour + Time_minute + Time_second);
+                
+                //Location Data
+                pdu_bin_value += Location_shape;
+                if (Location_shape == "0001")//Location_point
+                {
+                    pdu_bin_value += Longitude2Bin(Longitude_Location_point);
+                    pdu_bin_value += Latitude2Bin(Latitude_Location_point);
+                }
+                else
+                if (Location_shape == "0010")//Location_circle
+                {
+                    pdu_bin_value += Longitude2Bin(Longitude_Location_circle);
+                    pdu_bin_value += Latitude2Bin(Latitude_Location_circle);
+                    pdu_bin_value += Horizontal_position_uncertainty_Location_circle;
+                }
+                else
+                if (Location_shape == "0011")//Location_ellipse
+                {
+                    pdu_bin_value += Longitude2Bin(Longitude_Location_ellipse);
+                    pdu_bin_value += Latitude2Bin(Latitude_Location_ellipse);
+                    pdu_bin_value += Half_of_the_major_axis_Location_ellipse;
+                    pdu_bin_value += Half_of_the_minor_axis_Location_ellipse;
+                    pdu_bin_value += Angle_Location_ellipse;
+                    pdu_bin_value += Confidence_level_Location_ellipse;
+                }
+                else
+                if (Location_shape == "0100")//Location_point_with_altitude
+                {
+                    pdu_bin_value += Longitude2Bin(Longitude_Location_point_with_altitude);
+                    pdu_bin_value += Latitude2Bin(Latitude_Location_point_with_altitude);
+                    pdu_bin_value += Altitude_type_Location_point_with_altitude;
+                    pdu_bin_value += Altitude_Location_point_with_altitude;
+                }
+                else
+                if (Location_shape == "0101")//Location_circle_with_altitude
+                {
+                    pdu_bin_value += Longitude2Bin(Longitude_Location_circle_with_altitude);
+                    pdu_bin_value += Latitude2Bin(Latitude_Location_circle_with_altitude);
+                    pdu_bin_value += Horizontal_position_uncertainty_Location_circle_with_altitude;
+                    pdu_bin_value += Altitude_type_Location_circle_with_altitude;
+                    pdu_bin_value += Altitude_Location_circle_with_altitude;
+                }
+                else
+                if (Location_shape == "0110")//Location_ellipse_with_altitude
+                {
+                    pdu_bin_value += Longitude2Bin(Longitude_Location_ellipse_with_altitude);
+                    pdu_bin_value += Latitude2Bin(Latitude_Location_ellipse_with_altitude);
+                    pdu_bin_value += Half_of_the_major_axis_Location_ellipse_with_altitude;
+                    pdu_bin_value += Half_of_the_minor_axis_Location_ellipse_with_altitude;
+                    pdu_bin_value += Angle_Location_ellipse_with_altitude;
+                    pdu_bin_value += Altitude_type_Location_ellipse_with_altitude;
+                    pdu_bin_value += Altitude_Location_ellipse_with_altitude;
+                    pdu_bin_value += Confidence_level_Location_ellipse_with_altitude;
+                }
+                else
+                if (Location_shape == "0111")//Location_circle_with_altitude_and_uncertainty
+                {
+                    pdu_bin_value += Longitude2Bin(Longitude_Location_circle_with_altitude_and_uncertainty);
+                    pdu_bin_value += Latitude2Bin(Latitude_Location_circle_with_altitude_and_uncertainty);
+                    pdu_bin_value += Horizontal_position_uncertainty_Location_circle_with_altitude_and_uncertainty;
+                    pdu_bin_value += Altitude_type_Location_circle_with_altitude_and_uncertainty;
+                    pdu_bin_value += Altitude_Location_circle_with_altitude_and_uncertainty;
+                    pdu_bin_value += Location_altitude_uncertainty_Location_circle_with_altitude_and_uncertainty;
+                }
+                else
+                if (Location_shape == "1000")//Location_ellipse_with_altitude_and_uncertainty
+                {
+                    pdu_bin_value += Longitude2Bin(Longitude_Location_ellipse_with_altitude_and_uncertainty);
+                    pdu_bin_value += Latitude2Bin(Latitude_Location_ellipse_with_altitude_and_uncertainty);
+                    pdu_bin_value += Half_of_the_major_axis_Location_ellipse_with_altitude_and_uncertainty;
+                    pdu_bin_value += Half_of_the_minor_axis_Location_ellipse_with_altitude_and_uncertainty;
+                    pdu_bin_value += Angle_Location_ellipse_with_altitude_and_uncertainty;
+                    pdu_bin_value += Altitude_type_Location_ellipse_with_altitude_and_uncertainty;
+                    pdu_bin_value += Altitude_Location_ellipse_with_altitude_and_uncertainty;
+                    pdu_bin_value += Location_altitude_uncertainty_Location_ellipse_with_altitude_and_uncertainty;
+                    pdu_bin_value += Confidence_level_Location_ellipse_with_altitude_and_uncertainty;
+                }
+                else
+                if (Location_shape == "1001")//Location_arc
+                {
+                    pdu_bin_value += Longitude2Bin(Longitude_Location_arc);
+                    pdu_bin_value += Latitude2Bin(Latitude_Location_arc);
+                    pdu_bin_value += Inner_radius_Location_arc;
+                    pdu_bin_value += Outer_radius_Location_arc;
+                    pdu_bin_value += Start_angle_Location_arc;
+                    pdu_bin_value += Stop_angle_Location_arc;
+                    pdu_bin_value += Confidence_level_Location_arc;
+                }
+                else
+                if (Location_shape == "1010")//Location_point_and_position_error
+                {
+                    pdu_bin_value += Longitude2Bin(Longitude_Location_point_and_position_error);
+                    pdu_bin_value += Latitude2Bin(Latitude_Location_point_and_position_error);
+                    pdu_bin_value += Position_error_Location_point_and_position_error;
+                }
+                else
+                if (Location_shape == "1111")//Location_shape_extension
+                {
+                }
+                
+                //Velocity Data
+                pdu_bin_value += Velocity_type;
+                if (Velocity_type == "001")//Horizontal_velocity
+                {
+                    pdu_bin_value += Horizontal_velocity_Horizontal_velocity;
+                }
+                else
+                if (Velocity_type == "010")//Horizontal_velocity_with_uncertainty
+                {
+                    pdu_bin_value += Horizontal_velocity_Horizontal_velocity_with_uncertainty;
+                    pdu_bin_value += Horizontal_velocity_uncertainty_Horizontal_velocity_with_uncertainty;
+                }
+                else
+                if (Velocity_type == "011")//Horizontal_velocity_and_vertical_velocity
+                {
+                    pdu_bin_value += Horizontal_velocity_Horizontal_velocity_and_vertical_velocity;
+                    pdu_bin_value += Vertical_velocity_Dir_Horizontal_velocity_and_vertical_velocity;
+                    pdu_bin_value += Vertical_velocity_Horizontal_velocity_and_vertical_velocity;
+                }
+                else
+                if (Velocity_type == "100")//Horizontal_velocity_and_vertical_velocity_with_uncertainty
+                {
+                    pdu_bin_value += Horizontal_velocity_Horizontal_velocity_and_vertical_velocity_with_uncertainty;
+                    pdu_bin_value += Horizontal_velocity_uncertainty_Horizontal_velocity_and_vertical_velocity_with_uncertainty;
+                    pdu_bin_value += Vertical_velocity_Dir_Horizontal_velocity_and_vertical_velocity_with_uncertainty;
+                    pdu_bin_value += Vertical_velocity_Horizontal_velocity_and_vertical_velocity_with_uncertainty;
+                    pdu_bin_value += Vertical_velocity_uncertainty_Horizontal_velocity_and_vertical_velocity_with_uncertainty;
+                }
+                else
+                if (Velocity_type == "101")//Horizontal_velocity_with_direction_of_travel_extended
+                {
+                    pdu_bin_value += Horizontal_velocity_Horizontal_velocity_with_direction_of_travel_extended;
+                    pdu_bin_value += Direction_of_travel_extended_Horizontal_velocity_with_direction_of_travel_extended;
+                }
+                else
+                if (Velocity_type == "110")//Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty
+                {
+                    pdu_bin_value += Horizontal_velocity_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty;
+                    pdu_bin_value += Horizontal_velocity_uncertainty_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty;
+                    pdu_bin_value += Direction_of_travel_extended_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty;
+                    pdu_bin_value += Direction_of_travel_uncertainty_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty;
+                }
+                else
+                if (Velocity_type == "111")//Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty
+                {
+                    pdu_bin_value += Horizontal_velocity_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty;
+                    pdu_bin_value += Horizontal_velocity_uncertainty_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty;
+                    pdu_bin_value += Vertical_velocity_Dir_Horizontal_velocity_and_vertical_velocity_with_uncertainty;
+                    pdu_bin_value += Vertical_velocity_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty;
+                    pdu_bin_value += Vertical_velocity_uncertainty_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty;
+                    pdu_bin_value += Direction_of_travel_extended_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty;
+                    pdu_bin_value += Direction_of_travel_uncertainty_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty;
+                }
+
+                //Acknowledgement_request
+                pdu_bin_value += Acknowledgement_request;
+                
+                //Additional_data
+                pdu_bin_value += Type_of_additional_data;
+                if (Type_of_additional_data == "0")
+                    pdu_bin_value += Reason_for_sending;
+                else
+                if (Type_of_additional_data == "1")
+                   pdu_bin_value += User_defined_data;
+                
+                if (T5_Extended_user_defined_data =="1") 
+                {
+                    pdu_bin_value += "";
+                }                
+                
+                if (T5_Location_message_reference == "1")
+                {
+                    T5_data = dec2bin(Location_message_reference,8);
+                    pdu_bin_value += T5_Encode("6",T5_data);
+                }
+
+                if (T5_Result_code == "1")
+                {
+                    T5_data = Result_code;
+                    pdu_bin_value += T5_Encode("12",T5_data);
+                }
+                
+                if (T5_Status_or_SDS1_value == "1")
+                {
+                    T5_data = dec2bin(Status_or_SDS1_value,16);
+                    pdu_bin_value += T5_Encode("13",T5_data);
+                }
+                
+                if (T5_Terminal_or_location_identification == "1")
+                {
+                    T5_data = dec2bin(Address_or_ident_type,4);
+                    if (Address_or_ident_type == "1")//SSI
+                    {
+                        T5_data += dec2bin(SSI,24);
+                    }
+                    else
+                    if (Address_or_ident_type == "2")//SSI + MNI
+                    {
+                        T5_data += dec2bin(SSI,24);
+                        T5_data += dec2bin(MNI_MCC,10);
+                        T5_data += dec2bin(MNI_MNC,14);
+                    }
+                    else
+                    if (Address_or_ident_type == "3")//IPv4
+                    {
+                        T5_data += ipv42bin(IPv4);
+                    }
+                    else
+                    if (Address_or_ident_type == "4")//IPv6
+                    {
+                        T5_data += ipv62bin(IPv6);
+                    }
+                    else
+                    if (Address_or_ident_type == "8")//ESN
+                    {
+                        T5_data += digit2bin(ESN_digits);
+                    }
+                    else
+                    if (Address_or_ident_type == "9")//SSI+ESN
+                    {
+                        T5_data += dec2bin(SSI,24);
+                        T5_data += digit2bin(ESN_digits);
+                    }
+                    else
+                    if (Address_or_ident_type == "10")//SSI+MNI+ESN
+                    {
+                        T5_data += dec2bin(SSI,24);
+                        T5_data += dec2bin(MNI_MCC,10);
+                        T5_data += dec2bin(MNI_MNC,14);
+                        T5_data += digit2bin(ESN_digits);
+                    }
+                    else
+                    if (Address_or_ident_type == "11")//Server Name
+                    {
+                        T5_data += text2bin(Name_Server_Type_Name);
+                    }
+                    else
+                    if (Address_or_ident_type == "12")//Free Name
+                    {
+                        T5_data += text2bin(Name_Free_Format);
+                    }
+                    
+                    
+                    pdu_bin_value += T5_Encode("17",T5_data);
+                }
+
+                if (T5_Backlog_information_available == "1")
+                {
+                    T5_data = Backlog_information_available;
+                    pdu_bin_value += T5_Encode("23",T5_data);
+                }
+                
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                return pdu_bin_value;
+            }
+
+            function On_Load()
+            {
+                OnChange_Time_data(this.form);
+                OnChange_Location_shape(this.form);
+                OnChange_Velocity_type(this.form);
+                OnChange_Type_of_additional_data(this.form);
+                OnChange_T5_Terminal_or_location_identification(this.form)        
+            }
+
+            function OnChange_Time_data(form)
+            {
+                document.getElementById('Tag_Time_elapsed').style.display = "none";
+                document.getElementById('Tag_Time_of_position').style.display = "none";
+                document.getElementById('Tag_Time_data_empty_line').style.display = "none";
+                Time_data = document.getElementById('Time_data').value;
+                if (Time_data == "01")
+                    document.getElementById('Tag_Time_elapsed').style.display = "";
+                else
+                if (Time_data == "10")
+                    document.getElementById('Tag_Time_of_position').style.display = "";
+                else
+                    document.getElementById('Tag_Time_data_empty_line').style.display = "";
+                Update_Height();
+            }
+
+            function OnChange_Location_shape(form)
+            {
+                document.getElementById('Tag_Location_point').style.display = "none";
+                document.getElementById('Tag_Location_circle').style.display = "none";
+                document.getElementById('Tag_Location_ellipse').style.display = "none";
+                document.getElementById('Tag_Location_point_with_altitude').style.display = "none";
+                document.getElementById('Tag_Location_circle_with_altitude').style.display = "none";
+                document.getElementById('Tag_Location_ellipse_with_altitude').style.display = "none";
+                document.getElementById('Tag_Location_circle_with_altitude_and_uncertainty').style.display = "none";
+                document.getElementById('Tag_Location_ellipse_with_altitude_and_uncertainty').style.display = "none";
+                document.getElementById('Tag_Location_arc').style.display = "none";
+                document.getElementById('Tag_Location_point_and_position_error').style.display = "none";
+                document.getElementById('Tag_Location_shape_extension').style.display = "none";
+
+                Location_shape = document.getElementById('Location_shape').value;
+                if (Location_shape == "0001")
+                    document.getElementById('Tag_Location_point').style.display = "";
+                else
+                if (Location_shape == "0010")
+                    document.getElementById('Tag_Location_circle').style.display = "";
+                else
+                if (Location_shape == "0011")
+                    document.getElementById('Tag_Location_ellipse').style.display = "";
+                else
+                if (Location_shape == "0100")
+                    document.getElementById('Tag_Location_point_with_altitude').style.display = "";
+                else
+                if (Location_shape == "0101")
+                    document.getElementById('Tag_Location_circle_with_altitude').style.display = "";
+                else
+                if (Location_shape == "0110")
+                    document.getElementById('Tag_Location_ellipse_with_altitude').style.display = "";
+                else
+                if (Location_shape == "0111")
+                    document.getElementById('Tag_Location_circle_with_altitude_and_uncertainty').style.display = "";
+                else
+                if (Location_shape == "1000")
+                    document.getElementById('Tag_Location_ellipse_with_altitude_and_uncertainty').style.display = "";
+                else
+                if (Location_shape == "1001")
+                    document.getElementById('Tag_Location_arc').style.display = "";
+                else
+                if (Location_shape == "1010")
+                    document.getElementById('Tag_Location_point_and_position_error').style.display = "";
+                else
+                if (Location_shape == "1111")
+                   document.getElementById('Tag_Location_shape_extension').style.display = "";
+               Update_Height();
+           }
+
+            function OnChange_Velocity_type(form)
+            {
+                document.getElementById('Tag_Horizontal_velocity').style.display = "none";
+                document.getElementById('Tag_Horizontal_velocity_with_uncertainty').style.display = "none";
+                document.getElementById('Tag_Horizontal_velocity_and_vertical_velocity').style.display = "none";
+                document.getElementById('Tag_Horizontal_velocity_and_vertical_velocity_with_uncertainty').style.display = "none";
+                document.getElementById('Tag_Horizontal_velocity_with_direction_of_travel_extended').style.display = "none";
+                document.getElementById('Tag_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty').style.display = "none";
+                document.getElementById('Tag_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty').style.display = "none";
+
+                Velocity_type = document.getElementById('Velocity_type').value;
+                if (Velocity_type == "001")
+                    document.getElementById('Tag_Horizontal_velocity').style.display = "";
+                else
+                if (Velocity_type == "010")
+                   document.getElementById('Tag_Horizontal_velocity_with_uncertainty').style.display = "";
+                else
+                if (Velocity_type == "011")
+                   document.getElementById('Tag_Horizontal_velocity_and_vertical_velocity').style.display = "";
+                else
+                if (Velocity_type == "100")
+                   document.getElementById('Tag_Horizontal_velocity_and_vertical_velocity_with_uncertainty').style.display = "";
+                else
+                if (Velocity_type == "101")
+                   document.getElementById('Tag_Horizontal_velocity_with_direction_of_travel_extended').style.display = "";
+                else
+                if (Velocity_type == "110")
+                   document.getElementById('Tag_Horizontal_velocity_with_direction_of_travel_extended_and_uncertainty').style.display = "";
+                else
+                if (Velocity_type == "111")
+                   document.getElementById('Tag_Horizontal_velocity_and_vertical_velocity_with_direction_of_travel_extended_and_uncertainty').style.display = "";
+               Update_Height();
+           }
+
+            function OnChange_Type_of_additional_data(form)
+            {
+                document.getElementById('Tag_Reason_for_sending').style.display = "none";
+                document.getElementById('Tag_User_defined_data').style.display = "none";
+                Type_of_additional_data = document.getElementById('Type_of_additional_data').value;
+                if (Type_of_additional_data == "0")
+                    document.getElementById('Tag_Reason_for_sending').style.display = "";
+                else
+                if (Type_of_additional_data == "1")
+                   document.getElementById('Tag_User_defined_data').style.display = "";
+                
+                OnChange_Reason_for_sending(form);
+                Update_Height();
+            }
+
+            function OnChange_Reason_for_sending(form)
+            {
+            }
+
+            function OnChange_T5_Terminal_or_location_identification(form)
+            {
+                document.getElementById('Tag_Address_or_ident_type').style.display = "none";
+                
+                T5_Terminal_or_location_identification = document.getElementById('T5_Terminal_or_location_identification').value;
+                if (T5_Terminal_or_location_identification == "1")
+                {
+                    document.getElementById('Tag_Address_or_ident_type').style.display = "";
+                }
+                OnChange_Address_or_ident_type();
+                Update_Height();
+            }
+
+            function OnChange_Address_or_ident_type(form)
+            {
+                document.getElementById('Tag_SSI').style.display = "none";
+                document.getElementById('Tag_MNI').style.display = "none";
+                document.getElementById('Tag_ESN_digits').style.display = "none";
+                document.getElementById('Tag_IPv4').style.display = "none";
+                document.getElementById('Tag_IPv6').style.display = "none";
+                document.getElementById('Tag_Name_Server_Type_Name').style.display = "none";
+                document.getElementById('Tag_Name_Free_Format').style.display = "none";
+
+                T5_Terminal_or_location_identification = document.getElementById('T5_Terminal_or_location_identification').value;
+                if (T5_Terminal_or_location_identification == "0")
+                {
+                    Update_Height();
+                    return;
+                }
+                
+                Address_or_ident_type = document.getElementById('Address_or_ident_type').value;
+                if (Address_or_ident_type == "1")
+                {
+                    document.getElementById('Tag_SSI').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "2")
+                {
+                    document.getElementById('Tag_SSI').style.display = "";
+                    document.getElementById('Tag_MNI').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "3")
+                {
+                    document.getElementById('Tag_IPv4').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "4")
+                {
+                    document.getElementById('Tag_IPv6').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "8")
+                {
+                    document.getElementById('Tag_ESN_digits').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "9")
+                {
+                    document.getElementById('Tag_SSI').style.display = "";
+                    document.getElementById('Tag_ESN_digits').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "10")
+                {
+                    document.getElementById('Tag_SSI').style.display = "";
+                    document.getElementById('Tag_MNI').style.display = "";
+                    document.getElementById('Tag_ESN_digits').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "11")
+                {
+                    document.getElementById('Tag_Name_Server_Type_Name').style.display = "";
+                }
+                else
+                if (Address_or_ident_type == "12")
+                {
+                    document.getElementById('Tag_Name_Free_Format').style.display = "";
+                }
+                Update_Height();
+            }
+
+
+        </script>
+    </body>
+</HTML>

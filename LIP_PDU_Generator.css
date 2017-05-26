@@ -1,0 +1,85 @@
+body {
+margin: 10px;
+padding: 0px;
+}
+.header {
+font-size: 18px;
+font-weight: bold;
+color: gray;
+}
+P.small {
+font: 70% Arial
+}
+
+form {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border: solid #CCCCCC 1px;
+  margin: 0;
+  padding: 0;
+}
+
+td,th {
+  margin: 0;
+  padding: 1px 2px 1px 2px;
+  text-align: left;
+  vertical-align: top;
+}
+
+td,th {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  color: #555;
+  font-size: 11px;
+}
+
+th.h {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  font-weight: bold;
+  color: gray;
+  font-size: 14px;
+}
+
+th{
+  width: 250px;
+}
+
+select{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 11px;
+}
+input{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 11px;
+}
+option{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 11px;
+}
+p{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 11px;
+}
+
+H2{
+line-height:10%;
+font-family: Arial, verdana, serif;
+font-size: 11pt
+}
+h3 {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 1em;
+}

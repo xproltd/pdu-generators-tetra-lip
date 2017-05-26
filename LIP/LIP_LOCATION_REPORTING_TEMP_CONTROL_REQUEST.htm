@@ -1,0 +1,217 @@
+<HTML>
+    <HEAD>
+        <TITLE>LIP-LOCATION REPORTING TEMP CONTROL REQUEST</TITLE>
+        <SCRIPT SRC="../LIP_Util.js" language="JavaScript" type="text/JavaScript"></SCRIPT>
+        <LINK href="../LIP_PDU_Generator.css" rel="stylesheet" type="text/css">
+    </HEAD>
+    <body marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" style="" class="darkblue" onload="On_Load()">        
+        <form id="Form1">
+            <table id="LIP_xxx_Table">
+                <col width="160"/>
+                <tr id="Tag_Ack_request">
+                    <th >Acknowledgement request</th>
+                    <td><select id="Ack_request">                               
+                        <option value="0">No acknowledgement requested
+                        <option selected value="1">Acknowledgement requested
+                        </select>
+                    </td>
+                </tr>
+                <tr id="Tag_Temporary_control_validity">
+                    <th >Temporary control validity</th>
+                    <td><select id="Temporary_control_validity">                               
+                        <option value="0000">Return to normal reporting
+                        <option value="0001">Until next location update
+                        <option value="0010">Until next ITSI attach
+                        <option value="0011">Until normal reporting notification
+                        <option selected value="1000">10 min
+                        <option value="1001">20 min
+                        <option value="1010">30 min
+                        <option value="1011">40 min
+                        <option value="1100">50 min
+                        <option value="1101">60 min
+                        <option value="1110">70 min
+                        <option value="1111">No time-out
+                        </select>            
+                    </td>                    
+                </tr>                        
+                <table><col width="160"/>                				
+				<tr><th>Temporary control parameter definition</th>
+                    <td><select id="T5_Temp_control_param_def" onChange="OnChange_T5_Temp_control_param_def(this.form)">                          
+	                        <option value="0">T5 Not Present
+	                        <option selected value="1">T5 Present
+	                    </select>
+	                </td>
+                </tr>                     
+                <tbody id="Tag_Temp_control_param_def">
+                    <tr><th>Temporary control parameter type</th>
+                        <td><select id="Temp_control_param_type" onChange="OnChange_Temp_control_param_type(this.form)">                    
+                            <option value="0">Temporary minimum reporting distance - absolute
+                            <option value="1">Temporary maximum reporting distance - relative
+                            <option value="2">Temporary minimum reporting interval - absolute
+                            <option value="3">Temporary minimum reporting interval - relative
+                            <option value="4">Temporary report type
+                            </select>
+                        </td>
+                    </tr> 
+                    <tr id="Tag_Temp_min_rep_distance_abs">
+                        <th>Temporary minimum reporting distance - absolute</th>
+                        <td><select id="Temp_min_rep_distance_abs">                    
+                            <option value="0">10 m
+                            <option value="1">20 m
+                            <option value="99">1 km
+                            <option selected value="100">1.05 km
+                            <option value="127">2,4 km
+                            </select>
+                        </td>
+                    </tr> 
+                    <tr id="Tag_Temp_max_rep_distance_rel">
+                        <th>Temporary maximum reporting distance - relative</th>
+                        <td><select id="Temp_max_rep_distance_rel">                    
+                            <option value="000">1,4 times normal maximum reporting distance
+                            <option value="001">Two times normal maximum reporting distance
+                            <option value="010">Three times normal maximum reporting distance
+                            <option selected value="011">Four times normal maximum reporting distance
+                            <option value="100">Six times normal maximum reporting distance
+                            <option value="101">Eight times normal maximum reporting distance
+                            </select>          
+                        </td>                   
+                    </tr>                       
+                    <tr id="Tag_Temp_min_rep_interval_abs">
+                        <th>Temporary minimum reporting interval - absolute</th>
+                        <td><select id="Temp_min_rep_interval_abs">                    
+                            <option value="0">10 s
+                            <option value="1">20 s
+                            <option value="29">5 min
+                            <option value="30">5.5 min
+                            <option value="59">20 min
+                            <option value="60">21 min
+                            <option value="127">88 min
+                            </select>           
+                        </td>                   
+                    </tr>                       
+                    <tr id="Tag_Temp_min_rep_interval_abs_rel">
+                        <th>Temporary minimum reporting interval - relative</th>
+                        <td><select id="Temp_min_rep_interval_abs_rel">                    
+                            <option value="000">1,4 times normal minimum reporting interval
+                            <option value="001">Two times normal minimum reporting interval
+                            <option value="010">Three times normal minimum reporting interval
+                            <option selected value="011">Four times normal minimum reporting interval
+                            <option value="100">Six times normal minimum reporting interval
+                            <option value="101">Eight times normal minimum reporting interval
+                            </select>
+                        </td>
+                    </tr> 
+                    <tr id="Tag_Temp_rep_type">
+                        <th>Temporary report type</th>
+                        <td><select id="Temp_rep_type">                    
+                            <option value="00">Only Short location reports allowed
+                            <option value="01">Short location reports recommended
+                            </select>
+                        </td>
+                    </tr> 
+				</tbody>
+				</table>
+            </table>
+        </form>
+        <script language="JavaScript" type="text/JavaScript">
+
+            function GetPDUValue(pdu_header)
+            {
+                //Get Information Element values
+                Ack_request = document.getElementById('Ack_request').value;
+                Temporary_control_validity = document.getElementById('Temporary_control_validity').value;
+
+                T5_Temp_control_param_def = document.getElementById('T5_Temp_control_param_def').value;
+                Temp_control_param_type = document.getElementById('Temp_control_param_type').value;
+                Temp_min_rep_distance_abs = document.getElementById('Temp_min_rep_distance_abs').value;
+                Temp_max_rep_distance_rel = document.getElementById('Temp_max_rep_distance_rel').value;
+                Temp_min_rep_interval_abs = document.getElementById('Temp_min_rep_interval_abs').value;
+                Temp_min_rep_interval_abs = document.getElementById('Ack_request').value;
+                Temp_min_rep_interval_abs_rel = document.getElementById('Temp_min_rep_interval_abs_rel').value;
+                Temp_rep_type = document.getElementById('Temp_rep_type').value;
+                
+                T5_data = "";
+                
+                //Build PDU
+                pdu_bin_value = pdu_header;
+
+                pdu_bin_value += "0"; //Request
+                
+                pdu_bin_value += Ack_request;
+                
+                pdu_bin_value += Temporary_control_validity;
+                
+                if (T5_Temp_control_param_def == "1")
+                {
+                    T5_data = dec2bin(Temp_control_param_type,3);
+                    
+                    if (Temp_control_param_type == "0")
+                        T5_data += dec2bin(Temp_min_rep_distance_abs,7);
+                    else
+                    if (Temp_control_param_type == "1")
+                        T5_data += Temp_max_rep_distance_rel;
+                    else
+                    if (Temp_control_param_type == "2")
+                        T5_data += dec2bin(Temp_min_rep_interval_abs,7);
+                    else
+                    if (Temp_control_param_type == "3")
+                        T5_data += Temp_min_rep_interval_abs_rel;
+                    else
+                    if (Temp_control_param_type == "4")
+                        T5_data += Temp_rep_type;
+                    
+                    pdu_bin_value += T5_Encode("22",T5_data);
+                }
+                                
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                return pdu_bin_value;
+            }
+
+            function On_Load()
+            {
+                OnChange_T5_Temp_control_param_def(this.form);
+            }
+            
+            function OnChange_T5_Temp_control_param_def(form)
+            {
+                document.getElementById('Tag_Temp_control_param_def').style.display = "none";
+                
+                T5_Temp_control_param_def = document.getElementById('T5_Temp_control_param_def').value;
+                if (T5_Temp_control_param_def == "1")
+                {
+                    document.getElementById('Tag_Temp_control_param_def').style.display = "";
+                }
+                OnChange_Temp_control_param_type();
+                Update_Height();
+            }
+
+            function OnChange_Temp_control_param_type(form)
+            {
+                document.getElementById('Tag_Temp_min_rep_distance_abs').style.display = "none";
+                document.getElementById('Tag_Temp_max_rep_distance_rel').style.display = "none";
+                document.getElementById('Tag_Temp_min_rep_interval_abs').style.display = "none";
+                document.getElementById('Tag_Temp_min_rep_interval_abs_rel').style.display = "none";
+                document.getElementById('Tag_Temp_rep_type').style.display = "none";
+
+                Temp_control_param_type = document.getElementById('Temp_control_param_type').value;
+                if (Temp_control_param_type == "0")
+                    document.getElementById('Tag_Temp_min_rep_distance_abs').style.display = "";
+                else
+                if (Temp_control_param_type == "1")
+                    document.getElementById('Tag_Temp_max_rep_distance_rel').style.display = "";
+                else
+                if (Temp_control_param_type == "2")
+                    document.getElementById('Tag_Temp_min_rep_interval_abs').style.display = "";
+                else
+                if (Temp_control_param_type == "3")
+                    document.getElementById('Tag_Temp_min_rep_interval_abs_rel').style.display = "";
+                else
+                if (Temp_control_param_type == "4")
+                    document.getElementById('Tag_Temp_rep_type').style.display = "";
+                Update_Height();
+            }
+            
+        </script>
+    </body>
+</HTML>
