@@ -421,9 +421,9 @@ function T5_Encode(T5_id, T5_data)
         if (T5_data_bits_left != 0)
         {
             T5_data_octets += 1;
-            T5_data += dec2bin("0",8 - T5_data_bits_left);
+            T5_data += dec2bin("15",8 - T5_data_bits_left);
         }
-        T5_data_octets -= 8;
+        T5_data_octets -= 7;
         T5_value += dec2bin(parseInt(T5_data_octets, 10),7);
     }
     
