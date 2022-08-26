@@ -45,7 +45,7 @@
                 <tbody id="Tag_Temp_control_param_def">
                     <tr><th>Temporary control parameter type</th>
                         <td><select id="Temp_control_param_type" onChange="OnChange_Temp_control_param_type(this.form)">                    
-                            <option value="0">Temporary minimum reporting distance - absolute
+                            <option value="0">Temporary maximum reporting distance - absolute
                             <option value="1">Temporary maximum reporting distance - relative
                             <option value="2">Temporary minimum reporting interval - absolute
                             <option value="3">Temporary minimum reporting interval - relative
@@ -53,14 +53,14 @@
                             </select>
                         </td>
                     </tr> 
-                    <tr id="Tag_Temp_min_rep_distance_abs">
-                        <th>Temporary minimum reporting distance - absolute</th>
-                        <td><select id="Temp_min_rep_distance_abs">                    
-                            <option value="0">10 m
-                            <option value="1">20 m
-                            <option value="99">1 km
-                            <option selected value="100">1.05 km
-                            <option value="127">2,4 km
+                    <tr id="Tag_Temp_max_rep_distance_abs">
+                        <th>Temporary maximum reporting distance - absolute</th>
+                        <td><select id="Temp_max_rep_distance_abs">                    
+                            <option value="0">100 m
+                            <option value="1">200 m
+                            <option value="99">10 km
+                            <option selected value="100">10.5 km
+                            <option value="127">24 km
                             </select>
                         </td>
                     </tr> 
@@ -123,7 +123,7 @@
 
                 T5_Temp_control_param_def = document.getElementById('T5_Temp_control_param_def').value;
                 Temp_control_param_type = document.getElementById('Temp_control_param_type').value;
-                Temp_min_rep_distance_abs = document.getElementById('Temp_min_rep_distance_abs').value;
+                Temp_max_rep_distance_abs = document.getElementById('Temp_max_rep_distance_abs').value;
                 Temp_max_rep_distance_rel = document.getElementById('Temp_max_rep_distance_rel').value;
                 Temp_min_rep_interval_abs = document.getElementById('Temp_min_rep_interval_abs').value;
                 Temp_min_rep_interval_abs = document.getElementById('Ack_request').value;
@@ -146,7 +146,7 @@
                     T5_data = dec2bin(Temp_control_param_type,3);
                     
                     if (Temp_control_param_type == "0")
-                        T5_data += dec2bin(Temp_min_rep_distance_abs,7);
+                        T5_data += dec2bin(Temp_max_rep_distance_abs,7);
                     else
                     if (Temp_control_param_type == "1")
                         T5_data += Temp_max_rep_distance_rel;
@@ -188,7 +188,7 @@
 
             function OnChange_Temp_control_param_type(form)
             {
-                document.getElementById('Tag_Temp_min_rep_distance_abs').style.display = "none";
+                document.getElementById('Tag_Temp_max_rep_distance_abs').style.display = "none";
                 document.getElementById('Tag_Temp_max_rep_distance_rel').style.display = "none";
                 document.getElementById('Tag_Temp_min_rep_interval_abs').style.display = "none";
                 document.getElementById('Tag_Temp_min_rep_interval_abs_rel').style.display = "none";
@@ -196,7 +196,7 @@
 
                 Temp_control_param_type = document.getElementById('Temp_control_param_type').value;
                 if (Temp_control_param_type == "0")
-                    document.getElementById('Tag_Temp_min_rep_distance_abs').style.display = "";
+                    document.getElementById('Tag_Temp_max_rep_distance_abs').style.display = "";
                 else
                 if (Temp_control_param_type == "1")
                     document.getElementById('Tag_Temp_max_rep_distance_rel').style.display = "";
